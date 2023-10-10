@@ -12,11 +12,11 @@ export default function ReportRide() {
     { name: "Inappropriate content" },
     { name: "Other" },
   ];
-  useEffect(() => {
+  /*useEffect(() => {
     if (!localStorage.getItem("access_token")) {
       navigate("/auth");
     }
-  }, []);
+  }, []);*/
   return (
     <div className="p-3 mt-5">
       <h4

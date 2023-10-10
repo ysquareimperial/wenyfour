@@ -67,6 +67,7 @@ export default function EditCar() {
       });
     console.log(editVehicle);
   };
+
   return (
     <div className="mt-5">
       <CompHeader header={"Edit vehicle"}>
@@ -142,7 +143,7 @@ export default function EditCar() {
                     {loading ? (
                       <button
                         disabled={loading}
-                        className="app_button"
+                        className="app_button p-3"
                         style={{ width: "100%" }}
                       >
                         <div
@@ -158,7 +159,10 @@ export default function EditCar() {
                         </div>
                       </button>
                     ) : (
-                      <button className="app_button" style={{ width: "100%" }}>
+                      <button
+                        className="app_button p-3"
+                        style={{ width: "100%" }}
+                      >
                         Save
                       </button>
                     )}

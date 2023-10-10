@@ -14,11 +14,11 @@ function RiderProfile() {
   const phone = query.get("phone");
   const created_at = query.get("created_at");
   const navigate = useNavigate();
-  useEffect(() => {
+  /*useEffect(() => {
     if (!localStorage.getItem("access_token")) {
       navigate("/auth");
     }
-  }, []);
+  }, []);*/
   return (
     <div className="p-3 mt-5">
       <Row className="mt-4">

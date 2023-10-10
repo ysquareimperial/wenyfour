@@ -32,12 +32,6 @@ export default function BookRide() {
   const userData = JSON.parse(localStorage.getItem("access_token"));
   const xtoken = userData?.access_token;
 
-  useEffect(() => {
-    if (!localStorage.getItem("access_token")) {
-      navigate("/auth");
-    }
-  }, []);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);

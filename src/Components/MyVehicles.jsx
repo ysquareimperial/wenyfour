@@ -45,6 +45,7 @@ export default function MyVehicles() {
   }, []);
 
   const handleDeleteVehicle = () => {
+    setLoading(true);
     if (vehicleToDelete) {
       axios
         .delete(`${api}/cars/${vehicleToDelete}/delete`, {
@@ -132,12 +133,31 @@ export default function MyVehicles() {
                             Cancel
                           </button>
                           {/* {JSON.stringify(item?.id)} */}
-                          <button
-                            className="danger_button"
-                            onClick={handleDeleteVehicle}
-                          >
-                            Delete
-                          </button>
+                          {loading ? (
+                            <button
+                              className="danger_button"
+                              onClick={handleDeleteVehicle}
+                            >
+                              <div
+                                class="text-centerd-flex align-items-center justify-content-center gap-2"
+                                style={{ color: "white" }}
+                              >
+                                <span
+                                  style={{ width: "1rem", height: "1rem" }}
+                                  class="spinner-border"
+                                  role="status"
+                                  aria-hidden="true"
+                                ></span>
+                              </div>
+                            </button>
+                          ) : (
+                            <button
+                              className="danger_button"
+                              onClick={handleDeleteVehicle}
+                            >
+                              Delete
+                            </button>
+                          )}
                         </div>
                       </div>
                     </Modal>
@@ -155,7 +175,7 @@ export default function MyVehicles() {
                 )}
                 <div className="text-center">
                   <button
-                    className="app_button"
+                    className="app_button p-3"
                     onClick={() => navigate("/create-new-car")}
                   >
                     Add new vehicle

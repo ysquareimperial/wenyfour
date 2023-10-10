@@ -23,11 +23,11 @@ export default function SearchResults() {
   const xtoken = userData?.access_token;
 
   const [loading, setLoading] = useState(false);
-  useEffect(() => {
+  /*useEffect(() => {
     if (!localStorage.getItem("access_token")) {
       navigate("/auth");
     }
-  }, []);
+  }, []);*/
 
   const getAvailableRides = () => {
     if (xtoken) {

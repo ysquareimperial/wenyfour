@@ -8,11 +8,11 @@ export default function WriteReport() {
 
   const type = query.get("report_type");
   const [reportData, setReportData] = useState("");
-  useEffect(() => {
+  /*useEffect(() => {
     if (!localStorage.getItem("access_token")) {
       navigate("/auth");
     }
-  }, []);
+  }, []);*/
   return (
     <div className="p-3 mt-5">
      <h4 className="text-center page_title" style={{ fontWeight: 900, fontSize: 40 }}>

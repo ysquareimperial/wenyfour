@@ -130,7 +130,7 @@ export default function PublishRide() {
         <Col xl={4} lg={4} md={4} sm={12} xs={12}>
           {/* {JSON.stringify(cars)} */}
 
-          {JSON.stringify(publishRide)}
+          {/* {JSON.stringify(publishRide)} */}
           {loading ? (
             <div
               class="text-center mt-5 d-flex align-items-center justify-content-center gap-2"
@@ -302,14 +302,24 @@ export default function PublishRide() {
                   {loading ? (
                     <button
                       disabled={loading}
-                      className="app_button p-2"
+                      className="app_button p-3"
                       style={{ width: "100%" }}
                     >
-                      Publishing...
+                      <div
+                        class="text-centerd-flex align-items-center justify-content-center gap-2"
+                        style={{ color: "white" }}
+                      >
+                        <span
+                          style={{ width: "1rem", height: "1rem" }}
+                          class="spinner-border"
+                          role="status"
+                          aria-hidden="true"
+                        ></span>
+                      </div>
                     </button>
                   ) : (
                     <button
-                      className="app_button p-2"
+                      className="app_button p-3"
                       style={{ width: "100%" }}
                     >
                       Publish
@@ -326,7 +336,7 @@ export default function PublishRide() {
         <div className="p-3 text-center">
           <p>You don't have registered car(s) yet</p>
           <button
-            className="app_button"
+            className="app_button p-3"
             onClick={() => navigate("/create-new-car")}
           >
             Create one here

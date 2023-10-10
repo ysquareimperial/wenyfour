@@ -16,11 +16,11 @@ function Profile() {
   const navigate = useNavigate();
   const loggedInUser = useSelector((state) => state?.auth?.user);
   const dispatch = useDispatch();
-  useEffect(() => {
+  /*useEffect(() => {
     if (!localStorage.getItem("access_token")) {
       navigate("/auth");
     }
-  }, []);
+  }, []);*/
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("access_token"));

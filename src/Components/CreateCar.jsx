@@ -2,7 +2,7 @@ import { MdArrowForwardIos } from "react-icons/md";
 import CompHeader from "../CustomComponents/CompHeder";
 import { useNavigate } from "react-router-dom";
 import { Col, Modal, Row } from "reactstrap";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { api } from "../helper/apis";
 export default function CreateCar() {
@@ -59,6 +59,7 @@ export default function CreateCar() {
       });
     console.log(createCar);
   };
+
   return (
     <div className="mt-5">
       <CompHeader header={"Create vehicle"}>
@@ -94,17 +95,24 @@ export default function CreateCar() {
                       onChange={handleChange}
                     />
                   </Col>
+
                   <Col md={6} className="mt-3">
                     <label className="label">Vehicle type</label>
-                    <input
-                      required
-                      minLength={2}
+                    <select
                       className="input_field"
-                      type="text"
                       name="c_type"
                       value={createCar.c_type}
                       onChange={handleChange}
-                    />
+                    >
+                      <option>-</option>
+                      <option>Sedan</option>
+                      <option>SUV</option>
+                      <option>Coupe</option>
+                      <option>Sports Car</option>
+                      <option>Minivan</option>
+                      <option>Van</option>
+                      <option>Bus</option>
+                    </select>
                   </Col>
                   <Col md={6} className="mt-3">
                     <label className="label">Vehicle color</label>
@@ -135,7 +143,7 @@ export default function CreateCar() {
                     {loading ? (
                       <button
                         disabled={loading}
-                        className="app_button"
+                        className="app_button p-3"
                         style={{ width: "100%" }}
                       >
                         <div
@@ -152,7 +160,7 @@ export default function CreateCar() {
                       </button>
                     ) : (
                       <button
-                        className="app_button"
+                        className="app_button p-3"
                         style={{ width: "100%" }}
                       >
                         Create

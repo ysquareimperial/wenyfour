@@ -12,11 +12,11 @@ export default function YourRides() {
   const userData = JSON.parse(localStorage.getItem("access_token"));
   const xtoken = userData?.access_token;
   const [rides, setRides] = useState([]);
-  useEffect(() => {
+  /*useEffect(() => {
     if (!localStorage.getItem("access_token")) {
       navigate("/auth");
     }
-  }, []);
+  }, []);*/
   useEffect(() => {
     if (xtoken) {
       setLoading(true);

@@ -30,11 +30,11 @@ export default function RideDetails() {
   const xtoken = userData?.access_token;
   const navigate = useNavigate();
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (!localStorage.getItem("access_token")) {
       navigate("/auth");
     }
-  }, []);
+  }, []);*/
   const getRideDetails = () => {
     if (xtoken) {
       setLoadingRideDetails(true);

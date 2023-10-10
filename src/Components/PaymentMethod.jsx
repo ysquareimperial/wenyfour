@@ -3,11 +3,11 @@ import { Col, Row } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 export default function RideDetails() {
   const navigate = useNavigate();
-  useEffect(() => {
+  /*useEffect(() => {
     if (!localStorage.getItem("access_token")) {
       navigate("/auth");
     }
-  }, []);
+  }, []);*/
   return (
     <div className="p-3 mt-5">
       <h4

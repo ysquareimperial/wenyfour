@@ -117,15 +117,25 @@ export default function EditProfile() {
             <div className="mt-3">
               {loading ? (
                 <button
-                  className="app_button p-2"
+                  className="app_button p-3"
                   style={{ width: "100%" }}
                   disabled
                 >
-                  Saving...
+                  <div
+                    class="text-centerd-flex align-items-center justify-content-center gap-2"
+                    style={{ color: "white" }}
+                  >
+                    <span
+                      style={{ width: "1rem", height: "1rem" }}
+                      class="spinner-border"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                  </div>
                 </button>
               ) : (
                 <button
-                  className="app_button p-2"
+                  className="app_button p-3"
                   style={{ width: "100%" }}
                   onClick={handleSubmit}
                 >

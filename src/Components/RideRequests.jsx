@@ -23,11 +23,11 @@ export default function RideRequests() {
   const xtoken = userData?.access_token;
 
   //checks if there is access_token in local storage
-  useEffect(() => {
+  /*useEffect(() => {
     if (!localStorage.getItem("access_token")) {
       navigate("/auth");
     }
-  }, []);
+  }, []);*/
 
   //Start of fetching ride details
   useEffect(() => {

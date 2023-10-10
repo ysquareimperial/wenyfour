@@ -153,7 +153,19 @@ export default function SignUpp() {
               {!loading ? (
                 <button className="app_button auth mt-3 p-3">Sign In</button>
               ) : (
-                <button className="app_button auth mt-3 p-3">Loading...</button>
+                <button className="app_button auth mt-3 p-3" disabled>
+                  <div
+                    class="text-centerd-flex align-items-center justify-content-center gap-2"
+                    style={{ color: "white" }}
+                  >
+                    <span
+                      style={{ width: "1rem", height: "1rem" }}
+                      class="spinner-border"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                  </div>
+                </button>
               )}
             </form>
           ) : (
@@ -241,7 +253,19 @@ export default function SignUpp() {
               {!loading ? (
                 <button className="app_button auth mt-3 p-3">Sign Up</button>
               ) : (
-                <button className="app_button auth mt-3 p-3">Loading...</button>
+                <button className="app_button auth mt-3 p-3" disabled>
+                  <div
+                    class="text-centerd-flex align-items-center justify-content-center gap-2"
+                    style={{ color: "white" }}
+                  >
+                    <span
+                      style={{ width: "1rem", height: "1rem" }}
+                      class="spinner-border"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                  </div>
+                </button>
               )}
             </form>
           )}

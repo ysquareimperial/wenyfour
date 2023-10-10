@@ -5,6 +5,8 @@ import { loginSuccess, restoreUserFromLocalStorage } from "../redux/actions";
 import moment from "moment";
 import LivingFrom from "./States/LivingFrom";
 export default function SearchRide() {
+ 
+
   const formData = {
     from: "",
     to: "",
@@ -12,7 +14,6 @@ export default function SearchRide() {
     numberOfSeats: 1,
   };
   const [searchData, setSearchData] = useState(formData);
-
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -21,16 +22,10 @@ export default function SearchRide() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(searchData);
     navigate(
       `/search-results?start_loc=${searchData.from}&to_loc=${searchData.to}&date=${searchData.date}&seats=${searchData.numberOfSeats}`
     );
   };
-  useEffect(() => {
-    if (!localStorage.getItem("access_token")) {
-      navigate("/auth");
-    }
-  }, []);
 
   const loggedInUser = useSelector((state) => state?.auth?.user);
   const dispatch = useDispatch();
@@ -136,7 +131,7 @@ export default function SearchRide() {
           </div>
         </div>
         <div className="m-0 text-center mt-3">
-          <button className="app_button" style={{ padding: "20px 40px" }}>
+          <button className="app_button" style={{ padding: "13px 40px" }}>
             GO
           </button>
         </div>
