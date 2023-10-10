@@ -145,10 +145,10 @@ export default function SignUpp() {
                 className="d-flex justify-content-between mt-3"
                 style={{ fontSize: 13 }}
               >
-                <p className="m-0">
+                {/* <p className="m-0">
                   <input type="checkbox" /> Remember me
-                </p>
-                <p className="forgot_p m-0">Forgot Password</p>
+                </p> */}
+                <p className="forgot_p m-0">Forgotten Password?</p>
               </div>
               {!loading ? (
                 <button className="app_button auth mt-3 p-3">Sign In</button>
