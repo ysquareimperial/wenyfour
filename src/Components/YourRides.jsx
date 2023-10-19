@@ -70,7 +70,7 @@ export default function YourRides() {
                   onClick={() => navigate(`/ride-requests?ride_id=${item?.id}`)}
                 >
                   <Row>
-                    <Col md={6} sm={8} xs={8}>
+                    <Col md={6} sm={10} xs={10}>
                       <p>{moment(item?.date).format("MMM DD, YYYY")}</p>
                       <div className="d-flex" style={{ gap: 10 }}>
                         <div>
@@ -100,9 +100,9 @@ export default function YourRides() {
                         </div>
                       </div>
                     </Col>
-                    <Col md={6} sm={4} xs={4}>
+                    <Col md={6} sm={2} xs={2}>
                       <p className="rides_avail" style={{ float: "right" }}>
-                        NGN {item?.seat_price}
+                        N{item?.seat_price}
                       </p>
                     </Col>
                   </Row>
@@ -115,7 +115,7 @@ export default function YourRides() {
                   </span>
                 </div>
               ) : (
-                ""
+                ""  
               )}
             </>
           )}

@@ -171,35 +171,41 @@ export default function SignUpp() {
           ) : (
             <form onSubmit={handleSignup}>
               {/* {JSON.stringify(email + name + phone + password+ nin)} */}
-              <div className="mt-3">
-                <label className="label" htmlFor="fullName">
-                  Full Name
-                </label>
-                <input
-                  className="input_field"
-                  id="fullName"
-                  required
-                  type="text"
-                  minLength={3}
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </div>
-              <div className="mt-3">
-                <label className="label" htmlFor="phone">
-                  Phone
-                </label>
-                <input
-                  className="input_field"
-                  id="phone"
-                  required
-                  type="tel"
-                  minLength={9}
-                  // pattern="[0-9]{10}"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                />
-              </div>
+              <Row>
+                <Col md={6}>
+                  <div className="mt-3">
+                    <label className="label" htmlFor="fullName">
+                      Full Name
+                    </label>
+                    <input
+                      className="input_field"
+                      id="fullName"
+                      required
+                      type="text"
+                      minLength={3}
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="mt-3">
+                    <label className="label" htmlFor="phone">
+                      Phone
+                    </label>
+                    <input
+                      className="input_field"
+                      id="phone"
+                      required
+                      type="tel"
+                      minLength={9}
+                      // pattern="[0-9]{10}"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
+                  </div>
+                </Col>
+              </Row>
               <div className="mt-3">
                 <label className="label" htmlFor="email">
                   Email
@@ -212,42 +218,59 @@ export default function SignUpp() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-              </div>{" "}
-              <div className="mt-3">
-                <label className="label" htmlFor="nin">
-                  NIN
-                </label>
-                <input
-                  className="input_field"
-                  id="nin"
-                  required
-                  type="number"
-                  value={nin}
-                  onChange={(e) => setNin(e.target.value)}
-                />
-              </div>{" "}
-              <div className="mt-3">
-                <label className="label" htmlFor="password">
-                  Password
-                </label>
-                <input
-                  className="input_field"
-                  id="password"
-                  required
-                  minLength={5}
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
               </div>
+              <Row>
+                <Col md={6}>
+                  <div className="mt-3">
+                    <label className="label" htmlFor="nin">
+                      NIN
+                    </label>
+                    <input
+                      className="input_field"
+                      id="nin"
+                      required
+                      type="number"
+                      value={nin}
+                      onChange={(e) => setNin(e.target.value)}
+                    />
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="mt-3">
+                    <label className="label" htmlFor="password">
+                      New Password
+                    </label>
+                    <input
+                      className="input_field"
+                      id="password"
+                      required
+                      minLength={5}
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </div>
+                </Col>
+              </Row>
               {errorMessage_ && (
                 <p style={{ color: "red", fontSize: 13 }}>
                   {"Registration failed: " + errorMessage_ + "!"}
                 </p>
               )}
               <div className="mt-3">
-                <p className="forgot_p m-0">
-                  <input type="checkbox" /> I have read and agree to the terms
+                <p
+                  className="forgot_p m-0"
+                  style={{ color: "grey", fontSize: 12 }}
+                >
+                  {/* <input type="checkbox" /> */}
+                  By clicking "Sign Up," you agree to our{" "}
+                  <span style={{ color: "#0d6efd", cursor: "pointer" }}>
+                    Terms,
+                  </span>{" "}
+                  <span style={{ color: "#0d6efd", cursor: "pointer" }}>
+                    Cookies Policy,{" "}
+                  </span>
+                  and SMS notifications, with the option to unsubscribe anytime.
                 </p>
               </div>
               {!loading ? (

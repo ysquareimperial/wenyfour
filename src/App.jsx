@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 function App() {
   const navigate = useNavigate();
+
   const logout = () => {
     const keysToRemove = ["access_token", "user_data"];
     // Loop through the keys and remove each item
@@ -14,14 +15,26 @@ function App() {
       localStorage.removeItem(key);
     });
     localStorage.removeItem("access_token");
-    if (!localStorage.getItem("access_token" && "user_data")) {
+    if (
+      !localStorage.getItem("access_token") ||
+      !localStorage.getItem("user_data")
+    ) {
       navigate("/auth");
     }
   };
 
-  setInterval(function () {
-    logout();
-  }, 900000);
+  const reloadComponent = () => {
+    // Implement the logic to reload your component here
+    logout(); // Call the logout function
+  };
+
+  useEffect(() => {
+    // Set up an interval to run the reloadComponent function every 15 minutes (15 * 60 * 1000 milliseconds)
+    const intervalId = setInterval(reloadComponent, 900000);
+
+    // Clear the interval when the component is unmounted to prevent memory leaks
+    return () => clearInterval(intervalId);
+  }, []);
 
   useEffect(() => {
     if (!localStorage.getItem("access_token")) {

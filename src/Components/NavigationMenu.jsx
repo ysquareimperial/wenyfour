@@ -58,7 +58,7 @@ export default function NavigationMenu() {
             className="app_button pub_web"
             onClick={() => navigate(`/publish-ride`)}
           >
-            Publish ride
+            Publish a ride
           </button>
           <button
             className="app_button pub_mob"

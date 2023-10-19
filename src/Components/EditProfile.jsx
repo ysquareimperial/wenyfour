@@ -23,6 +23,9 @@ export default function EditProfile() {
   const loggedInUser = useSelector((state) => state?.auth?.user);
   const dispatch = useDispatch();
 
+  const userData = JSON.parse(localStorage.getItem("access_token"));
+  const xtoken = userData?.access_token;
+
   useEffect(() => {
     // Check localStorage for user data
     const userData = JSON.parse(localStorage.getItem("access_token"));
@@ -37,12 +40,16 @@ export default function EditProfile() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = () => {
-    // console.log(userData);
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setLoading(true);
     try {
       axios
-        .put(`${api}/auth/users/${loggedInUser?.user_id}/update`, formData)
+        .put(`${api}/auth/users/${loggedInUser?.user_id}/update`, formData, {
+          headers: {
+            "x-token": xtoken,
+          },
+        })
         .then((response) => {
           setLoading(false);
           if (response.error) {
@@ -65,87 +72,98 @@ export default function EditProfile() {
       >
         Edit profile
       </h4>
-      <Row>
-        <Col xl={4} lg={4} md={4} sm={12} xs={12}></Col>
-        <Col xl={4} lg={4} md={4} sm={12} xs={12}>
-          <Row>
-            <Col md={12} className="mt-3">
-              <label className="label">Name</label>
-              <input
-                className="input_field"
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-            </Col>
-            <Col md={12} className="mt-3">
-              <label className="label">Email</label>
-              <input
-                className="input_field"
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </Col>
-            <Col md={12} className="mt-3">
-              <label className="label">Phone</label>
-              <input
-                className="input_field"
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-              />
-            </Col>
-            <Col md={12} className="mt-3">
-              <label className="label">About</label>
-              <textarea
-                name="about"
-                className="input_field"
-                id=""
-                // value={formData.about}
-                // onChange={handleChange}
-                cols="20"
-                rows="5"
-              ></textarea>
-            </Col>
-            <div className="mt-3">
-              {loading ? (
-                <button
-                  className="app_button p-3"
-                  style={{ width: "100%" }}
-                  disabled
-                >
-                  <div
-                    class="text-centerd-flex align-items-center justify-content-center gap-2"
-                    style={{ color: "white" }}
+      <form onSubmit={handleSubmit}>
+        <Row>
+          <Col xl={4} lg={4} md={4} sm={12} xs={12}></Col>
+          <Col xl={4} lg={4} md={4} sm={12} xs={12}>
+            <Row>
+              <Col md={12} className="mt-3">
+                <label className="label">Name</label>
+                <input
+                  className="input_field"
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+              </Col>
+              {/* <Col md={12} className="mt-3">
+                <label className="label">Email</label>
+                <input
+                  className="input_field"
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </Col> */}
+              <Col md={12} className="mt-3">
+                <label className="label">Phone</label>
+                <input
+                  className="input_field"
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                />
+              </Col>
+              <Col md={12} className="mt-3">
+                <label className="label">DOB</label>
+                <input
+                  className="input_field"
+                  type="date"
+                  // name="phone"
+                  // value={formData.phone}
+                  // onChange={handleChange}
+                  // required
+                />
+              </Col>
+              <Col md={12} className="mt-3">
+                <label className="label">About</label>
+                <textarea
+                  style={{ resize: "none" }}
+                  name="about"
+                  className="input_field"
+                  id=""
+                  // value={formData.about}
+                  // onChange={handleChange}
+                  cols="20"
+                  rows="5"
+                ></textarea>
+              </Col>
+              <div className="mt-3">
+                {loading ? (
+                  <button
+                    className="app_button p-3"
+                    style={{ width: "100%" }}
+                    disabled
                   >
-                    <span
-                      style={{ width: "1rem", height: "1rem" }}
-                      class="spinner-border"
-                      role="status"
-                      aria-hidden="true"
-                    ></span>
-                  </div>
-                </button>
-              ) : (
-                <button
-                  className="app_button p-3"
-                  style={{ width: "100%" }}
-                  onClick={handleSubmit}
-                >
-                  Save
-                </button>
-              )}
-            </div>
-          </Row>
-        </Col>
-      </Row>
+                    <div
+                      class="text-centerd-flex align-items-center justify-content-center gap-2"
+                      style={{ color: "white" }}
+                    >
+                      <span
+                        style={{ width: "1rem", height: "1rem" }}
+                        class="spinner-border"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                    </div>
+                  </button>
+                ) : (
+                  <button className="app_button p-3" style={{ width: "100%" }}>
+                    Save
+                  </button>
+                )}
+              </div>
+            </Row>
+          </Col>
+        </Row>
+      </form>
+
       {/* <div className="m-0 text-center mt-3"></div> */}
     </div>
   );

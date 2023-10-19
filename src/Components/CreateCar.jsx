@@ -29,35 +29,39 @@ export default function CreateCar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-    axios
-      .post(
-        `${api}/cars/create`,
-        {
-          brand: createCar.brand,
-          c_license: createCar.c_license,
-          c_type: createCar.c_type,
-          color: createCar.color,
-          model: createCar.model,
-        },
-        {
-          headers: {
-            "x-token": xtoken,
+    if (createCar.c_type === "") {
+      alert("Please fill all the inputs!");
+    } else {
+      setLoading(true);
+      axios
+        .post(
+          `${api}/cars/create`,
+          {
+            brand: createCar.brand,
+            c_license: createCar.c_license,
+            c_type: createCar.c_type,
+            color: createCar.color,
+            model: createCar.model,
           },
-        }
-      )
-      .then((response) => {
-        console.log(response?.status);
-        if (response?.status === 201) {
-          navigate("/my-vehicles");
-        }
-        setLoading(false);
-      })
-      .catch((e) => {
-        console.log(e);
-        setLoading(false);
-      });
-    console.log(createCar);
+          {
+            headers: {
+              "x-token": xtoken,
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response?.status);
+          if (response?.status === 201) {
+            navigate("/my-vehicles");
+          }
+          setLoading(false);
+        })
+        .catch((e) => {
+          console.log(e);
+          setLoading(false);
+        });
+      console.log(createCar);
+    }
   };
 
   return (
@@ -101,6 +105,7 @@ export default function CreateCar() {
                     <select
                       className="input_field"
                       name="c_type"
+                      required
                       value={createCar.c_type}
                       onChange={handleChange}
                     >

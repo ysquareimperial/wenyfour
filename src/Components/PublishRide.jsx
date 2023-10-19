@@ -28,6 +28,7 @@ export default function PublishRide() {
   const userData = JSON.parse(localStorage.getItem("access_token"));
   const xtoken = userData?.access_token;
   const navigate = useNavigate();
+
   const handleModal = () => {
     setModal(!modal);
   };
@@ -37,40 +38,49 @@ export default function PublishRide() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-    axios
-      .post(
-        `${api}/rides/create`,
-        {
-          date: publishRide.date,
-          dropoff_location: publishRide.dropoff_location,
-          from_location: publishRide.from_location,
-          gender: publishRide.gender,
-          pickup_location: publishRide.pickup_location,
-          seat_price: publishRide.seat_price,
-          seats: publishRide.seats,
-          time: publishRide.time,
-          to_location: publishRide.to_location,
-          car_id: publishRide.car_id,
-        },
-        {
-          headers: {
-            "x-token": xtoken,
+    if (
+      publishRide.car_id === "" ||
+      publishRide.gender === "" ||
+      publishRide.time === "" ||
+      publishRide.seats == ""
+    ) {
+      alert("Please fill all the inputs!");
+    } else {
+      setLoading(true);
+      axios
+        .post(
+          `${api}/rides/create`,
+          {
+            date: publishRide.date,
+            dropoff_location: publishRide.dropoff_location,
+            from_location: publishRide.from_location,
+            gender: publishRide.gender,
+            pickup_location: publishRide.pickup_location,
+            seat_price: publishRide.seat_price,
+            seats: publishRide.seats,
+            time: publishRide.time,
+            to_location: publishRide.to_location,
+            car_id: publishRide.car_id,
           },
-        }
-      )
-      .then((response) => {
-        console.log(response?.status);
-        if (response?.status === 201) {
-          navigate("/published-rides");
-        }
-        setLoading(false);
-      })
-      .catch((e) => {
-        console.log(e);
-        setLoading(false);
-      });
-    console.log(publishRide);
+          {
+            headers: {
+              "x-token": xtoken,
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response?.status);
+          if (response?.status === 201) {
+            navigate("/published-rides");
+          }
+          setLoading(false);
+        })
+        .catch((e) => {
+          console.log(e);
+          setLoading(false);
+        });
+      console.log(publishRide);
+    }
   };
 
   useEffect(() => {
@@ -123,7 +133,7 @@ export default function PublishRide() {
         className="text-center page_title"
         style={{ fontWeight: 900, fontSize: 40 }}
       >
-        Publish ride
+        Publish a ride
       </h4>
       <Row>
         <Col xl={4} lg={4} md={4} sm={12} xs={12}></Col>
@@ -262,6 +272,7 @@ export default function PublishRide() {
                   <input
                     className="input_field"
                     type="number"
+                    required
                     min={0}
                     name="seat_price"
                     value={publishRide.seat_price}
@@ -276,10 +287,10 @@ export default function PublishRide() {
                     value={publishRide.seats}
                     onChange={handleChange}
                   >
-                    <option>-</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                    <option value="">-</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
                   </select>
                 </Col>
                 <Col md={6} className="mt-3">

@@ -105,7 +105,7 @@ export default function SearchRide() {
             </select>
           </div>
           <div>
-            <label className="label">Today</label>
+            <label className="label">Date</label>
             <input
               className="input_field search_ride_input"
               type="date"

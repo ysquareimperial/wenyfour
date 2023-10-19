@@ -34,38 +34,41 @@ export default function EditCar() {
   const handleChange = (e) => {
     setEditVehicle({ ...editVehicle, [e.target.name]: e.target.value });
   };
-  const fasf = `${api}/cars/update/${car_id}/car`;
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-    axios
-      .put(
-        `${api}/cars/update/${car_id}/car`,
-        {
-          brand: editVehicle.brand,
-          c_license: editVehicle.c_license,
-          c_type: editVehicle.c_type,
-          color: editVehicle.color,
-          model: editVehicle.model,
-        },
-        {
-          headers: {
-            "x-token": xtoken,
+    if (editVehicle.c_type === "-") {
+      alert("Please fill all the inputs!");
+    } else {
+      setLoading(true);
+      axios
+        .put(
+          `${api}/cars/update/${car_id}/car`,
+          {
+            brand: editVehicle.brand,
+            c_license: editVehicle.c_license,
+            c_type: editVehicle.c_type,
+            color: editVehicle.color,
+            model: editVehicle.model,
           },
-        }
-      )
-      .then((response) => {
-        console.log(response);
-        if (response?.status === 200) {
-          navigate("/my-vehicles");
-        }
-        setLoading(false);
-      })
-      .catch((e) => {
-        console.log(e);
-        setLoading(false);
-      });
-    console.log(editVehicle);
+          {
+            headers: {
+              "x-token": xtoken,
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response);
+          if (response?.status === 200) {
+            navigate("/my-vehicles");
+          }
+          setLoading(false);
+        })
+        .catch((e) => {
+          console.log(e);
+          setLoading(false);
+        });
+      console.log(editVehicle);
+    }
   };
 
   return (
@@ -75,7 +78,7 @@ export default function EditCar() {
           <Col md={4}></Col>
           <Col md={4}>
             <div className="mt-3">
-              {/* {JSON.stringify(fasf)} */}
+              {JSON.stringify(editVehicle)}
               {/* {JSON.stringify(xtoken)} */}
               <form onSubmit={handleSubmit}>
                 <Row>
@@ -104,16 +107,23 @@ export default function EditCar() {
                     />
                   </Col>
                   <Col md={6} className="mt-3">
-                    <label className="label">Car Type</label>
-                    <input
-                      required
-                      minLength={2}
+                    <label className="label">Vehicle type</label>
+                    <select
                       className="input_field"
-                      type="text"
                       name="c_type"
+                      required
                       value={editVehicle.c_type}
                       onChange={handleChange}
-                    />
+                    >
+                      <option>-</option>
+                      <option>Sedan</option>
+                      <option>SUV</option>
+                      <option>Coupe</option>
+                      <option>Sports Car</option>
+                      <option>Minivan</option>
+                      <option>Van</option>
+                      <option>Bus</option>
+                    </select>
                   </Col>
                   <Col md={6} className="mt-3">
                     <label className="label">Car Color</label>
