@@ -4,9 +4,11 @@ import AppNavigation from "./routes/AppNavigation";
 import store from "./redux/store";
 import { Provider } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import NoInternet from "./Components/NoInternet";
 
 function App() {
   const navigate = useNavigate();
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
 
   const logout = () => {
     const keysToRemove = ["access_token", "user_data"];
@@ -41,10 +43,35 @@ function App() {
       navigate("/auth");
     }
   }, []);
+
+  /////////////////////////////////////////////////////////////
+  useEffect(() => {
+    const handleOnline = () => {
+      setIsOnline(true);
+    };
+
+    const handleOffline = () => {
+      setIsOnline(false);
+    };
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
   return (
     <div>
       <Provider store={store}>
-        <AppNavigation />
+        {isOnline ? (
+          <AppNavigation />
+        ) : (
+          <>
+            <NoInternet />
+          </>
+        )}
       </Provider>
     </div>
   );

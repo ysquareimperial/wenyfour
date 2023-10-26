@@ -32,43 +32,14 @@ export default function MyBookings() {
         .then((response) => {
           console.log(response?.data);
           setRideDetails(response?.data);
-
-          // Iterate through the response array
-          const passengersArray = response?.data.map((ride) => {
-            // Iterate through the passengers array within each ride object
-            const passengers = ride.passengers.map((passenger) =>
-              axios.get(`${api}/auth/users/${passenger.user_id}/user`, {
-                headers: {
-                  "x-token": xtoken,
-                },
-              })
-            );
-
-            // Use Promise.all to fetch user data for all passengers of this ride
-            return Promise.all(passengers);
-          });
-
-          // Use Promise.all to wait for all the passenger data requests to complete
-          Promise.all(passengersArray)
-            .then((userResponses) => {
-              // userResponses is an array of arrays containing passenger data
-              const ridersArray = userResponses.map((userResponse) =>
-                userResponse.map((userData) => userData.data)
-              );
-              console.log(ridersArray, "zzzzzzzzzz");
-              setRidersArray(ridersArray);
-              setLoading(false);
-            })
-            .catch((err) => {
-              setLoading(false);
-              console.log("error fetching user data", err);
-            });
         })
+          // Iterate through the response array
+         
         .catch((err) => {
           setLoading(false);
           console.log("error fetching ride data", err);
         });
-    }
+      }
   }, []);
 
   return (

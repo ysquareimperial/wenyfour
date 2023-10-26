@@ -11,11 +11,15 @@ export default function EditProfile() {
   const query = useQuery();
   const name = query.get(`name`);
   const email = query.get(`email`);
+  const about = query.get(`about`);
+  const date_of_birth = query.get(`dob`);
   const phone = query.get(`phone`);
   const initialFormData = {
     name: name,
     email: email,
     phone: phone,
+    date_of_birth: date_of_birth,
+    about: about,
   };
   const [formData, setFormData] = useState(initialFormData);
   const [loading, setLoading] = useState(false);
@@ -73,6 +77,7 @@ export default function EditProfile() {
         Edit profile
       </h4>
       <form onSubmit={handleSubmit}>
+        {/* {JSON.stringify(formData)} */}
         <Row>
           <Col xl={4} lg={4} md={4} sm={12} xs={12}></Col>
           <Col xl={4} lg={4} md={4} sm={12} xs={12}>
@@ -114,11 +119,11 @@ export default function EditProfile() {
                 <label className="label">DOB</label>
                 <input
                   className="input_field"
-                  type="date"
-                  // name="phone"
-                  // value={formData.phone}
-                  // onChange={handleChange}
-                  // required
+                  type="datetime-local"
+                  name="date_of_birth"
+                  value={formData.date_of_birth}
+                  onChange={handleChange}
+                  required
                 />
               </Col>
               <Col md={12} className="mt-3">
@@ -128,8 +133,8 @@ export default function EditProfile() {
                   name="about"
                   className="input_field"
                   id=""
-                  // value={formData.about}
-                  // onChange={handleChange}
+                  value={formData.about}
+                  onChange={handleChange}
                   cols="20"
                   rows="5"
                 ></textarea>

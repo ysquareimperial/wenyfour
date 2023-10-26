@@ -34,7 +34,8 @@ export default function SearchResults() {
       setLoading(true);
       axios
         .get(
-          `${api}/rides/q/search/ride?start_loc=${start_loc}&to_loc=${to_loc}`,
+          // `${api}/rides/q/search/ride?start_loc=${start_loc}&to_loc=${to_loc}`,
+          `https://api.wenyfour.com/api/rides/q/search/ride?start_loc=Kano&to_loc=Jigawa&seats=2`, 
           {
             headers: {
               "x-token": xtoken,

@@ -10,6 +10,10 @@ import { api } from "../helper/apis";
 import moment from "moment/moment";
 import { BeatLoader, ScaleLoader, MoonLoader } from "react-spinners";
 import CompHeader from "../CustomComponents/CompHeder";
+import dobToAge from "dob-to-age";
+import { PiUserLight } from "react-icons/pi";
+import { AiOutlineCalendar, AiOutlinePhone } from "react-icons/ai";
+
 function Profile() {
   const [vehicles, setVehicles] = useState([]);
   const [profileData, setProfileData] = useState({});
@@ -119,14 +123,21 @@ function Profile() {
                 <div>
                   <h3 className="m-0 fullname">{profileData?.name}</h3>
                   <p className="email">{profileData?.email}</p>
-                  <p className="about">
-                    My name is Yasir, I am a Software Engineer with years of
-                    experience in Frontend Web Dev..
-                  </p>
-                  <div className="profile_div_button" style={{ gap: 10 }}>
-                    <p className="phone">{profileData?.phone}</p> .
-                    <p className="years">30 years</p> .
-                    <p className="date_joined">
+                  <p className="about">{profileData?.about}</p>
+                  <div className="profile_div_button" style={{ gap: 20 }}>
+                    <p className="m-0 d-flex align-items-center gap-2">
+                      <AiOutlinePhone className="text-secondary m-0" />
+                      {profileData?.phone}
+                    </p>{" "}
+                    {/* . */}
+                    <p className="m-0 d-flex align-items-center gap-2">
+                      <PiUserLight />
+                      {dobToAge(profileData?.date_of_birth)} y/o
+                      {/* {moment(profileData?.date_of_birth, "YYYYMMDD").fromNow()} */}
+                    </p>{" "}
+                    {/* . */}
+                    <p className="date_joined d-flex align-items-center gap-2">
+                      <AiOutlineCalendar className="m-0 text-secondary" />
                       Joined{" "}
                       {moment(profileData?.created_at).format("MMMM, YYYY")}
                     </p>
@@ -136,7 +147,7 @@ function Profile() {
                       className="app_button second_app_button mt-2 edit_button"
                       onClick={() =>
                         navigate(
-                          `/edit-profile?name=${profileData?.name}&phone=${profileData?.phone}&email=${profileData.email}`
+                          `/edit-profile?name=${profileData?.name}&phone=${profileData?.phone}&email=${profileData?.email}&dob=${profileData?.date_of_birth}&about=${profileData?.about}`
                         )
                       }
                     >
@@ -154,6 +165,7 @@ function Profile() {
                         <p key={index} className="m-0">
                           {item?.brand}, {item?.model} ({item?.c_type}) -{" "}
                           {item?.color}
+                          {/* <hr /> */}
                         </p>
                       ))}
                     </div>
