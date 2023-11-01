@@ -10,6 +10,7 @@ import numeral from "numeral";
 import icon from "../assets/images/path.png";
 import { PiUsersFour } from "react-icons/pi";
 import moment from "moment";
+import { AiFillCar, AiOutlineUser } from "react-icons/ai";
 export default function MyBookings() {
   const [loading, setLoading] = useState(false);
   const [loadingRiders, setLoadingRiders] = useState(false);
@@ -30,23 +31,24 @@ export default function MyBookings() {
           },
         })
         .then((response) => {
+          setLoading(false);
           console.log(response?.data);
           setRideDetails(response?.data);
         })
-          // Iterate through the response array
-         
+        // Iterate through the response array
+
         .catch((err) => {
           setLoading(false);
           console.log("error fetching ride data", err);
         });
-      }
+    }
   }, []);
 
   return (
     <div className="mt-5">
       <CompHeader header={"My Bookings"}>
         <Row>
-          {/* {JSON.stringify(ridersArray)} */}
+          {/* {JSON.stringify(rideDetails)} */}
           <Col xl={3} lg={3} md={3} sm={12} xs={12}></Col>
           {loading ? (
             <div
@@ -109,52 +111,48 @@ export default function MyBookings() {
                     </Row>
 
                     <div className="divider mb-3"></div>
-                    <div>
-                      <div className="d-flex align-items-center gap-2">
-                        <PiUsersFour
+                    <div className="car_info_div">
+                      <div className="d-flex align-items-center gap-2 mb-2">
+                        <AiFillCar
                           color="#0D6EFD"
                           size="1.5rem"
                           className="m-0"
                         />
                         <p className="m-0">
-                          <b>Passengers</b>
+                          <b>Vehicle Info</b>
                         </p>
                       </div>
-                      <div className="divider mb-3 mt-3"></div>
-                      {ridersArray[0].map((item, index) => (
-                        <>
-                          <div
-                            key={index}
-                            className="d-flex align-items-center"
-                          >
-                            <div>
-                              <img
-                                src={profile}
-                                className="result profile"
-                                alt="profile_pic"
-                                style={{ marginRight: 20 }}
-                              />
-                            </div>
-                            <div>
-                              <p style={{ fontWeight: "bold", margin: 0 }}>
-                                {item?.name}
-                              </p>
-                              <p
-                                style={{
-                                  color: "grey",
-                                  fontSize: 13,
-                                  margin: 0,
-                                }}
-                              >
-                                {item?.email}
-                              </p>
-                              <p className="m-0">{item?.phone}</p>
-                            </div>
-                          </div>
-                          <hr className="hr" />
-                        </>
-                      ))}
-                      {ridersArray.length === 0 ? (
+                      <p className="m-0">
+                        <span
+                          className="text-secondary"
+                          style={{ fontSize: 12 }}
+                        >
+                          Model -
+                        </span>
+                        {item?.car_model}
+                      </p>
+                      <p className="m-0">
+                        <span
+                          className="text-secondary"
+                          style={{ fontSize: 12 }}
+                        >
+                          Color -
+                        </span>
+                        {item?.car_color}
+                      </p>
+                      <p className="m-0">
+                        <span
+                          className="text-secondary"
+                          style={{ fontSize: 12 }}
+                        >
+                          Type -
+                        </span>
+                        {item?.car_type}
+                      </p>
+                      {/* {ridersArray[0].map((item, index) => ( */}
+                      {/*  */}
+                      {/* // ))} */}
+                      {/* {ridersArray.length === 0 ? (
                         <div className="text-center">
                           <p>
                             This ride has not been reserved by anyone so far.
@@ -162,8 +160,56 @@ export default function MyBookings() {
                         </div>
                       ) : (
                         ""
-                      )}
+                      )} */}
                     </div>
+                    {/* <div className="divider mb-3 mt-3"></div> */}
+                    {/* <div className="divider mb-3"></div> */}
+                    <div className="car_info_div mt-3">
+                      <div className="d-flex align-items-center gap-2 mb-2">
+                        <AiOutlineUser
+                          color="#0D6EFD"
+                          size="1.5rem"
+                          className="m-0"
+                        />
+                        <p className="m-0">
+                          <b>Driver Info</b>
+                        </p>
+                      </div>
+                      <p className="m-0">
+                        {" "}
+                        <span
+                          className="text-secondary"
+                          style={{ fontSize: 12 }}
+                        >
+                          Full Name -
+                        </span>
+                        {item?.driver_name}
+                      </p>
+                      <p className="m-0">
+                        {" "}
+                        <span
+                          className="text-secondary"
+                          style={{ fontSize: 12 }}
+                        >
+                          Phone Number -
+                        </span>
+                        {item?.driver_phone}
+                      </p>
+                      {/* {ridersArray[0].map((item, index) => ( */}
+                      {/*  */}
+                      {/* // ))} */}
+                      {/* {ridersArray.length === 0 ? (
+                        <div className="text-center">
+                          <p>
+                            This ride has not been reserved by anyone so far.
+                          </p>
+                        </div>
+                        ) : (
+                          ""
+                        )} */}
+                    </div>
+                    {/* <div className="divider mb-3 mt-3"></div> */}
+                    <hr style={{ marginTop: 50, marginBottom: 50 }} />
                   </div>
                 </div>
               ))}

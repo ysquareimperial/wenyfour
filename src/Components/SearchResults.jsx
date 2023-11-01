@@ -29,13 +29,15 @@ export default function SearchResults() {
     }
   }, []);*/
 
+  // const adfasdf = `${api}/rides/q/search/ride?start_loc=${start_loc}&to_loc=${to_loc}&seats=${seats}`;
+  // const ddddd = 'https://api.wenyfour.com/api/rides/q/search/ride?start_loc=Kano&to_loc=Hessen&seats=2'
   const getAvailableRides = () => {
     if (xtoken) {
       setLoading(true);
       axios
         .get(
-          // `${api}/rides/q/search/ride?start_loc=${start_loc}&to_loc=${to_loc}`,
-          `https://api.wenyfour.com/api/rides/q/search/ride?start_loc=Kano&to_loc=Jigawa&seats=2`, 
+          `${api}/rides/q/search/ride?start_loc=${start_loc}&to_loc=${to_loc}&seats=${seats}`,
+          // "https://api.wenyfour.com/api/rides/q/search/ride?start_loc=Kano&to_loc=Hessen&seats=1",
           {
             headers: {
               "x-token": xtoken,
@@ -66,6 +68,8 @@ export default function SearchResults() {
         Available rides
       </h4>
       {/* {JSON.stringify(availableRides)} */}
+      {/* {JSON.stringify(adfasdf)}
+      {JSON.stringify(ddddd)} */}
       {loading ? (
         <div
           class="text-center mt-5 d-flex align-items-center justify-content-center gap-2"
@@ -147,11 +151,11 @@ export default function SearchResults() {
                         </div>
                         <div>
                           <p className="m-0">
-                            <MdOutlineAirlineSeatReclineExtra
+                            {/* <MdOutlineAirlineSeatReclineExtra
                               size="1.5rem"
                               style={{ color: "#0d6efd" }}
-                            />
-                            - <b>{item?.available_seats}</b>
+                            /> */}
+                            Seats: <b>{item?.available_seats}</b>
                           </p>
                         </div>
                       </div>

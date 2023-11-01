@@ -7,10 +7,13 @@ import { BsShieldFillCheck } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "../helpers/helpers";
 import moment from "moment";
+import dobToAge from "dob-to-age";
 function RiderProfile() {
   const query = useQuery();
   const name = query.get("name");
   const email = query.get("email");
+  const about = query.get("about");
+  const dob = query.get("dob");
   const phone = query.get("phone");
   const created_at = query.get("created_at");
   const navigate = useNavigate();
@@ -27,7 +30,7 @@ function RiderProfile() {
           <div className="d-flex align-item-center justify-content-between">
             <div>
               <h5 className="m-0">{name}</h5>
-              <p>29 y/o</p>
+              <p>{dobToAge(dob)} y/o</p>
             </div>
             <div>
               <img
@@ -66,10 +69,10 @@ function RiderProfile() {
           <div className="mt-3 divider"></div>
           <div className="mt-3">
             <h6 className="">About {name}</h6>
-            <p className="small"> I'm chatty when I feel comfortable</p>
+            <p className="small"> {about}</p>
           </div>
           <div className="mt-3 mb-3 divider"></div>
-          <p>2 rides published</p>
+          {/* <p>2 rides published</p> */}
           <div className="d-flex align-items-center gap-2">
             <AiOutlineCalendar color="#0D6EFD" size="1.3rem" />
             <p className="m-0">

@@ -173,6 +173,7 @@ export default function RideDetails() {
           )}
           <div className="divider"></div>
           <div>
+            {/* {JSON.stringify(driverDetails)} */}
             <Row className="mt-3">
               <Col md={12}>
                 {loadingDriverDetails ? (
@@ -185,7 +186,7 @@ export default function RideDetails() {
                       className="d-flex align-items-center justify-content-between ride_details_user"
                       onClick={() =>
                         navigate(
-                          `/rider-profile?name=${driverDetails?.name}&email=${driverDetails?.phone}&phone=${driverDetails?.phone}&created_at=${driverDetails?.created_at}`
+                          `/rider-profile?name=${driverDetails?.name}&email=${driverDetails?.phone}&phone=${driverDetails?.phone}&created_at=${driverDetails?.created_at}&dob=${driverDetails?.date_of_birth}&about=${driverDetails?.about}`
                         )
                       }
                     >

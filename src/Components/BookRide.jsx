@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Row } from "reactstrap";
+import { Col, Modal, Row } from "reactstrap";
 import icon from "../assets/images/path.png";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "../helpers/helpers";
@@ -10,7 +10,10 @@ import { api } from "../helper/apis";
 export default function BookRide() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
+  const [modal, setModal] = useState(false);
+  const handleModal = () => {
+    setModal(!modal);
+  };
   const query = useQuery();
   const ride_id = query.get("ride_id");
   const date = query.get("date");
@@ -49,6 +52,9 @@ export default function BookRide() {
       )
       .then((response) => {
         console.log(response);
+        if (response.status === 200) {
+          handleModal();
+        }
         setLoading(false);
       })
       .catch((e) => {
@@ -125,6 +131,17 @@ export default function BookRide() {
         </Col>
         <Col md={3}></Col>
       </Row>
+      <Modal isOpen={modal}>
+        <div className="p-3 text-center">
+          <p>Ride booked successfully</p>
+          <button
+            className="app_button"
+            onClick={() => navigate("/my-bookings")}
+          >
+            View ordered ride(s)
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 }

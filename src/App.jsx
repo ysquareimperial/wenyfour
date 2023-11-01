@@ -44,7 +44,7 @@ function App() {
     }
   }, []);
 
-  /////////////////////////////////////////////////////////////
+  ///Implementing No Internet///
   useEffect(() => {
     const handleOnline = () => {
       setIsOnline(true);
