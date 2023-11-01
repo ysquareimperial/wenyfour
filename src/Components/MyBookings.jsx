@@ -205,7 +205,7 @@ export default function MyBookings() {
                 </div>
               ))}
               {rideDetails.length === 0 ? (
-                <div className="text-center">
+                <div className="text-center mt-3">
                   <p>You did not order any ride yet.</p>
                 </div>
               ) : (
