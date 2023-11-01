@@ -198,21 +198,19 @@ export default function MyBookings() {
                       {/* {ridersArray[0].map((item, index) => ( */}
                       {/*  */}
                       {/* // ))} */}
-                      {/* {ridersArray.length === 0 ? (
-                        <div className="text-center">
-                          <p>
-                            This ride has not been reserved by anyone so far.
-                          </p>
-                        </div>
-                        ) : (
-                          ""
-                        )} */}
                     </div>
                     {/* <div className="divider mb-3 mt-3"></div> */}
                     <hr style={{ marginTop: 50, marginBottom: 50 }} />
                   </div>
                 </div>
               ))}
+              {rideDetails.length === 0 ? (
+                <div className="text-center">
+                  <p>You did not order any ride yet.</p>
+                </div>
+              ) : (
+                ""
+              )}
             </Col>
           )}
           <Col xl={3} lg={3} md={3} sm={12} xs={12}></Col>
