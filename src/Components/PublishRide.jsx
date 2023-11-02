@@ -127,6 +127,25 @@ export default function PublishRide() {
         });
     }
   }, []);
+
+  //Calculating max days
+  function calculateMaxDate() {
+    const currentDate = new Date();
+    const maxDate = new Date(currentDate);
+    maxDate.setDate(currentDate.getDate() + 3);
+
+    const year = maxDate.getFullYear();
+    let month = maxDate.getMonth() + 1;
+    if (month < 10) {
+      month = "0" + month;
+    }
+    let day = maxDate.getDate();
+    if (day < 10) {
+      day = "0" + day;
+    }
+
+    return `${year}-${month}-${day}`;
+  }
   return (
     <div className="p-3 mt-5">
       <h4
@@ -160,7 +179,7 @@ export default function PublishRide() {
                   {/* {JSON.stringify(xtoken)} */}
                   {/* {JSON.stringify(loggedInUser)} */}
                   <label className="label">When are you leaving?</label>
-                  <input
+                  {/* <input
                     className="input_field"
                     type="date"
                     required
@@ -168,12 +187,20 @@ export default function PublishRide() {
                     min="2023-10-05"
                     value={publishRide.date}
                     onChange={handleChange}
+                  /> */}
+                  <input
+                    className="input_field"
+                    type="date"
+                    min="2023-10-05"
+                    max={calculateMaxDate()}
+                    name="date"
+                    value={publishRide.date}
+                    onChange={handleChange}
+                    required
                   />
                 </Col>
                 <Col md={6} className="mt-3">
-                  <label className="label">
-                    Passenger's pickup time?
-                  </label>
+                  <label className="label">Passenger's pickup time</label>
                   <select
                     required
                     className="input_field"

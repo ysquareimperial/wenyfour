@@ -5,8 +5,6 @@ import { loginSuccess, restoreUserFromLocalStorage } from "../redux/actions";
 import moment from "moment";
 import LivingFrom from "./States/LivingFrom";
 export default function SearchRide() {
- 
-
   const formData = {
     from: "",
     to: "",
@@ -40,6 +38,25 @@ export default function SearchRide() {
       dispatch(loginSuccess(email, access_token, token_type, name, user_id));
     }
   }, [dispatch]);
+
+  //Calculating max days
+  function calculateMaxDate() {
+    const currentDate = new Date();
+    const maxDate = new Date(currentDate);
+    maxDate.setDate(currentDate.getDate() + 3);
+
+    const year = maxDate.getFullYear();
+    let month = maxDate.getMonth() + 1;
+    if (month < 10) {
+      month = "0" + month;
+    }
+    let day = maxDate.getDate();
+    if (day < 10) {
+      day = "0" + day;
+    }
+
+    return `${year}-${month}-${day}`;
+  }
 
   return (
     <div className="p-3 mt-5">
@@ -106,10 +123,20 @@ export default function SearchRide() {
           </div>
           <div>
             <label className="label">Date</label>
+            {/* <input
+              className="input_field search_ride_input"
+              type="date"
+              min="2023-10-05"
+              name="date"
+              value={searchData.date}
+              onChange={handleChange}
+              required
+            /> */}
             <input
               className="input_field search_ride_input"
               type="date"
               min="2023-10-05"
+              max={calculateMaxDate()}
               name="date"
               value={searchData.date}
               onChange={handleChange}
