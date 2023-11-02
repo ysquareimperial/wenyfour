@@ -11,6 +11,7 @@ import axios from "axios";
 import { api } from "../helper/apis";
 import moment from "moment";
 import numeral from "numeral";
+import BackButton from "./BackButton";
 export default function RideDetails() {
   const query = useQuery();
   const ride_id = query.get("id");
@@ -113,12 +114,15 @@ export default function RideDetails() {
           <p>Loading ride date...</p>
         </div>
       ) : (
-        <h4
-          className="text-center page_title"
-          style={{ fontWeight: 900, fontSize: 40 }}
-        >
-          {moment(rideDetails?.date).format("ddd, DD MMMM")}
-        </h4>
+        // <h4
+        //   className="text-center page_title"
+        //   style={{ fontWeight: 900, fontSize: 40 }}
+        // >
+        //   {moment(rideDetails?.date).format("ddd, DD MMMM")}
+        // </h4>
+        <BackButton
+          headingText={moment(rideDetails?.date).format("ddd, DD MMMM")}
+        />
       )}
       <Row className="mt-5">
         <Col md={3}></Col>
@@ -137,27 +141,27 @@ export default function RideDetails() {
                   {/* <p className="rides_avail">12:30 AM</p> */}
                 </div>
                 <div>
-                  <img src={icon} style={{ width: 20 }} />
+                  <img src={icon} style={{ width: 13 }} />
                 </div>
                 <div>
-                  <p className="rides_avail m-0" style={{ fontWeight: "bold" }}>
-                    {rideDetails?.pickup_location}
+                  <p className="rides_avail" style={{ fontWeight: "bold" }}>
+                    {rideDetails?.pickup_location}, {rideDetails?.from_location}
                   </p>
-                  <p
+                  {/* <p
                     className="rides_avail"
                     style={{ fontSize: 13, color: "" }}
                   >
                     {rideDetails?.from_location}
+                  </p> */}
+                  <p className="rides_avail" style={{ fontWeight: "bold" }}>
+                    {rideDetails?.dropoff_location}, {rideDetails?.to_location}
                   </p>
-                  <p className="rides_avail m-0" style={{ fontWeight: "bold" }}>
-                    {rideDetails?.dropoff_location}
-                  </p>
-                  <p
+                  {/* <p
                     className="rides_avail"
                     style={{ fontSize: 13, color: "" }}
                   >
                     {rideDetails?.to_location}
-                  </p>
+                  </p> */}
                 </div>
               </div>
               <div className="divider"></div>

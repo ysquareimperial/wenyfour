@@ -9,6 +9,7 @@ import axios from "axios";
 import { api } from "../helper/apis";
 import { BiArrowBack } from "react-icons/bi";
 import { BsArrowLeftShort } from "react-icons/bs";
+import BackButton from "./BackButton";
 export default function BookRide() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -67,23 +68,18 @@ export default function BookRide() {
   return (
     <div className="p-3 mt-5">
       <Row>
-        <h4
-          className="text-center page_title"
-          style={{ fontWeight: 900, fontSize: 40 }}
-        >
-          <BsArrowLeftShort
-            style={{ marginRight: 20 }}
-            size=""
-            className="back"
-            onClick={() => navigate(-1)}
-          />
-          Review and book
-        </h4>
-        {/* {JSON.stringify(noOfSeats)}
-        {JSON.stringify(ride_id)}
-        {JSON.stringify(xtoken)} */}
         <Col md={3}></Col>
-        <Col md={6} className="mt-5">
+        <Col md={6} className="">
+          {/* <div className="d-flex align-items-center mb-5 gap-4">
+            <BackButton />
+            <h4
+              className="text-center page_title"
+              style={{ fontWeight: 900, fontSize: 40 }}
+            >
+              Review and boo
+            </h4>
+          </div> */}
+          <BackButton headingText={"Review and book"} />
           <p className="rides_avail" style={{ fontWeight: 700 }}>
             {/* {date} at {time} */}
             {moment(date).format("ddd, DD MMMM")} at{" "}

@@ -221,18 +221,28 @@ body {
 }
 
 .back {
-  background-color: #f1f1f1;
-  padding: 8px;
+  background-color: #d9d9d9;
+
+  padding: 10px;
   border-radius: 50%;
 }
 
-.back:hover {
+.back_button {
+  border: none;
+  border-radius: 50%;
+  color: black !important;
+  background-color: rgb(237, 237, 237);
+  padding: 5px 10px;
+  /* border: 1px solid #0d6efd; */
+}
+
+.back_button:hover {
   cursor: pointer;
   background-color: #dfdfdf;
 }
 
 .back:active {
-  background-color: #dfdfdf;
+  background-color: #cfcfcf;
 }
 .car_info_div {
   background-color: #f1f1f1;

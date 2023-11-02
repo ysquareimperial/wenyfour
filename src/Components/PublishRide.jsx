@@ -5,6 +5,8 @@ import { Col, Row, Modal } from "reactstrap";
 import { api } from "../helper/apis";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import { BsArrowLeft } from "react-icons/bs";
+import BackButton from "./BackButton";
 
 export default function PublishRide() {
   const [modal, setModal] = useState(false);
@@ -148,15 +150,19 @@ export default function PublishRide() {
   }
   return (
     <div className="p-3 mt-5">
-      <h4
-        className="text-center page_title"
-        style={{ fontWeight: 900, fontSize: 40 }}
-      >
-        Publish a ride
-      </h4>
       <Row>
         <Col xl={4} lg={4} md={4} sm={12} xs={12}></Col>
         <Col xl={4} lg={4} md={4} sm={12} xs={12}>
+          {/* <div className="d-flex align-items-center justify-content-between">
+            <BsArrowLeft className="back_button" size="2.5rem" />
+            <h4
+              className="page_title"
+              style={{ fontWeight: 900, fontSize: 40 }}
+            >
+              Publish a ride
+            </h4>
+          </div> */}
+          <BackButton headingText={"Publish a ride"} />
           {/* {JSON.stringify(cars)} */}
 
           {/* {JSON.stringify(publishRide)} */}

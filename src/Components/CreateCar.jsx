@@ -5,6 +5,7 @@ import { Col, Modal, Row } from "reactstrap";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { api } from "../helper/apis";
+import BackButton from "./BackButton";
 export default function CreateCar() {
   const navigate = useNavigate();
   const [modal, setModal] = useState(false);
@@ -65,120 +66,122 @@ export default function CreateCar() {
   };
 
   return (
-    <div className="mt-5">
-      <CompHeader header={"Create vehicle"}>
-        <Row>
-          <Col md={4}></Col>
-          <Col md={4}>
-            <div className="mt-3">
-              {/* {JSON.stringify(createCar)} */}
-              {/* {JSON.stringify(xtoken)} */}
-              <form onSubmit={handleSubmit}>
-                <Row>
-                  <Col md={6} className="mt-3">
-                    <label className="label">Vehicle brand</label>
-                    <input
-                      required
-                      minLength={2}
-                      className="input_field"
-                      type="text"
-                      name="brand"
-                      value={createCar.brand}
-                      onChange={handleChange}
-                    />
-                  </Col>
-                  <Col md={6} className="mt-3">
-                    <label className="label">Vehicle model</label>
-                    <input
-                      required
-                      minLength={2}
-                      className="input_field"
-                      type="text"
-                      name="model"
-                      value={createCar.model}
-                      onChange={handleChange}
-                    />
-                  </Col>
+    <div className="p-3 mt-5">
+      {/* <CompHeader header={"Create vehicle"}> */}
 
-                  <Col md={6} className="mt-3">
-                    <label className="label">Vehicle type</label>
-                    <select
-                      className="input_field"
-                      name="c_type"
-                      required
-                      value={createCar.c_type}
-                      onChange={handleChange}
+      <Row>
+        <Col md={4}></Col>
+        <Col md={4}>
+          <BackButton headingText={"Create vehicle"} />
+          <div className="mt-3">
+            {/* {JSON.stringify(createCar)} */}
+            {/* {JSON.stringify(xtoken)} */}
+            <form onSubmit={handleSubmit}>
+              <Row>
+                <Col md={6} className="mt-3">
+                  <label className="label">Vehicle brand</label>
+                  <input
+                    required
+                    minLength={2}
+                    className="input_field"
+                    type="text"
+                    name="brand"
+                    value={createCar.brand}
+                    onChange={handleChange}
+                  />
+                </Col>
+                <Col md={6} className="mt-3">
+                  <label className="label">Vehicle model</label>
+                  <input
+                    required
+                    minLength={2}
+                    className="input_field"
+                    type="text"
+                    name="model"
+                    value={createCar.model}
+                    onChange={handleChange}
+                  />
+                </Col>
+
+                <Col md={6} className="mt-3">
+                  <label className="label">Vehicle type</label>
+                  <select
+                    className="input_field"
+                    name="c_type"
+                    required
+                    value={createCar.c_type}
+                    onChange={handleChange}
+                  >
+                    <option>-</option>
+                    <option>Sedan</option>
+                    <option>SUV</option>
+                    <option>Coupe</option>
+                    <option>Sports Car</option>
+                    <option>Minivan</option>
+                    <option>Van</option>
+                    <option>Bus</option>
+                  </select>
+                </Col>
+                <Col md={6} className="mt-3">
+                  <label className="label">Vehicle color</label>
+                  <input
+                    required
+                    minLength={2}
+                    className="input_field"
+                    type="text"
+                    name="color"
+                    value={createCar.color}
+                    onChange={handleChange}
+                  />
+                </Col>
+                <Col md={6} className="mt-3">
+                  <label className="label">Driver license</label>
+                  <input
+                    required
+                    minLength={2}
+                    className="input_field"
+                    type="text"
+                    name="c_license"
+                    value={createCar.c_license}
+                    onChange={handleChange}
+                  />
+                </Col>
+
+                <div className="text-center mt-3">
+                  {loading ? (
+                    <button
+                      disabled={loading}
+                      className="app_button p-3"
+                      style={{ width: "100%" }}
                     >
-                      <option>-</option>
-                      <option>Sedan</option>
-                      <option>SUV</option>
-                      <option>Coupe</option>
-                      <option>Sports Car</option>
-                      <option>Minivan</option>
-                      <option>Van</option>
-                      <option>Bus</option>
-                    </select>
-                  </Col>
-                  <Col md={6} className="mt-3">
-                    <label className="label">Vehicle color</label>
-                    <input
-                      required
-                      minLength={2}
-                      className="input_field"
-                      type="text"
-                      name="color"
-                      value={createCar.color}
-                      onChange={handleChange}
-                    />
-                  </Col>
-                  <Col md={6} className="mt-3">
-                    <label className="label">Driver license</label>
-                    <input
-                      required
-                      minLength={2}
-                      className="input_field"
-                      type="text"
-                      name="c_license"
-                      value={createCar.c_license}
-                      onChange={handleChange}
-                    />
-                  </Col>
-
-                  <div className="text-center mt-3">
-                    {loading ? (
-                      <button
-                        disabled={loading}
-                        className="app_button p-3"
-                        style={{ width: "100%" }}
+                      <div
+                        class="text-centerd-flex align-items-center justify-content-center gap-2"
+                        style={{ color: "white" }}
                       >
-                        <div
-                          class="text-centerd-flex align-items-center justify-content-center gap-2"
-                          style={{ color: "white" }}
-                        >
-                          <span
-                            style={{ width: "1rem", height: "1rem" }}
-                            class="spinner-border"
-                            role="status"
-                            aria-hidden="true"
-                          ></span>
-                        </div>
-                      </button>
-                    ) : (
-                      <button
-                        className="app_button p-3"
-                        style={{ width: "100%" }}
-                      >
-                        Create
-                      </button>
-                    )}
-                  </div>
-                </Row>
-              </form>
-            </div>
-          </Col>
-          <Col md={4}></Col>
-        </Row>
-      </CompHeader>
+                        <span
+                          style={{ width: "1rem", height: "1rem" }}
+                          class="spinner-border"
+                          role="status"
+                          aria-hidden="true"
+                        ></span>
+                      </div>
+                    </button>
+                  ) : (
+                    <button
+                      className="app_button p-3"
+                      style={{ width: "100%" }}
+                    >
+                      Create
+                    </button>
+                  )}
+                </div>
+              </Row>
+            </form>
+          </div>
+        </Col>
+        <Col md={4}></Col>
+      </Row>
+      {/* </CompHeader> */}
     </div>
   );
 }

@@ -11,6 +11,7 @@ import { useQuery } from "../helpers/helpers";
 import moment from "moment";
 import numeral from "numeral";
 import { MdOutlineAirlineSeatReclineExtra } from "react-icons/md";
+import BackButton from "./BackButton";
 export default function SearchResults() {
   const query = useQuery();
   const start_loc = query.get("start_loc");
@@ -61,15 +62,16 @@ export default function SearchResults() {
 
   return (
     <div className="p-3 mt-5">
-      <h4
+      {/* <h4
         className="text-center page_title"
         style={{ fontWeight: 900, fontSize: 40 }}
       >
         Available rides
-      </h4>
+      </h4> */}
       {/* {JSON.stringify(availableRides)} */}
       {/* {JSON.stringify(adfasdf)}
       {JSON.stringify(ddddd)} */}
+      <BackButton headingText={"Available rides"} />
       {loading ? (
         <div
           class="text-center mt-5 d-flex align-items-center justify-content-center gap-2"

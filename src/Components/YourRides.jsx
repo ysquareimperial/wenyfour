@@ -5,6 +5,7 @@ import icon from "../assets/images/path.png";
 import { api } from "../helper/apis";
 import axios from "axios";
 import moment from "moment";
+import BackButton from "./BackButton";
 
 export default function YourRides() {
   const navigate = useNavigate();
@@ -39,27 +40,28 @@ export default function YourRides() {
   }, []);
   return (
     <div className="p-3 mt-5">
-      <h4
+      {/* <h4
         className="text-center page_title"
         style={{ fontWeight: 900, fontSize: 40 }}
       >
         Published rides
-      </h4>
+      </h4> */}
+      <BackButton headingText={"Published rides"} />
       <Row className="">
         <Col md={3}></Col>
         <Col md={6}>
           {loading ? (
-           <div
-          class="text-center mt-5 d-flex align-items-center justify-content-center gap-2"
-          style={{ color: "#0d6efd" }}
-        >
-          <span
-            style={{ width: "2rem", height: "2rem" }}
-            class="spinner-border"
-            role="status"
-            aria-hidden="true"
-          ></span>
-        </div>
+            <div
+              class="text-center mt-5 d-flex align-items-center justify-content-center gap-2"
+              style={{ color: "#0d6efd" }}
+            >
+              <span
+                style={{ width: "2rem", height: "2rem" }}
+                class="spinner-border"
+                role="status"
+                aria-hidden="true"
+              ></span>
+            </div>
           ) : (
             <>
               {/* {JSON.stringify(rides)} */}
@@ -115,7 +117,7 @@ export default function YourRides() {
                   </span>
                 </div>
               ) : (
-                ""  
+                ""
               )}
             </>
           )}
