@@ -8,7 +8,7 @@ import numeral from "numeral";
 import axios from "axios";
 import { api } from "../helper/apis";
 import { BiArrowBack } from "react-icons/bi";
-import { BsArrowLeft } from "react-icons/bs";
+import { BsArrowLeftShort } from "react-icons/bs";
 export default function BookRide() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -71,7 +71,12 @@ export default function BookRide() {
           className="text-center page_title"
           style={{ fontWeight: 900, fontSize: 40 }}
         >
-          <BsArrowLeft style={{ marginRight: 20 }} className="back" onClick={()=>navigate(-1)}/>
+          <BsArrowLeftShort
+            style={{ marginRight: 20 }}
+            size=""
+            className="back"
+            onClick={() => navigate(-1)}
+          />
           Review and book
         </h4>
         {/* {JSON.stringify(noOfSeats)}

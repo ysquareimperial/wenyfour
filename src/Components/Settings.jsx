@@ -28,10 +28,10 @@ export default function Settings() {
                 <Col lg={9} md={9} sm={8} xs={8} className="">
                   <div>
                     <p className="m-0" style={{ fontWeight: "" }}>
-                      Change your email and password
+                      Email and password
                     </p>
                     <p className="m-0" style={{ fontSize: 13, color: "grey" }}>
-                      Manage your email & password at any time
+                      Manage your email & password
                     </p>
                   </div>
                 </Col>
@@ -39,6 +39,7 @@ export default function Settings() {
                   <MdArrowForwardIos size="1.2rem" className="arrow" />
                 </Col>
               </Row>
+              {/* <hr /> */}
               <Row
                 onClick={() => navigate("/delete-account")}
                 style={{ cursor: "pointer" }}
