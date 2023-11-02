@@ -7,6 +7,8 @@ import moment from "moment";
 import numeral from "numeral";
 import axios from "axios";
 import { api } from "../helper/apis";
+import { BiArrowBack } from "react-icons/bi";
+import { BsArrowLeft } from "react-icons/bs";
 export default function BookRide() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -64,13 +66,14 @@ export default function BookRide() {
   };
   return (
     <div className="p-3 mt-5">
-      <h4
-        className="text-center page_title"
-        style={{ fontWeight: 900, fontSize: 40 }}
-      >
-        Review and book
-      </h4>
       <Row>
+        <h4
+          className="text-center page_title"
+          style={{ fontWeight: 900, fontSize: 40 }}
+        >
+          <BsArrowLeft style={{ marginRight: 20 }} className="back" onClick={()=>navigate(-1)}/>
+          Review and book
+        </h4>
         {/* {JSON.stringify(noOfSeats)}
         {JSON.stringify(ride_id)}
         {JSON.stringify(xtoken)} */}
