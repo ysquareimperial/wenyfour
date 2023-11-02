@@ -172,7 +172,7 @@ export default function PublishRide() {
                 </Col>
                 <Col md={6} className="mt-3">
                   <label className="label">
-                    When is the passenger's pickup time?
+                    Passenger's pickup time?
                   </label>
                   <select
                     required
