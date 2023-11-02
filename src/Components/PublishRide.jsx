@@ -209,31 +209,140 @@ export default function PublishRide() {
                     onChange={handleChange}
                   >
                     <option>-</option>
-                    <option>00:00</option>
-                    <option>1:00</option>
-                    <option>2:00</option>
-                    <option>3:00</option>
-                    <option>4:00</option>
-                    <option>5:00</option>
-                    <option>6:00</option>
-                    <option>7:00</option>
-                    <option>8:00</option>
-                    <option>8:00</option>
-                    <option>9:00</option>
+                    <option>00:10</option>
+                    <option>00:20</option>
+                    <option>00:30</option>
+                    <option>00:40</option>
+                    <option>00:50</option>
+                    <option>01:10</option>
+                    <option>01:20</option>
+                    <option>01:30</option>
+                    <option>01:40</option>
+                    <option>01:50</option>
+                    <option>02:10</option>
+                    <option>02:20</option>
+                    <option>02:30</option>
+                    <option>02:40</option>
+                    <option>02:50</option>
+                    <option>03:10</option>
+                    <option>03:20</option>
+                    <option>03:30</option>
+                    <option>03:40</option>
+                    <option>03:50</option>
+                    <option>04:10</option>
+                    <option>04:20</option>
+                    <option>04:30</option>
+                    <option>04:40</option>
+                    <option>04:50</option>
+                    <option>05:10</option>
+                    <option>05:20</option>
+                    <option>05:30</option>
+                    <option>05:40</option>
+                    <option>05:50</option>
+                    <option>06:10</option>
+                    <option>06:20</option>
+                    <option>06:30</option>
+                    <option>06:40</option>
+                    <option>06:50</option>
+                    <option>07:10</option>
+                    <option>07:20</option>
+                    <option>07:30</option>
+                    <option>07:40</option>
+                    <option>07:50</option>
+                    <option>08:10</option>
+                    <option>08:20</option>
+                    <option>08:30</option>
+                    <option>08:40</option>
+                    <option>08:50</option>
+                    <option>09:10</option>
+                    <option>09:20</option>
+                    <option>09:30</option>
+                    <option>09:40</option>
+                    <option>09:50</option>
                     <option>10:00</option>
+                    <option>10:10</option>
+                    <option>10:20</option>
+                    <option>10:30</option>
+                    <option>10:40</option>
+                    <option>10:50</option>
                     <option>11:00</option>
+                    <option>11:10</option>
+                    <option>11:20</option>
+                    <option>11:30</option>
+                    <option>11:40</option>
+                    <option>11:50</option>
                     <option>12:00</option>
+                    <option>12:10</option>
+                    <option>12:20</option>
+                    <option>12:30</option>
+                    <option>12:40</option>
+                    <option>12:50</option>
                     <option>13:00</option>
+                    <option>13:10</option>
+                    <option>13:20</option>
+                    <option>13:30</option>
+                    <option>13:40</option>
+                    <option>13:50</option>
                     <option>14:00</option>
+                    <option>14:10</option>
+                    <option>14:20</option>
+                    <option>14:30</option>
+                    <option>14:40</option>
+                    <option>14:50</option>
                     <option>15:00</option>
+                    <option>15:10</option>
+                    <option>15:20</option>
+                    <option>15:30</option>
+                    <option>15:40</option>
+                    <option>15:50</option>
                     <option>16:00</option>
+                    <option>16:10</option>
+                    <option>16:20</option>
+                    <option>16:30</option>
+                    <option>16:40</option>
+                    <option>16:50</option>
                     <option>17:00</option>
+                    <option>17:10</option>
+                    <option>17:20</option>
+                    <option>17:30</option>
+                    <option>17:40</option>
+                    <option>17:50</option>
                     <option>18:00</option>
+                    <option>18:10</option>
+                    <option>18:20</option>
+                    <option>18:30</option>
+                    <option>18:40</option>
+                    <option>18:50</option>
                     <option>19:00</option>
+                    <option>19:10</option>
+                    <option>19:20</option>
+                    <option>19:30</option>
+                    <option>19:40</option>
+                    <option>19:50</option>
                     <option>20:00</option>
+                    <option>20:10</option>
+                    <option>20:20</option>
+                    <option>20:30</option>
+                    <option>20:40</option>
+                    <option>20:50</option>
                     <option>21:00</option>
+                    <option>21:10</option>
+                    <option>21:20</option>
+                    <option>21:30</option>
+                    <option>21:40</option>
+                    <option>21:50</option>
                     <option>22:00</option>
+                    <option>22:10</option>
+                    <option>22:20</option>
+                    <option>22:30</option>
+                    <option>22:40</option>
+                    <option>22:50</option>
                     <option>23:00</option>
+                    <option>23:10</option>
+                    <option>23:20</option>
+                    <option>23:30</option>
+                    <option>23:40</option>
+                    <option>23:50</option>''
                   </select>
                 </Col>
                 <Col md={6} className="mt-3">
