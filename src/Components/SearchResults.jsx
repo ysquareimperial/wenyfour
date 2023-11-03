@@ -97,7 +97,7 @@ export default function SearchResults() {
                 <b>{to_loc}</b>
               </p>
               <div className="rides-avail-div mb-3">
-                <p className="rides_avail m-0">
+                <p className=" m-0">
                   {availableRides.length} rides(s) available
                 </p>
               </div>
@@ -130,7 +130,7 @@ export default function SearchResults() {
                           <img src={icon} style={{ width: 12 }} />
                         </div>
                         <div>
-                          <p className="rides_avail ">{item?.from_location}</p>
+                          <p className="rides_avail">{item?.from_location}</p>
                           <p className="rides_avail m-0">{item?.to_location}</p>
                         </div>
                       </div>

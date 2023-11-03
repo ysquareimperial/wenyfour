@@ -148,6 +148,7 @@ body {
 .rides_avail {
   /* font-weight: 700; */
   /* margin: 0; */
+  text-transform: capitalize;
 }
 .rides-avail-div {
   background-color: var(--inputBgColor);
