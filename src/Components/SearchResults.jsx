@@ -168,7 +168,7 @@ export default function SearchResults() {
               {availableRides.length === 0 ? (
                 <div className="text-center mb-5">
                   <span className="">
-                    No available rides for today between these cities.
+                    No available rides between these cities.
                   </span>
                 </div>
               ) : (
