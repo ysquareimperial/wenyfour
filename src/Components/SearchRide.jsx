@@ -69,7 +69,7 @@ export default function SearchRide() {
       </h4>
       <form onSubmit={handleSubmit}>
         <div
-          className="mt-3 d-flex justify-content-center search_ride_inputs_div"
+          className="mt-5 d-flex justify-content-center search_ride_inputs_div"
           style={{ gap: 10 }}
         >
           <div>
