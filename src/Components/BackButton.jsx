@@ -11,7 +11,7 @@ function BackButton({ headingText }) {
         size="2.5rem"
         onClick={() => navigate(-1)}
       />
-      <h4 className="page_title" style={{ fontWeight: 900, fontSize: 40 }}>
+      <h4 className="page_title m-0" style={{ fontWeight: 900, fontSize: 40 }}>
         {headingText}
       </h4>
     </div>
