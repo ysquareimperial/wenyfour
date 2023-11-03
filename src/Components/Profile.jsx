@@ -93,100 +93,100 @@ function Profile() {
   return (
     <div className="p-3 mt-5">
       {/* <CompHeader header={"Profile"}> */}
-        {loading ? (
-          <div
-            class="text-center mt-5 d-flex align-items-center justify-content-center gap-2"
-            style={{ color: "#0d6efd" }}
-          >
-            <span
-              style={{ width: "2rem", height: "2rem" }}
-              class="spinner-border"
-              role="status"
-              aria-hidden="true"
-            ></span>
-          </div>
-        ) : (
-          <Row className="">
-            {/* {JSON.stringify(profileData)} */}
-            <Col xl={3} lg={3} md={3} sm={12} xs={12}></Col>
-            <Col xl={6} lg={6} md={6} sm={12} xs={12}>
-              <BackButton headingText={'Profile'}/>
-              <div
-                className="d-flex justify-content-center profile_div mt-5"
-                style={{ gap: 30 }}
-              >
-                <div>
-                  <img
-                    src="https://res.cloudinary.com/dx5ilizca/image/upload/v1692800347/profile_epnaqt.png"
-                    className="profile_pic"
-                    alt="user_image"
-                  />
+      {loading ? (
+        <div
+          class="text-center mt-5 d-flex align-items-center justify-content-center gap-2"
+          style={{ color: "#0d6efd" }}
+        >
+          <span
+            style={{ width: "2rem", height: "2rem" }}
+            class="spinner-border"
+            role="status"
+            aria-hidden="true"
+          ></span>
+        </div>
+      ) : (
+        <Row className="">
+          {/* {JSON.stringify(profileData)} */}
+          <Col xl={3} lg={3} md={3} sm={12} xs={12}></Col>
+          <Col xl={6} lg={6} md={6} sm={12} xs={12}>
+            <BackButton headingText={"Profile"} />
+            <div
+              className="d-flex justify-content-center profile_div mt-5"
+              style={{ gap: 30 }}
+            >
+              <div>
+                <img
+                  src="https://res.cloudinary.com/dx5ilizca/image/upload/v1692800347/profile_epnaqt.png"
+                  className="profile_pic"
+                  alt="user_image"
+                />
+              </div>
+              <div>
+                <h3 className="m-0 fullname">{profileData?.name}</h3>
+                <p className="email">{profileData?.email}</p>
+                <p className="about">{profileData?.about}</p>
+                <div className="profile_div_button" style={{ gap: 20 }}>
+                  <p className="m-0 d-flex align-items-center gap-2">
+                    <AiOutlinePhone className="text-secondary m-0" />
+                    {profileData?.phone}
+                  </p>{" "}
+                  {/* . */}
+                  <p className="m-0 d-flex align-items-center gap-2">
+                    <PiUserLight />
+                    {dobToAge(profileData?.date_of_birth)} y/o
+                    {/* {moment(profileData?.date_of_birth, "YYYYMMDD").fromNow()} */}
+                  </p>{" "}
+                  {/* . */}
+                  <p className="date_joined d-flex align-items-center gap-2">
+                    <AiOutlineCalendar className="m-0 text-secondary" />
+                    Joined{" "}
+                    {moment(profileData?.created_at).format("MMMM, YYYY")}
+                  </p>
                 </div>
                 <div>
-                  <h3 className="m-0 fullname">{profileData?.name}</h3>
-                  <p className="email">{profileData?.email}</p>
-                  <p className="about">{profileData?.about}</p>
-                  <div className="profile_div_button" style={{ gap: 20 }}>
-                    <p className="m-0 d-flex align-items-center gap-2">
-                      <AiOutlinePhone className="text-secondary m-0" />
-                      {profileData?.phone}
-                    </p>{" "}
-                    {/* . */}
-                    <p className="m-0 d-flex align-items-center gap-2">
-                      <PiUserLight />
-                      {dobToAge(profileData?.date_of_birth)} y/o
-                      {/* {moment(profileData?.date_of_birth, "YYYYMMDD").fromNow()} */}
-                    </p>{" "}
-                    {/* . */}
-                    <p className="date_joined d-flex align-items-center gap-2">
-                      <AiOutlineCalendar className="m-0 text-secondary" />
-                      Joined{" "}
-                      {moment(profileData?.created_at).format("MMMM, YYYY")}
-                    </p>
-                  </div>
-                  <div>
-                    <button
-                      className="app_button second_app_button mt-2 edit_button"
-                      onClick={() =>
-                        navigate(
-                          `/edit-profile?name=${profileData?.name}&phone=${profileData?.phone}&email=${profileData?.email}&dob=${profileData?.date_of_birth}&about=${profileData?.about}`
-                        )
-                      }
-                    >
-                      Edit profile
-                    </button>
-                  </div>
-                  {/* <div className="mt-3">
+                  <button
+                    className="app_button second_app_button mt-2 edit_button"
+                    onClick={() =>
+                      navigate(
+                        `/edit-profile?name=${profileData?.name}&phone=${profileData?.phone}&email=${profileData?.email}&dob=${profileData?.date_of_birth}&about=${profileData?.about}`
+                      )
+                    }
+                  >
+                    Edit profile
+                  </button>
+                </div>
+                {/* <div className="mt-3">
                   <b>Vehicles</b>
                   <p>Mercedes Benz, E350</p>
                 </div> */}
-                  <>
-                    <div className="mt-3">
-                      <b className="">Vehicles</b>
-                      {vehicles?.map((item, index) => (
-                        <p key={index} className="m-0">
-                          {item?.brand}, {item?.model} ({item?.c_type}) -{" "}
-                          {item?.color}
-                          {/* <hr /> */}
-                        </p>
-                      ))}
+                <>
+                  <div className="mt-3">
+                    <b className="">Vehicles</b>
+                    {vehicles?.map((item, index) => (
+                      <p key={index} className="m-0">
+                        {item?.brand}, {item?.model} ({item?.c_type}) -{" "}
+                        {item?.color}
+                        {/* <hr /> */}
+                      </p>
+                    ))}
+                  </div>
+                  {vehicles.length === 0 ? (
+                    <div className="mt-3 mb-5">
+                      <span style={{ fontSize: 13 }}>
+                        You don't have registered vehicle(s) yet
+                      </span>
                     </div>
-                    {vehicles.length === 0 ? (
-                      <div className="mt-3 mb-5">
-                        <span style={{ fontSize: 13 }}>
-                          You don't have registered vehicle(s) yet
-                        </span>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                  </>
-                </div>
+                  ) : (
+                    ""
+                  )}
+                </>
               </div>
-            </Col>
-            <Col xl={3} lg={3} md={3} sm={12} xs={12}></Col>
-          </Row>
-        )}
+            </div>
+          </Col>
+          <Col xl={3} lg={3} md={3} sm={12} xs={12}></Col>
+        </Row>
+      )}
       {/* </CompHeader> */}
     </div>
   );

@@ -48,6 +48,7 @@ export default function MyBookings() {
   return (
     <div className="p-3 mt-5">
       {/* <CompHeader header={"My Bookings"}> */}
+      <BackButton headingText={"My Bookings"} />
       <Row className="m-0">
         {/* {JSON.stringify(rideDetails)} */}
         <Col xl={3} lg={3} md={3} sm={12} xs={12}></Col>
@@ -67,9 +68,8 @@ export default function MyBookings() {
           <Col xl={6} lg={6} md={6} sm={12} xs={12}>
             {/* {JSON.stringify(rideDetails)} */}
             {/* {JSON.stringify(ridersArray)} */}
-            <BackButton headingText={"My Bookings"} />
             {rideDetails.map((item, index) => (
-              <div className="mt-3" key={index}>
+              <div className="mt-5" key={index}>
                 <div>
                   <Row>
                     <Col md={9} sm={9} xs={9}>

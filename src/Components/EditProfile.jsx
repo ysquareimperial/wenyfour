@@ -7,6 +7,7 @@ import { api } from "../helper/apis";
 import { Col, Row } from "reactstrap";
 import axios from "axios";
 import { useQuery } from "../helpers/helpers";
+import BackButton from "./BackButton";
 export default function EditProfile() {
   const query = useQuery();
   const name = query.get(`name`);
@@ -70,12 +71,13 @@ export default function EditProfile() {
 
   return (
     <div className="p-3 mt-5">
-      <h4
+      {/* <h4
         className="text-center page_title"
         style={{ fontWeight: 900, fontSize: 40 }}
       >
         Edit profile
-      </h4>
+      </h4> */}
+      <BackButton headingText={"Edit profile"} />
       <form onSubmit={handleSubmit}>
         {/* {JSON.stringify(formData)} */}
         <Row>

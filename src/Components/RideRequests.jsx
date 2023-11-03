@@ -10,6 +10,7 @@ import axios from "axios";
 import { api } from "../helper/apis";
 import numeral from "numeral";
 import { PiUsersFour } from "react-icons/pi";
+import BackButton from "./BackButton";
 
 export default function RideRequests() {
   const [loading, setLoading] = useState(false);
@@ -78,22 +79,31 @@ export default function RideRequests() {
 
   return (
     <div className="p-3 mt-5">
-      <h4
+      {/* <h4
         className="text-center page_title"
         style={{ fontWeight: 900, fontSize: 40 }}
       >
         Ride requests
-      </h4>
+      </h4> */}
+      <BackButton headingText={"Ride requests"} />
       <Row>
         {/* {JSON.stringify(ridersArray)} */}
         <Col xl={3} lg={3} md={3} sm={12} xs={12}></Col>
         <Col xl={6} lg={6} md={6} sm={12} xs={12}>
           <div className="mt-3">
             <div>
-              {loading ? (
-                <div className="text-center">
-                  <p>Loading ride details...</p>
-                </div>
+            {loading ? (
+            <div
+              class="text-center mt-5 d-flex align-items-center justify-content-center gap-2"
+              style={{ color: "#0d6efd" }}
+            >
+              <span
+                style={{ width: "2rem", height: "2rem" }}
+                class="spinner-border"
+                role="status"
+                aria-hidden="true"
+              ></span>
+            </div>
               ) : (
                 <>
                   <Row>
