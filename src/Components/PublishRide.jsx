@@ -431,7 +431,7 @@ export default function PublishRide() {
                     <option value="">-</option>
                     {cars.map((car) => (
                       <option value={car.id} key={car.id}>
-                        {car.brand} {car.model} - {car.c_type}
+                        {car.brand} {car.model}
                       </option>
                     ))}
                   </select>
