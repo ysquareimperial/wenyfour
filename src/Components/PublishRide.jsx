@@ -145,7 +145,6 @@ export default function PublishRide() {
     if (day < 10) {
       day = "0" + day;
     }
-
     return `${year}-${month}-${day}`;
   }
   return (
@@ -422,20 +421,6 @@ export default function PublishRide() {
                   />
                 </Col>
                 <Col md={6} className="mt-3">
-                  <label className="label">Number of Seats</label>
-                  <select
-                    className="input_field"
-                    name="seats"
-                    value={publishRide.seats}
-                    onChange={handleChange}
-                  >
-                    <option value="">-</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                  </select>
-                </Col>
-                <Col md={6} className="mt-3">
                   <label className="label">Select a car</label>
                   <select
                     className="input_field"
@@ -446,9 +431,43 @@ export default function PublishRide() {
                     <option value="">-</option>
                     {cars.map((car) => (
                       <option value={car.id} key={car.id}>
-                        {car.brand} {car.model}
+                        {car.brand} {car.model} - {car.c_type}
                       </option>
                     ))}
+                  </select>
+                </Col>
+                <Col md={6} className="mt-3">
+                  <label className="label">Number of Seats</label>
+                  <select
+                    className="input_field"
+                    name="seats"
+                    value={publishRide.seats}
+                    onChange={handleChange}
+                  >
+                    {publishRide.car_id &&
+                    cars.find((car) => car.id === publishRide.car_id).c_type ===
+                      "Sedan" ? (
+                      <>
+                        <option value="">-</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                      </>
+                    ) : publishRide.car_id &&
+                      cars.find((car) => car.id === publishRide.car_id)
+                        .c_type === "SUV" ? (
+                      <>
+                        <option value="">-</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                      </>
+                    ) : (
+                      ""
+                    )}
                   </select>
                 </Col>
                 <div className="mt-3">
