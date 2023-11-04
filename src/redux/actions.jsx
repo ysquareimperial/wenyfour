@@ -103,7 +103,7 @@ export const login = (email, password) => async (dispatch) => {
     });
     dispatch(loginSuccess(user));
     localStorage.setItem("access_token", userData);
-    console.log(user);
+    // console.log(user);
   } catch (error) {
     if (error.response && error.response.data && error.response.data.detail) {
       const errorMessage = error.response.data.detail;
