@@ -5,7 +5,6 @@ import store from "./redux/store";
 import { Provider } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import NoInternet from "./Components/NoInternet";
-import LandingPage from "./LandingPage/LandingPage";
 
 function App() {
   const navigate = useNavigate();
