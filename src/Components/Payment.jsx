@@ -13,7 +13,7 @@ export default function Payment() {
   };
 
   const handleSubmit = () => {
-    console.log(payment);
+    // console.log(payment);
   };
   /*useEffect(() => {
     if (!localStorage.getItem("access_token")) {

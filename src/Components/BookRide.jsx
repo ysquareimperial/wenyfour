@@ -54,14 +54,14 @@ export default function BookRide() {
         }
       )
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response.status === 200) {
           handleModal();
         }
         setLoading(false);
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
         setLoading(false);
       });
   };

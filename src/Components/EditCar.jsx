@@ -57,7 +57,7 @@ export default function EditCar() {
           }
         )
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           if (response?.status === 200) {
             navigate("/my-vehicles");
           }
@@ -67,7 +67,7 @@ export default function EditCar() {
           console.log(e);
           setLoading(false);
         });
-      console.log(editVehicle);
+      // console.log(editVehicle);
     }
   };
 

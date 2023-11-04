@@ -29,7 +29,7 @@ export default function DeleteAccount() {
       axios
         .delete(`${api}/auth/users/${loggedInUser?.user_id}/delete`)
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           setLoading(false);
           if (response.error) {
             console.log(error);

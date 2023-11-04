@@ -41,7 +41,7 @@ export default function RideRequests() {
           },
         })
         .then((response) => {
-          console.log(response?.data);
+          // console.log(response?.data);
           setRideDetails(response?.data);
 
           //Start of fetching riders profile based on ride passengers' user_id
@@ -59,19 +59,19 @@ export default function RideRequests() {
               const usersArray = userResponses.map(
                 (userResponse) => userResponse.data
               );
-              console.log(usersArray, "zzzzzzzzzz");
+              // console.log(usersArray, "zzzzzzzzzz");
               setRidersArray(usersArray);
               setLoading(false);
             })
             .catch((err) => {
               setLoading(false);
-              console.log("error fetching user data", err);
+              // console.log("error fetching user data", err);
             });
           //End of fetching riders profile based on ride passengers' user_id
         })
         .catch((err) => {
           setLoading(false);
-          console.log("error fetching ride data", err);
+          // console.log("error fetching ride data", err);
         });
     }
   }, []);

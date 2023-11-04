@@ -55,11 +55,11 @@ function Profile() {
         .then((response) => {
           setLoading(false);
           setProfileData(response.data);
-          console.log(response.data);
+          // console.log(response.data);
         })
         .catch((err) => {
           setLoading(false);
-          console.log("error fetching data", err);
+          // console.log("error fetching data", err);
         });
     }
   }, [loggedInUser]);
@@ -75,13 +75,13 @@ function Profile() {
           },
         })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           setVehicles(response?.data);
           setLoading(false);
         })
         .catch((err) => {
           setLoading(false);
-          console.log("error fetching data", err);
+          // console.log("error fetching data", err);
         });
     }
   };

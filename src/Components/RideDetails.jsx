@@ -46,13 +46,13 @@ export default function RideDetails() {
           },
         })
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           setRideDetails(response?.data);
           setLoadingRideDetails(false);
         })
         .catch((err) => {
           setLoadingRideDetails(false);
-          console.log("error fetching data", err);
+          // console.log("error fetching data", err);
         });
     }
   };
@@ -69,13 +69,13 @@ export default function RideDetails() {
           },
         })
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           setVehicleDetails(response?.data);
           setLoadingVehicleDetails(false);
         })
         .catch((err) => {
           setLoadingVehicleDetails(false);
-          console.log("error fetching data", err);
+          // console.log("error fetching data", err);
         });
     }
   };
@@ -93,13 +93,13 @@ export default function RideDetails() {
           },
         })
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           setDriverDetails(response?.data);
           setLoadingDriverDetails(false);
         })
         .catch((err) => {
           setLoadingDriverDetails(false);
-          console.log("error fetching data", err);
+          // console.log("error fetching data", err);
         });
     }
   };

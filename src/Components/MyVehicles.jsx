@@ -31,13 +31,13 @@ export default function MyVehicles() {
           },
         })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           setVehicles(response?.data);
           setLoading(false);
         })
         .catch((err) => {
           setLoading(false);
-          console.log("error fetching data", err);
+          // console.log("error fetching data", err);
         });
     }
   };
@@ -55,7 +55,7 @@ export default function MyVehicles() {
           },
         })
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           setLoading(false);
           if (response?.status === 200) {
             // navigate("/my-vehicles");
@@ -65,7 +65,7 @@ export default function MyVehicles() {
         })
         .catch((err) => {
           setLoading(false);
-          console.log("error fetching data", err);
+          // console.log("error fetching data", err);
         });
     }
   };

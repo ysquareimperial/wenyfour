@@ -61,11 +61,11 @@ export default function EditProfile() {
             alert(error);
           } else {
             navigate("/profile");
-            console.log(response);
+            // console.log(response);
           }
         });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 

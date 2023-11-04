@@ -28,13 +28,13 @@ export default function YourRides() {
           },
         })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           setRides(response?.data);
           setLoading(false);
         })
         .catch((err) => {
           setLoading(false);
-          console.log("error fetching data", err);
+          // console.log("error fetching data", err);
         });
     }
   }, []);

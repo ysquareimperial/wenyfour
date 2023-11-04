@@ -72,7 +72,7 @@ export const signup =
       if (error.response && error.response.data && error.response.data.detail) {
         const errorMessage = error.response.data.detail;
         dispatch(loginFailure(errorMessage)); // Dispatch an action with the error message
-        console.log("Registration failed: " + errorMessage + "!");
+        // console.log("Registration failed: " + errorMessage + "!");
       } else {
         console.error("Login failed:", error);
       }
@@ -108,7 +108,7 @@ export const login = (email, password) => async (dispatch) => {
     if (error.response && error.response.data && error.response.data.detail) {
       const errorMessage = error.response.data.detail;
       dispatch(loginFailure(errorMessage)); // Dispatch an action with the error message
-      console.log(errorMessage);
+      // console.log(errorMessage);
     } else {
       console.error("Login failed:", error);
     }

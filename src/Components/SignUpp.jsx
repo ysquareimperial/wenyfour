@@ -69,10 +69,10 @@ export default function SignUpp() {
         setLoading(false);
         if (data?.detail) {
           setErrorMessage_(data?.detail);
-          console.log("Sent", data);
+          // console.log("Sent", data);
         } else {
           navigate("/signup-message");
-          console.log(data);
+          // console.log(data);
         }
         setErrorMessage_("");
       })

@@ -71,17 +71,17 @@ export default function PublishRide() {
           }
         )
         .then((response) => {
-          console.log(response?.status);
+          // console.log(response?.status);
           if (response?.status === 201) {
             navigate("/published-rides");
           }
           setLoading(false);
         })
         .catch((e) => {
-          console.log(e);
+          // console.log(e);
           setLoading(false);
         });
-      console.log(publishRide);
+      // console.log(publishRide);
     }
   };
 
@@ -95,7 +95,7 @@ export default function PublishRide() {
           },
         })
         .then((response) => {
-          console.log(response.data.status);
+          // console.log(response.data.status);
           if (response.data.status === false) {
             // navigate("/signup-message");
             handleModal();
@@ -104,7 +104,7 @@ export default function PublishRide() {
         })
         .catch((err) => {
           setLoading(false);
-          console.log("error fetching data", err);
+          // console.log("error fetching data", err);
         });
     }
   }, []);
@@ -119,13 +119,13 @@ export default function PublishRide() {
           },
         })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           setCars(response?.data);
           setLoading(false);
         })
         .catch((err) => {
           setLoading(false);
-          console.log("error fetching data", err);
+          // console.log("error fetching data", err);
         });
     }
   }, []);

@@ -46,13 +46,13 @@ export default function SearchResults() {
           }
         )
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           setAvailableRides(response?.data);
           setLoading(false);
         })
         .catch((err) => {
           setLoading(false);
-          console.log("error fetching data", err);
+          // console.log("error fetching data", err);
         });
     }
   };
@@ -130,8 +130,12 @@ export default function SearchResults() {
                           <img src={icon} style={{ width: 12 }} />
                         </div>
                         <div>
-                          <p className="rides_avail">{item?.from_location}</p>
-                          <p className="rides_avail m-0">{item?.to_location}</p>
+                          <p className="rides_avail">
+                            <b>{item?.from_location}</b>
+                          </p>
+                          <p className="rides_avail m-0">
+                            <b>{item?.to_location}</b>
+                          </p>
                         </div>
                       </div>
                     </Col>

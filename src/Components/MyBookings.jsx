@@ -33,14 +33,14 @@ export default function MyBookings() {
         })
         .then((response) => {
           setLoading(false);
-          console.log(response?.data);
+          // console.log(response?.data);
           setRideDetails(response?.data);
         })
         // Iterate through the response array
 
         .catch((err) => {
           setLoading(false);
-          console.log("error fetching ride data", err);
+          // console.log("error fetching ride data", err);
         });
     }
   }, []);

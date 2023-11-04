@@ -51,17 +51,17 @@ export default function CreateCar() {
           }
         )
         .then((response) => {
-          console.log(response?.status);
+          // console.log(response?.status);
           if (response?.status === 201) {
             navigate("/my-vehicles");
           }
           setLoading(false);
         })
         .catch((e) => {
-          console.log(e);
+          // console.log(e);
           setLoading(false);
         });
-      console.log(createCar);
+      // console.log(createCar);
     }
   };
 
