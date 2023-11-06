@@ -124,19 +124,19 @@ export default function MyBookings() {
                     </div>
                     <p className="m-0">
                       <span className="text-secondary" style={{ fontSize: 12 }}>
-                        Model -
+                        Model -{" "}
                       </span>
                       {item?.car_model}
                     </p>
                     <p className="m-0">
                       <span className="text-secondary" style={{ fontSize: 12 }}>
-                        Color -
+                        Color -{" "}
                       </span>
                       {item?.car_color}
                     </p>
                     <p className="m-0">
                       <span className="text-secondary" style={{ fontSize: 12 }}>
-                        Type -
+                        Type -{" "}
                       </span>
                       {item?.car_type}
                     </p>
@@ -169,14 +169,14 @@ export default function MyBookings() {
                     <p className="m-0">
                       {" "}
                       <span className="text-secondary" style={{ fontSize: 12 }}>
-                        Full Name -
+                        Full Name -{" "}
                       </span>
                       {item?.driver_name}
                     </p>
                     <p className="m-0">
                       {" "}
                       <span className="text-secondary" style={{ fontSize: 12 }}>
-                        Phone Number -
+                        Phone Number -{" "}
                       </span>
                       {item?.driver_phone}
                     </p>
