@@ -264,7 +264,7 @@ body {
 }
 @media (max-width: 575.98px) {
   .mobile_logo{
-    width: 150px !important;
+    width: 100px !important;
   }
   .page_title {
     font-size: 30px !important;
