@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useQuery } from "../helpers/helpers";
 import moment from "moment";
 import numeral from "numeral";
+import { usePaystackPayment } from "react-paystack";
 import axios from "axios";
 import { api } from "../helper/apis";
 import { BiArrowBack } from "react-icons/bi";
@@ -39,6 +40,7 @@ export default function BookRide() {
   const xtoken = userData?.access_token;
 
   const handleSubmit = (e) => {
+    console.log("fdfasfasd");
     e.preventDefault();
     setLoading(true);
     axios
@@ -54,17 +56,56 @@ export default function BookRide() {
         }
       )
       .then((response) => {
-        // console.log(response);
+        console.log(response);
         if (response.status === 200) {
           handleModal();
         }
         setLoading(false);
       })
       .catch((e) => {
-        // console.log(e);
+        console.log(e);
         setLoading(false);
       });
   };
+
+  const config = {
+    reference: new Date().getTime().toString(),
+    email: "user@example.com",
+    amount: 20000, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
+    publicKey: "pk_test_6bc5f797ff907f312e689ed4547705e0ce6ee058",
+  };
+
+  // you can call this function anything
+  const onSuccess = (reference) => {
+    // Implementation for whatever you want to do with reference and after success call.
+    console.log(reference);
+    // navigate("/my-bookings");
+    handleSubmit();
+  };
+
+  // you can call this function anything
+  const onClose = () => {
+    // implementation for  whatever you want to do when the Paystack dialog closed.
+    console.log("closed");
+  };
+
+  const PaystackHookExample = ({ ridePrice }) => {
+    const initializePayment = usePaystackPayment(config);
+    return (
+      <div>
+        <button
+          className="app_button"
+          style={{ fontWeight: "bold" }}
+          onClick={() => {
+            initializePayment(onSuccess, onClose);
+          }}
+        >
+          Pay ₦{ridePrice}
+        </button>
+      </div>
+    );
+  };
+
   return (
     <div className="p-3 mt-5">
       <Row>
@@ -112,7 +153,7 @@ export default function BookRide() {
             {totalPrice}
           </div>
 
-          <div className="mt-3 text-center">
+          {/* <div className="mt-3 text-center">
             {loading ? (
               <button
                 className="app_button"
@@ -131,6 +172,11 @@ export default function BookRide() {
                 Pay ₦{numeral(price * seats).format("0,0")}
               </button>
             )}
+          </div> */}
+          <div className="text-center">
+            <PaystackHookExample
+              ridePrice={numeral(price * seats).format("0,0")}
+            />
           </div>
         </Col>
         <Col md={3}></Col>
