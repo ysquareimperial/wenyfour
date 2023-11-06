@@ -251,6 +251,9 @@ body {
   border-radius: 20px;
 }
 
+.profile_div_button {
+  display: flex;
+}
 @media (min-width: 575.98px) {
   .pub_mob {
     display: none;
@@ -259,10 +262,10 @@ body {
     display: none;
   }
 }
-.profile_div_button {
-  display: flex;
-}
 @media (max-width: 575.98px) {
+  .mobile_logo{
+    width: 150px !important;
+  }
   .page_title {
     font-size: 30px !important;
   }
