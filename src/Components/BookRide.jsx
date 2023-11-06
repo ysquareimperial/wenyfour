@@ -121,7 +121,7 @@ export default function BookRide() {
             </h4>
           </div> */}
           <BackButton headingText={"Review and book"} />
-          <p className="rides_avail" style={{ fontWeight: 700 }}>
+          <p className="rides_avail mt-5" style={{ fontWeight: 700 }}>
             {/* {date} at {time} */}
             {moment(date).format("ddd, DD MMMM")} at{" "}
             {moment(time, "HH:mm:ss").format("HH:mm A")}
