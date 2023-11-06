@@ -6,6 +6,7 @@ import { useState } from "react";
 import axios from "axios";
 import { api } from "../helper/apis";
 import { useQuery } from "../helpers/helpers";
+import BackButton from "./BackButton";
 
 export default function EditCar() {
   const query = useQuery();
@@ -73,12 +74,13 @@ export default function EditCar() {
 
   return (
     <div className="mt-5">
-      <CompHeader header={"Edit vehicle"}>
-        <Row>
+      {/* <CompHeader header={"Edit vehicle"}> */}
+      <BackButton headingText={'Edit vehicle'}/>
+        <Row className="m-0">
           <Col md={4}></Col>
           <Col md={4}>
             <div className="mt-3">
-              {JSON.stringify(editVehicle)}
+              {/* {JSON.stringify(editVehicle)} */}
               {/* {JSON.stringify(xtoken)} */}
               <form onSubmit={handleSubmit}>
                 <Row>
@@ -183,7 +185,7 @@ export default function EditCar() {
           </Col>
           <Col md={4}></Col>
         </Row>
-      </CompHeader>
+      {/* </CompHeader> */}
     </div>
   );
 }
