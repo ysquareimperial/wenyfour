@@ -60,12 +60,12 @@ export default function NavigationMenu() {
           >
             Publish a ride
           </button>
-          <button
+          {/* <button
             className="app_button pub_mob"
             onClick={() => navigate(`/publish-ride`)}
           >
             <BsPlus />
-          </button>
+          </button> */}
 
           <AiOutlineBell
             style={{ margin: 0, cursor: "pointer" }}
