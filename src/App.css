@@ -259,6 +259,9 @@ body {
 .profile_div_button {
   display: flex;
 }
+.profile_div_wrapper {
+  /* margin-top: 3rem; */
+}
 @media (min-width: 575.98px) {
   .pub_mob {
     display: none;
@@ -266,9 +269,36 @@ body {
   .mob_rep {
     display: none;
   }
+  .edit_profile {
+    display: none;
+  }
 }
 @media (max-width: 575.98px) {
-  .mobile_logo{
+  .add {
+    background-color: rgb(238, 238, 238);
+    padding: 10px;
+    border-radius: 15px !important;
+  }
+  .edit_profile {
+    background-color: transparent !important;
+    border: rgb(197, 197, 197) 1px solid;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: bold;
+  }
+  .edit_profile_web {
+    display: none;
+  }
+  .profile_heading {
+    display: none;
+    /* margin-top: -220px !important; */
+  }
+  .profile_image_div {
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    padding: 10px !important;
+  }
+  .mobile_logo {
     width: 100px !important;
   }
   .page_title {
@@ -287,11 +317,11 @@ body {
   }
   .profile_pic {
     border-radius: 50%;
-    width: 150px;
+    width: 100px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: -10px;
+    /* margin-left: auto;
+    margin-right: auto; */
+    /* margin-top: -10px; */
   }
   .profile_div_button {
     font-size: 14px;

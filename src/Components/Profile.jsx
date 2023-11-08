@@ -110,17 +110,30 @@ function Profile() {
           {/* {JSON.stringify(profileData)} */}
           <Col xl={3} lg={3} md={3} sm={12} xs={12}></Col>
           <Col xl={6} lg={6} md={6} sm={12} xs={12}>
-            <BackButton headingText={"Profile"} />
+            <div className="profile_heading">
+              <BackButton headingText={"Profile"} />
+            </div>
             <div
-              className="d-flex justify-content-center profile_div mt-5"
+              className="profile_div_wrapper d-flex justify-content-center profile_div"
               style={{ gap: 30 }}
             >
-              <div>
+              <div className="add d-flex align-items-center justify-content-between">
                 <img
                   src="https://res.cloudinary.com/dx5ilizca/image/upload/v1692800347/profile_epnaqt.png"
                   className="profile_pic"
                   alt="user_image"
                 />
+
+                <button
+                  className="edit_profile app_button second_app_button mt-2 edit_button"
+                  onClick={() =>
+                    navigate(
+                      `/edit-profile?name=${profileData?.name}&phone=${profileData?.phone}&email=${profileData?.email}&dob=${profileData?.date_of_birth}&about=${profileData?.about}`
+                    )
+                  }
+                >
+                  Edit profile
+                </button>
               </div>
               <div>
                 <h3 className="m-0 fullname">{profileData?.name}</h3>
@@ -140,13 +153,12 @@ function Profile() {
                   {/* . */}
                   <p className="date_joined d-flex align-items-center gap-2">
                     <AiOutlineCalendar className="m-0 text-secondary" />
-                    Joined{" "}
-                    {moment(profileData?.created_at).format("MMM, YYYY")}
+                    Joined {moment(profileData?.created_at).format("MMM, YYYY")}
                   </p>
                 </div>
                 <div>
                   <button
-                    className="app_button second_app_button mt-2 edit_button"
+                    className="edit_profile_web app_button second_app_button mt-2 edit_button"
                     onClick={() =>
                       navigate(
                         `/edit-profile?name=${profileData?.name}&phone=${profileData?.phone}&email=${profileData?.email}&dob=${profileData?.date_of_birth}&about=${profileData?.about}`
