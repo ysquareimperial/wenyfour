@@ -126,20 +126,20 @@ export default function MyBookings() {
                         <b>Vehicle Info</b>
                       </p>
                     </div>
-                    <p className="m-0">
-                      <span className="text-secondary" style={{ fontSize: 12 }}>
+                    <p className="m-0" style={{ fontSize: 12 }}>
+                      <span className="text-secondary" >
                         Model -{" "}
                       </span>
                       {item?.car_model}
                     </p>
-                    <p className="m-0">
-                      <span className="text-secondary" style={{ fontSize: 12 }}>
+                    <p className="m-0" style={{ fontSize: 12 }}>
+                      <span className="text-secondary" >
                         Color -{" "}
                       </span>
                       {item?.car_color}
                     </p>
-                    <p className="m-0">
-                      <span className="text-secondary" style={{ fontSize: 12 }}>
+                    <p className="m-0" style={{ fontSize: 12 }}>
+                      <span className="text-secondary" >
                         Type -{" "}
                       </span>
                       {item?.car_type}
@@ -170,16 +170,16 @@ export default function MyBookings() {
                         <b>Driver Info</b>
                       </p>
                     </div>
-                    <p className="m-0">
+                    <p className="m-0" style={{ fontSize: 12 }}>
                       {" "}
-                      <span className="text-secondary" style={{ fontSize: 12 }}>
+                      <span className="text-secondary" >
                         Full Name -{" "}
                       </span>
                       {item?.driver_name}
                     </p>
-                    <p className="m-0">
+                    <p className="m-0" style={{ fontSize: 12 }}>
                       {" "}
-                      <span className="text-secondary" style={{ fontSize: 12 }}>
+                      <span className="text-secondary" >
                         Phone Number -{" "}
                       </span>
                       {item?.driver_phone}
