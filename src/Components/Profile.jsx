@@ -138,7 +138,7 @@ function Profile() {
               <div>
                 <h3 className="m-0 fullname">{profileData?.name}</h3>
                 <p className="email">{profileData?.email}</p>
-                <p className="about">{profileData?.about}</p>
+                <p className="about mt-3">{profileData?.about}</p>
                 <div className="profile_div_button" style={{ gap: 20 }}>
                   <p className="m-0 d-flex align-items-center gap-2">
                     <AiOutlinePhone className="text-secondary m-0" />

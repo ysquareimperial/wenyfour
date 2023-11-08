@@ -259,10 +259,10 @@ body {
 .profile_div_button {
   display: flex;
 }
-.profile_div_wrapper {
-  /* margin-top: 3rem; */
-}
 @media (min-width: 575.98px) {
+  .profile_div_wrapper {
+    margin-top: 3rem;
+  }
   .pub_mob {
     display: none;
   }
