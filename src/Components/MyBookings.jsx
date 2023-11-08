@@ -98,13 +98,13 @@ export default function MyBookings() {
                         <span style={{ color: "grey" }}>
                           {item?.pickup_location},
                         </span>{" "}
-                        <b>{item?.from_location}</b>
+                        {item?.from_location}
                       </p>
                       <p className="rides_avail">
                         <span style={{ color: "grey" }}>
                           {item?.dropoff_location},
                         </span>{" "}
-                        <b>{item?.to_location}</b>
+                      {item?.to_location}
                       </p>
                     </div>
                   </div>

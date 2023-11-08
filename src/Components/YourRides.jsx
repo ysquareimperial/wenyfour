@@ -71,43 +71,42 @@ export default function YourRides() {
                   className="mb-3 mt-3 results_card shadow-sm p-3"
                   onClick={() => navigate(`/ride-requests?ride_id=${item?.id}`)}
                 >
-                  <Row>
-                    <Col md={6} sm={10} xs={10}>
-                      <p>{moment(item?.date).format("MMM DD, YYYY")}</p>
-                      <div className="d-flex" style={{ gap: 10 }}>
-                        <div>
-                          <p className="rides_avail">
-                            {" "}
-                            {moment(item?.time, "HH:mm:ss").format("HH:mm A")}
-                          </p>
-
-                          {/* <p className="rides_avail">12:30 AM</p> */}
-                        </div>
-                        <div>
-                          <img src={icon} style={{ width: 12 }} />
-                        </div>
-                        <div>
-                          <p className="rides_avail">
-                            <span style={{ color: "grey" }}>
-                              {item?.pickup_location},
-                            </span>{" "}
-                            {item?.from_location}
-                          </p>
-                          <p className="rides_avail">
-                            <span style={{ color: "grey" }}>
-                              {item?.dropoff_location},
-                            </span>{" "}
-                            {item?.to_location}
-                          </p>
-                        </div>
-                      </div>
-                    </Col>
-                    <Col md={6} sm={2} xs={2}>
-                      <p className="rides_avail" style={{ float: "right" }}>
-                        N{item?.seat_price}
+                  <div className="d-flex justify-content-between">
+                    <p className="rides_avail" style={{ float: "right" }}>
+                      <b>N{item?.seat_price}</b>
+                    </p>
+                    <p>
+                      <b>{moment(item?.date).format("MMM DD, YYYY")}</b>
+                    </p>
+                  </div>
+                  <div className="d-flex" style={{ gap: 10 }}>
+                    <div>
+                      <p className="rides_avail">
+                        <b>
+                          {moment(item?.time, "HH:mm:ss").format("HH:mm A")}
+                        </b>
                       </p>
-                    </Col>
-                  </Row>
+
+                      {/* <p className="rides_avail">12:30 AM</p> */}
+                    </div>
+                    <div>
+                      <img src={icon} style={{ width: 12 }} />
+                    </div>
+                    <div>
+                      <p className="rides_avail">
+                        <span style={{ color: "grey" }}>
+                          {item?.pickup_location},
+                        </span>{" "}
+                        {item?.from_location}
+                      </p>
+                      <p className="rides_avail">
+                        <span style={{ color: "grey" }}>
+                          {item?.dropoff_location},
+                        </span>{" "}
+                        {item?.to_location}
+                      </p>
+                    </div>
+                  </div>
                 </Card>
               ))}
               {rides.length === 0 ? (
