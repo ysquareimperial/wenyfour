@@ -70,45 +70,47 @@ export default function MyBookings() {
             {/* {JSON.stringify(ridersArray)} */}
             {rideDetails.map((item, index) => (
               <div className="mt-5" key={index}>
+                <div className="d-flex justify-content-between">
+                  <p>
+                    <b>{moment(item?.date).format("MMM DD, YYYY")}</b>
+                  </p>
+
+                  <p className="rides_avail">
+                    <b style={{color:'#0d6efd'}}>₦{numeral(item?.seat_price).format("0,0")}</b>
+                  </p>
+                </div>
                 <div>
-                  <Row>
-                    <Col md={9} sm={9} xs={9}>
-                      <p>
-                        <b>{moment(item?.date).format("MMM DD, YYYY")}</b>
+                  {/* <Row>
+                    <Col md={9} sm={10} xs={10}> */}
+                  <div className="d-flex" style={{ gap: 10 }}>
+                    <div>
+                      <p className="rides_avail">
+                        <b>
+                          {moment(item?.time, "HH:mm:ss").format("HH:mm A")}
+                        </b>
                       </p>
-                      <div className="d-flex" style={{ gap: 10 }}>
-                        <div>
-                          <p className="rides_avail">
-                            <b>
-                              {moment(item?.time, "HH:mm:ss").format("HH:mm A")}
-                            </b>
-                          </p>
-                        </div>
-                        <div>
-                          <img src={icon} style={{ width: 12 }} />
-                        </div>
-                        <div>
-                          <p className="rides_avail">
-                            <span style={{ color: "grey" }}>
-                              {item?.pickup_location},
-                            </span>{" "}
-                            <b>{item?.from_location}</b>
-                          </p>
-                          <p className="rides_avail">
-                            <span style={{ color: "grey" }}>
-                              {item?.dropoff_location},
-                            </span>{" "}
-                            <b>{item?.to_location}</b>
-                          </p>
-                        </div>
-                      </div>
-                    </Col>
-                    <Col md={3} sm={3} xs={3} className="">
-                      <p className="rides_avail" style={{ float: "right" }}>
-                        <b>₦{numeral(item?.seat_price).format("0,0")}</b>
+                    </div>
+                    <div>
+                      <img src={icon} style={{ width: 12 }} />
+                    </div>
+                    <div>
+                      <p className="rides_avail">
+                        <span style={{ color: "grey" }}>
+                          {item?.pickup_location},
+                        </span>{" "}
+                        <b>{item?.from_location}</b>
                       </p>
-                    </Col>
-                  </Row>
+                      <p className="rides_avail">
+                        <span style={{ color: "grey" }}>
+                          {item?.dropoff_location},
+                        </span>{" "}
+                        <b>{item?.to_location}</b>
+                      </p>
+                    </div>
+                  </div>
+                  {/* </Col>
+                    <Col md={3} sm={2} xs={2} className=""></Col>
+                  </Row> */}
 
                   <div className="divider mb-3"></div>
                   <div className="car_info_div">

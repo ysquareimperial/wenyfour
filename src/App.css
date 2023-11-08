@@ -259,6 +259,7 @@ body {
 .profile_div_button {
   display: flex;
 }
+
 @media (min-width: 575.98px) {
   .profile_div_wrapper {
     margin-top: 3rem;
@@ -272,6 +273,7 @@ body {
   .edit_profile {
     display: none;
   }
+
 }
 @media (max-width: 575.98px) {
   .add {
