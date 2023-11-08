@@ -76,7 +76,9 @@ export default function MyBookings() {
                   </p>
 
                   <p className="rides_avail">
-                    <b style={{color:'#0d6efd'}}>₦{numeral(item?.seat_price).format("0,0")}</b>
+                    <b style={{ color: "#0d6efd" }}>
+                      ₦{numeral(item?.seat_price).format("0,0")}
+                    </b>
                   </p>
                 </div>
                 <div>
@@ -104,7 +106,7 @@ export default function MyBookings() {
                         <span style={{ color: "grey" }}>
                           {item?.dropoff_location},
                         </span>{" "}
-                      {item?.to_location}
+                        {item?.to_location}
                       </p>
                     </div>
                   </div>

@@ -40,9 +40,9 @@ export default function BookRide() {
   const xtoken = userData?.access_token;
 
   const handleSubmit = (e) => {
-    console.log("fdfasfasd");
-    e.preventDefault();
-    setLoading(true);
+    // console.log("fdfasfasd");
+    // e.preventDefault();
+    // setLoading(true);
     axios
       .put(
         `${api}/rides/${ride_id}/book/ride`,
@@ -70,7 +70,7 @@ export default function BookRide() {
 
   const config = {
     reference: new Date().getTime().toString(),
-    email: "user@example.com",
+    email: "yasir@example.com",
     amount: 20000, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
     publicKey: "pk_test_6bc5f797ff907f312e689ed4547705e0ce6ee058",
   };
@@ -79,8 +79,31 @@ export default function BookRide() {
   const onSuccess = (reference) => {
     // Implementation for whatever you want to do with reference and after success call.
     console.log(reference);
+    console.log("seat(s) booked");
     // navigate("/my-bookings");
-    handleSubmit();
+    axios
+      .put(
+        `${api}/rides/${ride_id}/book/ride`,
+        {
+          no_seats: noOfSeats,
+        },
+        {
+          headers: {
+            "x-token": xtoken,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          handleModal();
+        }
+        setLoading(false);
+      })
+      .catch((e) => {
+        console.log(e);
+        setLoading(false);
+      });
   };
 
   // you can call this function anything
