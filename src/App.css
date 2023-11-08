@@ -3,6 +3,11 @@ body {
   quotes: "“" "”";
   text-size-adjust: 100%;
 }
+* {
+  /* font-family: "Lora", serif; */
+  font-family: "Poppins", sans-serif;
+  /* font-family: "Quicksand", sans-serif; */
+}
 :root {
   --inputBgColor: rgb(237, 237, 237);
   --primaryColor: #0d6efd;

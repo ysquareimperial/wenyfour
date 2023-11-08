@@ -134,14 +134,14 @@ function Profile() {
                   {/* . */}
                   <p className="m-0 d-flex align-items-center gap-2">
                     <PiUserLight />
-                    {dobToAge(profileData?.date_of_birth)} y/o
+                    {dobToAge(profileData?.date_of_birth)} y
                     {/* {moment(profileData?.date_of_birth, "YYYYMMDD").fromNow()} */}
                   </p>{" "}
                   {/* . */}
                   <p className="date_joined d-flex align-items-center gap-2">
                     <AiOutlineCalendar className="m-0 text-secondary" />
                     Joined{" "}
-                    {moment(profileData?.created_at).format("MMMM, YYYY")}
+                    {moment(profileData?.created_at).format("MMM, YYYY")}
                   </p>
                 </div>
                 <div>
