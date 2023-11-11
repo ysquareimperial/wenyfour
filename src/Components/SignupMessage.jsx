@@ -15,7 +15,7 @@ export default function Settings() {
     <>
       <div className="text-center mt-5">
         <img
-         src="https://res.cloudinary.com/dx5ilizca/image/upload/v1695924745/21_lepo8j.svg"
+          src="https://res.cloudinary.com/dx5ilizca/image/upload/v1695924745/21_lepo8j.svg"
           alt="wenyfour logo"
           style={{ width: 200 }}
         />
@@ -32,8 +32,8 @@ export default function Settings() {
         <Col md={4}>
           <div className="mt-3 text-center">
             <p className="m-0" style={{ fontWeight: "" }}>
-              Registration successful! Check your email for a confirmation link, the link will be valid for only 11 hours
-              Welcome to wenyfour!
+              Registration successful! Check your email for a confirmation link,
+              the link will be valid for only <b>1 hour</b> Welcome to wenyfour!
             </p>
           </div>
         </Col>
