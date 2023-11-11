@@ -74,7 +74,7 @@ export default function SignUpp() {
           navigate("/signup-message");
           // console.log(data);
         }
-        setErrorMessage_("");
+        // setErrorMessage_("");
       })
       .catch((error) => {
         console.error("Error...:", error);
@@ -97,7 +97,7 @@ export default function SignUpp() {
             <img
               src="https://res.cloudinary.com/dx5ilizca/image/upload/v1695924745/21_lepo8j.svg"
               alt="wenyfour logo"
-              style={{ width: 150 }}
+              style={{ width: 200 }}
             />
           </div>
           <div className="d-flex justify-content-between" style={{ gap: 30 }}>
@@ -252,8 +252,9 @@ export default function SignUpp() {
                   </div>
                 </Col>
               </Row>
+              {/* {JSON.stringify(errorMessage_ + "llll")} */}
               {errorMessage_ && (
-                <p style={{ color: "red", fontSize: 13 }}>
+                <p className="mt-3" style={{ color: "red", fontSize: 13 }}>
                   {"Registration failed: " + errorMessage_ + "!"}
                 </p>
               )}
