@@ -39,12 +39,12 @@ function App() {
     return () => clearInterval(intervalId);
   }, []);
 
-  // useEffect(() => {
-  //   if (!localStorage.getItem("access_token")) {
-  //     navigate("/auth");
-  //     window.location.reload();
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!localStorage.getItem("access_token")) {
+      navigate("/auth");
+      window.location.reload();
+    }
+  }, []);
 
   ///Implementing No Internet///
   useEffect(() => {
