@@ -71,6 +71,7 @@ export default function BookRide() {
   const config = {
     reference: new Date().getTime().toString(),
     email: "yasir@example.com",
+    name: "yasir",
     amount: 20000, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
     publicKey: "pk_test_6bc5f797ff907f312e689ed4547705e0ce6ee058",
   };

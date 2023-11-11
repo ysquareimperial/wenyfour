@@ -22,6 +22,7 @@ function App() {
       !localStorage.getItem("user_data")
     ) {
       navigate("/auth");
+      window.location.reload();
     }
   };
 
@@ -38,11 +39,12 @@ function App() {
     return () => clearInterval(intervalId);
   }, []);
 
-  useEffect(() => {
-    if (!localStorage.getItem("access_token")) {
-      navigate("/auth");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!localStorage.getItem("access_token")) {
+  //     navigate("/auth");
+  //     window.location.reload();
+  //   }
+  // }, []);
 
   ///Implementing No Internet///
   useEffect(() => {

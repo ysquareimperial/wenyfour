@@ -31,6 +31,7 @@ export default function NavigationMenu() {
     localStorage.removeItem("access_token");
     if (!localStorage.getItem("access_token" && "user_data")) {
       navigate("/auth");
+      window.location.reload()
     }
   };
 
