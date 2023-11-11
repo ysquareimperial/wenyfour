@@ -1,16 +1,6 @@
-import { MdArrowForwardIos } from "react-icons/md";
-import CompHeader from "../CustomComponents/CompHeder";
-import { useNavigate } from "react-router-dom";
-import { Col, Modal, Row } from "reactstrap";
+import { Col, Row } from "reactstrap";
 // import logo from "../assets/images/wenyfour-black.PNG";
-import { useState } from "react";
 export default function Settings() {
-  const navigate = useNavigate();
-  const [modal, setModal] = useState(false);
-  const [confirmText, setConfirmText] = useState("");
-  const toggleModal = () => {
-    setModal(!modal);
-  };
   return (
     <>
       <div className="text-center mt-5">

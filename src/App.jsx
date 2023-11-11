@@ -42,7 +42,6 @@ function App() {
   useEffect(() => {
     if (!localStorage.getItem("access_token")) {
       navigate("/auth");
-      window.location.reload();
     }
   }, []);
 
