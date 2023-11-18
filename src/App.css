@@ -278,6 +278,9 @@ body {
   .edit_profile {
     display: none;
   }
+  .publish_icon{
+    display: none;
+  }
 }
 @media (max-width: 575.98px) {
   .notification_icon{

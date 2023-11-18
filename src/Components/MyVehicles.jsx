@@ -89,11 +89,11 @@ export default function MyVehicles() {
               ></span>
             </div>
           ) : (
-            <div className="mt-3">
+            <div className="mt-5">
               {vehicles?.map((item, index) => (
                 <div
                   key={index}
-                  className="mt-5 d-flex justify-content-between ride_details_user"
+                  className="d-flex justify-content-between ride_details_user"
                 >
                   <div style={{ display: "flex", flexDirection: "column" }}>
                     <p
