@@ -10,7 +10,7 @@ import axios from "axios";
 export default function SignUpp() {
   const loggedInUser = useSelector((state) => state?.auth?.user);
   const [loading, setLoading] = useState(false);
-
+  const [showPassword, setShowPassword] = useState(false);
   const [tab, setTab] = useState(true);
   const navigate = useNavigate();
   const switchTab = () => {
@@ -27,6 +27,10 @@ export default function SignUpp() {
   const [nin, setNin] = useState("");
   const [errorMessage_, setErrorMessage_] = useState("");
   const errorMessage = useSelector((state) => state.auth.errorMessage);
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -132,7 +136,8 @@ export default function SignUpp() {
                   className="input_field"
                   id="password"
                   required
-                  type="password"
+                  // type="password"
+                  type={showPassword ? "text" : "password"}
                   value={_password}
                   onChange={(e) => _setPassword(e.target.value)}
                 />
@@ -140,14 +145,17 @@ export default function SignUpp() {
               {errorMessage && (
                 <p style={{ color: "red", fontSize: 13 }}>{errorMessage}</p>
               )}
-
               <div
                 className="d-flex justify-content-between mt-3"
                 style={{ fontSize: 13 }}
               >
-                {/* <p className="m-0">
-                  <input type="checkbox" /> Remember me
-                </p> */}
+                <label
+                  className="m-0 d-flex align-items-center gap-2"
+                  style={{ cursor: "pointer" }}
+                >
+                  <input type="checkbox" onClick={handleTogglePassword} />
+                  {showPassword ? "Hide" : "Show"} Password
+                </label>
                 <p className="forgot_p m-0">Forgotten Password?</p>
               </div>
               {!loading ? (
