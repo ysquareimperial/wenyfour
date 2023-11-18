@@ -31,7 +31,7 @@ export default function NavigationMenu() {
     localStorage.removeItem("access_token");
     if (!localStorage.getItem("access_token" && "user_data")) {
       navigate("/auth");
-      window.location.reload()
+      window.location.reload();
     }
   };
 
@@ -74,10 +74,11 @@ export default function NavigationMenu() {
             size="1.6rem"
             className="notification_icon"
           />
-           <BsPlus
+          <BsPlus
             style={{ margin: 0, cursor: "pointer" }}
             size="1.6rem"
             className="publish_icon"
+            onClick={()=>navigate('/publish-ride')}
           />
           <img
             src="https://res.cloudinary.com/dx5ilizca/image/upload/v1692800347/profile_epnaqt.png"
