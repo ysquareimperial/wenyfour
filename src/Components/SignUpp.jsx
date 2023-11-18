@@ -253,12 +253,19 @@ export default function SignUpp() {
                       id="password"
                       required
                       minLength={5}
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
                 </Col>
+                <label
+                  className="m-0 mt-3 d-flex align-items-center gap-2"
+                  style={{ cursor: "pointer" }}
+                >
+                  <input type="checkbox" onClick={handleTogglePassword} />
+                  {showPassword ? "Hide" : "Show"} Password
+                </label>
               </Row>
               {/* {JSON.stringify(errorMessage_ + "llll")} */}
               {errorMessage_ && (
@@ -274,10 +281,7 @@ export default function SignUpp() {
                   {/* <input type="checkbox" /> */}
                   By clicking "Sign Up," you agree to our{" "}
                   <span style={{ color: "#0d6efd", cursor: "pointer" }}>
-                    Terms,
-                  </span>{" "}
-                  <span style={{ color: "#0d6efd", cursor: "pointer" }}>
-                    Cookies Policy,{" "}
+                    Terms and Conditions, Privacy Policy, Cookies,{" "}
                   </span>
                   and SMS notifications, with the option to unsubscribe anytime.
                 </p>
