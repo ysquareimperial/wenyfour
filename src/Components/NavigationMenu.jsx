@@ -42,7 +42,7 @@ export default function NavigationMenu() {
         <Col lg={3} md={3} sm={3} xs={3} className="d-flex align-items-center">
           <img
             className="mobile_logo"
-            src="https://res.cloudinary.com/dx5ilizca/image/upload/v1695924745/21_lepo8j.svg"
+            src="https://res.cloudinary.com/dx5ilizca/image/upload/v1700325425/wenyfour_Logo_byhzpv.png"
             onClick={() => navigate("/")}
             alt="wenyfour logo"
             style={{ width: "10rem" }}

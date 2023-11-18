@@ -95,7 +95,7 @@ export default function SignUpp() {
           </h4> */}
           <div className="text-center mb-5">
             <img
-              src="https://res.cloudinary.com/dx5ilizca/image/upload/v1695924745/21_lepo8j.svg"
+              src="https://res.cloudinary.com/dx5ilizca/image/upload/v1700325425/wenyfour_Logo_byhzpv.png"
               alt="wenyfour logo"
               style={{ width: 200 }}
             />
