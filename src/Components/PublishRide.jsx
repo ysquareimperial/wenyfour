@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import { BsArrowLeft } from "react-icons/bs";
 import BackButton from "./BackButton";
+import { nigeriaStates } from "./States";
 
 export default function PublishRide() {
   const [modal, setModal] = useState(false);
@@ -184,15 +185,7 @@ export default function PublishRide() {
                   {/* {JSON.stringify(xtoken)} */}
                   {/* {JSON.stringify(loggedInUser)} */}
                   <label className="label">When are you leaving?</label>
-                  {/* <input
-                    className="input_field"
-                    type="date"
-                    required
-                    name="date"
-                    min="2023-10-05"
-                    value={publishRide.date}
-                    onChange={handleChange}
-                  /> */}
+
                   <input
                     className="input_field"
                     type="date"
@@ -352,25 +345,49 @@ export default function PublishRide() {
                 </Col>
                 <Col md={6} className="mt-3">
                   <label className="label">Leaving from</label>
-                  <input
+                  {/* <input
                     className="input_field"
                     required
                     type="text"
                     name="from_location"
                     value={publishRide.from_location}
                     onChange={handleChange}
-                  />
+                  /> */}
+                  <select
+                    required
+                    className="input_field"
+                    name="from_location"
+                    value={publishRide.from_location}
+                    onChange={handleChange}
+                  >
+                    <option>-</option>
+                    {nigeriaStates.map((item, index) => (
+                      <option>{item.name}</option>
+                    ))}
+                  </select>
                 </Col>
                 <Col md={6} className="mt-3">
                   <label className="label">Going to</label>
-                  <input
+                  {/* <input
                     className="input_field"
                     required
                     type="text"
                     name="to_location"
                     value={publishRide.to_location}
                     onChange={handleChange}
-                  />
+                  /> */}
+                  <select
+                    required
+                    className="input_field"
+                    name="to_location"
+                    value={publishRide.to_location}
+                    onChange={handleChange}
+                  >
+                    <option>-</option>
+                    {nigeriaStates.map((item, index) => (
+                      <option>{item.name}</option>
+                    ))}
+                  </select>
                 </Col>
                 <Col md={6} className="mt-3">
                   <label className="label">Exact meeting point</label>

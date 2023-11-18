@@ -260,6 +260,11 @@ body {
   display: flex;
 }
 
+.publish_icon{
+  background-color: #f1f1f1;
+  border-radius: 5px;
+}
+
 @media (min-width: 575.98px) {
   .profile_div_wrapper {
     margin-top: 3rem;
@@ -273,9 +278,11 @@ body {
   .edit_profile {
     display: none;
   }
-
 }
 @media (max-width: 575.98px) {
+  .notification_icon{
+    display: none !important;
+  }
   .add {
     background-color: rgb(238, 238, 238);
     padding: 10px;
@@ -301,7 +308,7 @@ body {
     padding: 10px !important;
   }
   .mobile_logo {
-    width: 100px !important;
+    width: 120px !important;
   }
   .page_title {
     font-size: 30px !important;

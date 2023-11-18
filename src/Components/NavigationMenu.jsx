@@ -72,6 +72,12 @@ export default function NavigationMenu() {
           <AiOutlineBell
             style={{ margin: 0, cursor: "pointer" }}
             size="1.6rem"
+            className="notification_icon"
+          />
+           <BsPlus
+            style={{ margin: 0, cursor: "pointer" }}
+            size="1.6rem"
+            className="publish_icon"
           />
           <img
             src="https://res.cloudinary.com/dx5ilizca/image/upload/v1692800347/profile_epnaqt.png"

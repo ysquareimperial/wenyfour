@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginSuccess, restoreUserFromLocalStorage } from "../redux/actions";
 import moment from "moment";
+import { nigeriaStates } from "./States";
 import LivingFrom from "./States/LivingFrom";
 export default function SearchRide() {
   const formData = {
@@ -83,18 +84,9 @@ export default function SearchRide() {
               onChange={handleChange}
             >
               <option style={{ color: "grey" }}></option>
-              <option>Kano</option>
-              <option>Jigawa</option>
-              <option>Bavaria</option>
-              <option>Hessen</option>
-              <option>London</option>
-              <option>Sokoto</option>
-              <option>Zaria</option>
-              <option>Manchester</option>
-              <option>Ibadan</option>
-              <option>Birmingham</option>
-              <option>Suleja</option>
-              <option>Ressss</option>
+              {nigeriaStates.map((item, index) => (
+                <option>{item.name}</option>
+              ))}
             </select>
           </div>
           <div>
@@ -107,18 +99,9 @@ export default function SearchRide() {
               onChange={handleChange}
             >
               <option style={{ color: "grey" }}></option>
-              <option>Kano</option>
-              <option>Jigawa</option>
-              <option>Bavaria</option>
-              <option>Hessen</option>
-              <option>Manchester</option>
-              <option>Zamfara</option>
-              <option>London</option>
-              <option>Kaduna</option>
-              <option>Ibadan</option>
-              <option>Suleja</option>
-              <option>Birmingham</option>
-              <option>Apiiiii</option>
+              {nigeriaStates.map((item, index) => (
+                <option>{item.name}</option>
+              ))}
             </select>
           </div>
           <div>
