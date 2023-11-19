@@ -30,13 +30,13 @@ function App() {
     // Implement the logic to reload your component here
     logout(); // Call the logout function
   };
-
+  const logoutTimeout = 15 * 60 * 1000;
   useEffect(() => {
     // Set up an interval to run the reloadComponent function every 15 minutes (15 * 60 * 1000 milliseconds)
-    const intervalId = setInterval(reloadComponent, 900000);
+    const intervalId = setInterval(reloadComponent, logoutTimeout);
 
     // Clear the interval when the component is unmounted to prevent memory leaks
-    return () => clearInterval(intervalId);
+    return () => clearTimeout(intervalId);
   }, []);
 
   useEffect(() => {
