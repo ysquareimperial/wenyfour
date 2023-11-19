@@ -180,7 +180,11 @@ export default function PublishRide() {
             </div>
           ) : (
             <form onSubmit={handleSubmit}>
-              <p style={{fontSize:13, color:'#0d6efd'}}>You can only publish ride 3 days ahead of your trip</p>
+              <div className="text-center">
+                <p style={{ fontSize: 13, color: "#0d6efd" }}>
+                  You can only publish ride 3 days ahead of your trip
+                </p>
+              </div>
               <Row>
                 <Col md={6} className="mt-3">
                   {/* {JSON.stringify(xtoken)} */}
