@@ -99,7 +99,7 @@ export default function SignUpp() {
           </h4> */}
           <div className="text-center mb-5">
             <img
-              src="https://res.cloudinary.com/dx5ilizca/image/upload/v1700325425/wenyfour_Logo_byhzpv.png"
+              src="https://res.cloudinary.com/dx5ilizca/image/upload/v1700895319/Galaxy__2_-removebg-preview_w1jyje.png"
               alt="wenyfour logo"
               style={{ width: 200 }}
             />
@@ -281,7 +281,22 @@ export default function SignUpp() {
                   {/* <input type="checkbox" /> */}
                   By clicking "Sign Up," you agree to our{" "}
                   <span style={{ color: "#0d6efd", cursor: "pointer" }}>
-                    Terms and Conditions, Privacy Policy, Cookies,{" "}
+                    <a
+                      style={{ textDecoration: "none" }}
+                      rel="noreferrer"
+                      target="_blank"
+                      href="https://www.wenyfour.com/terms-and-conditions"
+                    >
+                      Terms and Conditions,{" "}
+                    </a>
+                    <a
+                      style={{ textDecoration: "none" }}
+                      rel="noreferrer"
+                      target="_blank"
+                      href="https://www.wenyfour.com/privacy-policy"
+                    >
+                      Privacy Policy, Cookies,{" "}
+                    </a>
                   </span>
                   and SMS notifications, with the option to unsubscribe anytime.
                 </p>

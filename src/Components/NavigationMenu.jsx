@@ -42,10 +42,10 @@ export default function NavigationMenu() {
         <Col lg={3} md={3} sm={3} xs={3} className="d-flex align-items-center">
           <img
             className="mobile_logo"
-            src="https://res.cloudinary.com/dx5ilizca/image/upload/v1700325425/wenyfour_Logo_byhzpv.png"
+            src="https://res.cloudinary.com/dx5ilizca/image/upload/v1700895319/Galaxy__2_-removebg-preview_w1jyje.png"
             onClick={() => navigate("/")}
             alt="wenyfour logo"
-            style={{ width: "10rem", cursor:'pointer' }}
+            style={{ width: "10rem", cursor: "pointer" }}
           />
         </Col>
         <Col

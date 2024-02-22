@@ -198,7 +198,6 @@ export default function BookRide() {
             )}
           </div> */}
           <div className="text-center">
-            
             <PaystackHookExample
               ridePrice={numeral(price * seats).format("0,0")}
             />
