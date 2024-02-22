@@ -5,11 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { useQuery } from "../helpers/helpers";
 import moment from "moment";
 import numeral from "numeral";
-import { usePaystackPayment } from "react-paystack";
+import { PaystackButton } from "react-paystack";
 import axios from "axios";
 import { api } from "../helper/apis";
-import { BiArrowBack } from "react-icons/bi";
-import { BsArrowLeftShort } from "react-icons/bs";
 import BackButton from "./BackButton";
 export default function BookRide() {
   const [loading, setLoading] = useState(false);
@@ -36,105 +34,85 @@ export default function BookRide() {
     </p>
   );
 
+  const totalPriceInKobo = price * seats * 100;
+
+  const publicKey = "pk_test_8af7fb12b568ccb4597bdddae81c9896d08273b3";
+  const amount = totalPriceInKobo; // Remember, set in kobo!
+  const email = "ysquareimperial@gmail.com";
+  const name = "yasir yakasai";
+  const phone = "+234908661696";
+
+  const componentProps = {
+    email,
+    amount,
+    metadata: {
+      name,
+      phone,
+    },
+    publicKey,
+    text: "Pay Now",
+    onSuccess: () =>
+      axios
+        .put(
+          `${api}/rides/${ride_id}/book/ride`,
+          {
+            no_seats: noOfSeats,
+          },
+          {
+            headers: {
+              "x-token": xtoken,
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response);
+          if (response.status === 200) {
+            handleModal();
+          }
+          setLoading(false);
+        })
+        .catch((e) => {
+          console.log(e);
+          setLoading(false);
+        }),
+    onClose: () => alert("Wait! You need this ride, don't go!!!"),
+  };
+
   const userData = JSON.parse(localStorage.getItem("access_token"));
   const xtoken = userData?.access_token;
 
-  const handleSubmit = (e) => {
-    // console.log("fdfasfasd");
-    // e.preventDefault();
-    // setLoading(true);
-    axios
-      .put(
-        `${api}/rides/${ride_id}/book/ride`,
-        {
-          no_seats: noOfSeats,
-        },
-        {
-          headers: {
-            "x-token": xtoken,
-          },
-        }
-      )
-      .then((response) => {
-        console.log(response);
-        if (response.status === 200) {
-          handleModal();
-        }
-        setLoading(false);
-      })
-      .catch((e) => {
-        console.log(e);
-        setLoading(false);
-      });
-  };
-
-  const config = {
-    reference: new Date().getTime().toString(),
-    email: "yasir@example.com",
-    name: "yasir",
-    amount: totalPrice, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
-    publicKey: "pk_test_6bc5f797ff907f312e689ed4547705e0ce6ee058",
-  };
-
-  // you can call this function anything
-  const onSuccess = (reference) => {
-    // Implementation for whatever you want to do with reference and after success call.
-    console.log(reference);
-    console.log("seat(s) booked");
-    // navigate("/my-bookings");
-    axios
-      .put(
-        `${api}/rides/${ride_id}/book/ride`,
-        {
-          no_seats: noOfSeats,
-        },
-        {
-          headers: {
-            "x-token": xtoken,
-          },
-        }
-      )
-      .then((response) => {
-        console.log(response);
-        if (response.status === 200) {
-          handleModal();
-        }
-        setLoading(false);
-      })
-      .catch((e) => {
-        console.log(e);
-        setLoading(false);
-      });
-  };
-
-  // you can call this function anything
-  const onClose = () => {
-    // implementation for  whatever you want to do when the Paystack dialog closed.
-    console.log("closed");
-  };
-
-  const PaystackHookExample = ({ ridePrice }) => {
-    const initializePayment = usePaystackPayment(config);
-    return (
-      <div>
-        <button
-          className="app_button"
-          style={{ fontWeight: "" }}
-          onClick={() => {
-            initializePayment(onSuccess, onClose);
-          }}
-        >
-          Pay ₦{ridePrice}
-        </button>
-      </div>
-    );
-  };
+  // const handleSubmit = (e) => {
+  //   axios
+  //     .put(
+  //       `${api}/rides/${ride_id}/book/ride`,
+  //       {
+  //         no_seats: noOfSeats,
+  //       },
+  //       {
+  //         headers: {
+  //           "x-token": xtoken,
+  //         },
+  //       }
+  //     )
+  //     .then((response) => {
+  //       console.log(response);
+  //       if (response.status === 200) {
+  //         handleModal();
+  //       }
+  //       setLoading(false);
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //       setLoading(false);
+  //     });
+  // };
 
   return (
     <div className="p-3 mt-5">
       <Row>
         <Col md={3}></Col>
         <Col md={6} className="">
+          {totalPriceInKobo}
           {/* <div className="d-flex align-items-center mb-5 gap-4">
             <BackButton />
             <h4
@@ -177,7 +155,7 @@ export default function BookRide() {
             {totalPrice}
           </div>
 
-          <div className="mt-3 text-center">
+          {/* <div className="mt-3 text-center">
             {loading ? (
               <button
                 className="app_button"
@@ -196,12 +174,10 @@ export default function BookRide() {
                 Pay ₦{numeral(price * seats).format("0,0")}
               </button>
             )}
-          </div>
-          {/* <div className="text-center">
-            <PaystackHookExample
-              ridePrice={numeral(price * seats).format("0,0")}
-            />
           </div> */}
+          <div className="text-center mt-3">
+            <PaystackButton className="app_button" {...componentProps} />
+          </div>
         </Col>
         <Col md={3}></Col>
       </Row>
