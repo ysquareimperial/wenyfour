@@ -177,7 +177,7 @@ export default function BookRide() {
             {totalPrice}
           </div>
 
-          {/* <div className="mt-3 text-center">
+          <div className="mt-3 text-center">
             {loading ? (
               <button
                 className="app_button"
@@ -196,12 +196,12 @@ export default function BookRide() {
                 Pay ₦{numeral(price * seats).format("0,0")}
               </button>
             )}
-          </div> */}
-          <div className="text-center">
+          </div>
+          {/* <div className="text-center">
             <PaystackHookExample
               ridePrice={numeral(price * seats).format("0,0")}
             />
-          </div>
+          </div> */}
         </Col>
         <Col md={3}></Col>
       </Row>
