@@ -110,10 +110,19 @@ export default function YourRides() {
                 </Card>
               ))}
               {rides.length === 0 ? (
-                <div className="text-center mt-3 mb-5">
+                <div className="text-center mt-5 mb-5">
                   <span className="">
                     You don't have any published ride(s) yet
                   </span>
+
+                  <div className="text-center mt-5">
+                    <button
+                      className="app_button p-3"
+                      onClick={() => navigate("/create-new-car")}
+                    >
+                      Publish a ride
+                    </button>
+                  </div>
                 </div>
               ) : (
                 ""

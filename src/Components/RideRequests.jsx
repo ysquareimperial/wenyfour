@@ -92,18 +92,18 @@ export default function RideRequests() {
         <Col xl={6} lg={6} md={6} sm={12} xs={12}>
           <div className="mt-3">
             <div>
-            {loading ? (
-            <div
-              class="text-center mt-5 d-flex align-items-center justify-content-center gap-2"
-              style={{ color: "#0d6efd" }}
-            >
-              <span
-                style={{ width: "2rem", height: "2rem" }}
-                class="spinner-border"
-                role="status"
-                aria-hidden="true"
-              ></span>
-            </div>
+              {loading ? (
+                <div
+                  class="text-center mt-5 d-flex align-items-center justify-content-center gap-2"
+                  style={{ color: "#0d6efd" }}
+                >
+                  <span
+                    style={{ width: "2rem", height: "2rem" }}
+                    class="spinner-border"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                </div>
               ) : (
                 <>
                   <Row>
@@ -131,13 +131,13 @@ export default function RideRequests() {
                             <span style={{ color: "grey" }}>
                               {rideDetails?.pickup_location},
                             </span>{" "}
-                            <b>{rideDetails?.from_location}</b>
+                            {rideDetails?.from_location}
                           </p>
                           <p className="rides_avail">
                             <span style={{ color: "grey" }}>
                               {rideDetails?.dropoff_location},
                             </span>{" "}
-                            <b>{rideDetails?.to_location}</b>
+                            {rideDetails?.to_location}
                           </p>
                         </div>
                       </div>
@@ -147,6 +147,9 @@ export default function RideRequests() {
                         <b>₦{numeral(rideDetails?.seat_price).format("0,0")}</b>
                       </p>
                     </Col>
+                    <p>
+                      Remaining seats <b>{rideDetails?.available_seats}</b>
+                    </p>
                   </Row>
                   <div className="divider mb-3"></div>
                   <div>
@@ -173,15 +176,18 @@ export default function RideRequests() {
                             />
                           </div>
                           <div>
-                            <p style={{ fontWeight: "bold", margin: 0 }}>
-                              {item?.name}
-                            </p>
+                            <p style={{ margin: 0 }}>{item?.name}</p>
                             <p
-                              style={{ color: "grey", fontSize: 13, margin: 0 }}
+                              style={{ color: "grey", fontSize: 12, margin: 0 }}
                             >
                               {item?.email}
                             </p>
-                            <p className="m-0">{item?.phone}</p>
+                            <p
+                              className="m-0"
+                              style={{ color: "grey", fontSize: 12, margin: 0 }}
+                            >
+                              {item?.phone}
+                            </p>
                           </div>
                         </div>
                         <hr className="hr" />

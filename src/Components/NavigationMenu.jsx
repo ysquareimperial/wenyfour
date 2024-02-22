@@ -45,7 +45,7 @@ export default function NavigationMenu() {
             src="https://res.cloudinary.com/dx5ilizca/image/upload/v1700325425/wenyfour_Logo_byhzpv.png"
             onClick={() => navigate("/")}
             alt="wenyfour logo"
-            style={{ width: "10rem" }}
+            style={{ width: "10rem", cursor:'pointer' }}
           />
         </Col>
         <Col
@@ -78,7 +78,7 @@ export default function NavigationMenu() {
             style={{ margin: 0, cursor: "pointer" }}
             size="1.6rem"
             className="publish_icon"
-            onClick={()=>navigate('/publish-ride')}
+            onClick={() => navigate("/publish-ride")}
           />
           <img
             src="https://res.cloudinary.com/dx5ilizca/image/upload/v1692800347/profile_epnaqt.png"

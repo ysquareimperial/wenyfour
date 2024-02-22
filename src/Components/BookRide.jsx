@@ -72,7 +72,7 @@ export default function BookRide() {
     reference: new Date().getTime().toString(),
     email: "yasir@example.com",
     name: "yasir",
-    amount: 20000, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
+    amount: totalPrice, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
     publicKey: "pk_test_6bc5f797ff907f312e689ed4547705e0ce6ee058",
   };
 
@@ -119,7 +119,7 @@ export default function BookRide() {
       <div>
         <button
           className="app_button"
-          style={{ fontWeight: "bold" }}
+          style={{ fontWeight: "" }}
           onClick={() => {
             initializePayment(onSuccess, onClose);
           }}
@@ -177,7 +177,7 @@ export default function BookRide() {
             {totalPrice}
           </div>
 
-          <div className="mt-3 text-center">
+          {/* <div className="mt-3 text-center">
             {loading ? (
               <button
                 className="app_button"
@@ -196,11 +196,12 @@ export default function BookRide() {
                 Pay ₦{numeral(price * seats).format("0,0")}
               </button>
             )}
-          </div>
+          </div> */}
           <div className="text-center">
-            {/* <PaystackHookExample
+            
+            <PaystackHookExample
               ridePrice={numeral(price * seats).format("0,0")}
-            /> */}
+            />
           </div>
         </Col>
         <Col md={3}></Col>
