@@ -6,7 +6,7 @@ export default function Settings() {
       <div className="text-center mt-5">
         <img
           src="https://res.cloudinary.com/dx5ilizca/image/upload/v1700325425/wenyfour_Logo_byhzpv.png"
-          alt="wenyfour logo"
+          alt="Wenyfour logo"
           style={{ width: 200 }}
         />
       </div>
@@ -23,7 +23,7 @@ export default function Settings() {
           <div className="mt-3 text-center">
             <p className="m-0" style={{ fontWeight: "" }}>
               Registration successful! Check your email or span for a confirmation link,
-              the link will be valid for only <b>1 hour</b> Welcome to wenyfour!
+              the link will be valid for only <b>1 hour</b> Welcome to Wenyfour!
             </p>
           </div>
         </Col>

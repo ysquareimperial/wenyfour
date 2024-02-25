@@ -44,7 +44,7 @@ export default function NavigationMenu() {
             className="mobile_logo"
             src="https://res.cloudinary.com/dx5ilizca/image/upload/v1700895319/Galaxy__2_-removebg-preview_w1jyje.png"
             onClick={() => navigate("/")}
-            alt="wenyfour logo"
+            alt="Wenyfour logo"
             style={{ width: "10rem", cursor: "pointer" }}
           />
         </Col>

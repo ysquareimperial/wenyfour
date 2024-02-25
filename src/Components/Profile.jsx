@@ -93,26 +93,26 @@ function Profile() {
   return (
     <div className="p-3 mt-5">
       {/* <CompHeader header={"Profile"}> */}
-      {loading ? (
-        <div
-          class="text-center mt-5 d-flex align-items-center justify-content-center gap-2"
-          style={{ color: "#0d6efd" }}
-        >
-          <span
-            style={{ width: "2rem", height: "2rem" }}
-            class="spinner-border"
-            role="status"
-            aria-hidden="true"
-          ></span>
-        </div>
-      ) : (
-        <Row className="">
-          {/* {JSON.stringify(profileData)} */}
-          <Col xl={3} lg={3} md={3} sm={12} xs={12}></Col>
-          <Col xl={6} lg={6} md={6} sm={12} xs={12}>
-            <div className="profile_heading">
-              <BackButton headingText={"Profile"} />
+      <Row className="">
+        {/* {JSON.stringify(profileData)} */}
+        <Col xl={3} lg={3} md={3} sm={12} xs={12}></Col>
+        <Col xl={6} lg={6} md={6} sm={12} xs={12}>
+          <div className="profile_heading">
+            <BackButton headingText={"Profile"} />
+          </div>
+          {loading ? (
+            <div
+              class="text-center mt-5 d-flex align-items-center justify-content-center gap-2"
+              style={{ color: "#0d6efd" }}
+            >
+              <span
+                style={{ width: "2rem", height: "2rem" }}
+                class="spinner-border"
+                role="status"
+                aria-hidden="true"
+              ></span>
             </div>
+          ) : (
             <div
               className="profile_div_wrapper d-flex justify-content-center profile_div"
               style={{ gap: 30 }}
@@ -195,10 +195,10 @@ function Profile() {
                 </>
               </div>
             </div>
-          </Col>
-          <Col xl={3} lg={3} md={3} sm={12} xs={12}></Col>
-        </Row>
-      )}
+          )}
+        </Col>
+        <Col xl={3} lg={3} md={3} sm={12} xs={12}></Col>
+      </Row>
       {/* </CompHeader> */}
     </div>
   );

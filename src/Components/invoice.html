@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Invoice - wenyfour</title>
+    <title>Invoice - Wenyfour</title>
     <link rel="stylesheet" href="style.css" media="all" />
     <link
     href="https://fonts.googleapis.com/css2?family=Lora&family=Poppins:wght@400;900&family=Quicksand&display=swap"
@@ -293,7 +293,14 @@ footer {
     
     </main>
     <footer>
-      Copyright © 2023 wenyfour. All rights reserved.
+      Copyright © <span id="currentYear"></span> Wenyfour. All rights reserved.
     </footer>
+    <script>
+      // Get the current year
+      var currentYear = new Date().getFullYear();
+
+      // Update the content of the placeholder element
+      document.getElementById("currentYear").textContent = currentYear;
+  </script>
   </body>
 </html>

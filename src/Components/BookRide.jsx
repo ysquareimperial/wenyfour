@@ -64,7 +64,7 @@ export default function BookRide() {
     reference: new Date().getTime().toString(),
     email: profileData?.email,
     amount: totalPriceInKobo,
-    publicKey: "pk_test_8af7fb12b568ccb4597bdddae81c9896d08273b3",
+    publicKey: "pk_live_d5d6ae6d5fa8f04db058bc0754242f23f4f7d0b6",
   };
 
   const onSuccess = (reference) => {
@@ -174,27 +174,6 @@ export default function BookRide() {
                 </p>
                 {totalPrice}
               </div>
-
-              {/* <div className="mt-3 text-center">
-            {loading ? (
-              <button
-                className="app_button"
-                disabled
-                style={{ fontWeight: "bold", cursor: "not-allowed" }}
-              >
-                Booking...
-              </button>
-            ) : (
-              <button
-                className="app_button"
-                style={{ fontWeight: "bold" }}
-                // onClick={() => navigate("/payment-method")}
-                onClick={handleSubmit}
-              >
-                Pay ₦{numeral(price * seats).format("0,0")}
-              </button>
-            )}
-          </div> */}
               <div className="text-center mt-3">
                 {/* <PaystackButton className="app_button" {...componentProps} /> */}
                 <PaystackHookExample />

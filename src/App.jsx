@@ -5,10 +5,16 @@ import store from "./redux/store";
 import { Provider } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import NoInternet from "./Components/NoInternet";
+import { Modal } from "reactstrap";
 
 function App() {
   const navigate = useNavigate();
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [modal, setModal] = useState(false);
+  const handleModal = () => {
+    setModal(!modal);
+  };
+  const logoutTimeout = 1 * 60 * 1000;
 
   const logout = () => {
     const keysToRemove = ["access_token", "user_data"];
@@ -30,10 +36,12 @@ function App() {
     // Implement the logic to reload your component here
     logout(); // Call the logout function
   };
-  const logoutTimeout = 15 * 60 * 1000;
   useEffect(() => {
     // Set up an interval to run the reloadComponent function every 15 minutes (15 * 60 * 1000 milliseconds)
-    const intervalId = setInterval(reloadComponent, logoutTimeout);
+    const intervalId = setInterval(() => {
+      // reloadComponent();
+      handleModal();
+    }, logoutTimeout);
 
     // Clear the interval when the component is unmounted to prevent memory leaks
     return () => clearTimeout(intervalId);
@@ -73,6 +81,24 @@ function App() {
             <NoInternet />
           </>
         )}
+        <button onClick={handleModal}>isOpen</button>
+        <Modal isOpen={modal}>
+          <div className="p-3 text-center">
+            <h4>
+              <b>Your session has expired</b>
+            </h4>
+            <p>Please Sign in again to continue using Wenyfour</p>
+            <button
+              className="app_button"
+              onClick={() => {
+                logout();
+                reloadComponent();
+              }}
+            >
+              Sign in
+            </button>
+          </div>
+        </Modal>
       </Provider>
     </div>
   );
