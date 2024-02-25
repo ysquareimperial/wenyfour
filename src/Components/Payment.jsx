@@ -15,11 +15,7 @@ export default function Payment() {
   const handleSubmit = () => {
     // console.log(payment);
   };
-  /*useEffect(() => {
-    if (!localStorage.getItem("access_token")) {
-      navigate("/auth");
-    }
-  }, []);*/
+
   return (
     <div className="p-3">
       <h4>Payment</h4>

@@ -24,14 +24,8 @@ export default function SearchResults() {
   const xtoken = userData?.access_token;
 
   const [loading, setLoading] = useState(false);
-  /*useEffect(() => {
-    if (!localStorage.getItem("access_token")) {
-      navigate("/auth");
-    }
-  }, []);*/
 
-  // const adfasdf = `${api}/rides/q/search/ride?start_loc=${start_loc}&to_loc=${to_loc}&seats=${seats}`;
-  // const ddddd = 'https://api.wenyfour.com/api/rides/q/search/ride?start_loc=Kano&to_loc=Hessen&seats=2'
+
   const getAvailableRides = () => {
     if (xtoken) {
       setLoading(true);
@@ -131,10 +125,10 @@ export default function SearchResults() {
                         </div>
                         <div>
                           <p className="rides_avail">
-                            <b>{item?.from_location}</b>
+                           {item?.from_location}
                           </p>
                           <p className="rides_avail m-0">
-                            <b>{item?.to_location}</b>
+                           {item?.to_location}
                           </p>
                         </div>
                       </div>

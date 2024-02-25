@@ -296,6 +296,9 @@ body {
   border-radius: 10px;
 }
 @media (max-width: 575.98px) {
+  *{
+    font-size: 13px;
+  }
   .support_btn {
     font-size: 8px;
     border-radius: 5px;

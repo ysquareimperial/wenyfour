@@ -15,6 +15,7 @@ export default function SearchRide() {
   const [searchData, setSearchData] = useState(formData);
   const navigate = useNavigate();
 
+  
   const handleChange = (e) => {
     setSearchData({ ...searchData, [e.target.name]: e.target.value });
   };

@@ -144,16 +144,10 @@ export default function RideDetails() {
                   <img src={icon} style={{ width: 13 }} />
                 </div>
                 <div>
-                  <p className="rides_avail" style={{ fontWeight: "bold" }}>
+                  <p className="rides_avail">
                     {rideDetails?.pickup_location}, {rideDetails?.from_location}
                   </p>
-                  {/* <p
-                    className="rides_avail"
-                    style={{ fontSize: 13, color: "" }}
-                  >
-                    {rideDetails?.from_location}
-                  </p> */}
-                  <p className="rides_avail" style={{ fontWeight: "bold" }}>
+                  <p className="rides_avail">
                     {rideDetails?.dropoff_location}, {rideDetails?.to_location}
                   </p>
                   {/* <p
