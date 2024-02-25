@@ -15,7 +15,7 @@ function NoInternet() {
       <button className="app_button" onClick={() => window.location.reload()}>
         Retry
       </button>
-      <div className="internet">
+      <div className="internet" style={{ zIndex: 1 }}>
         <p className="m-0">No Internet connection</p>
       </div>
     </div>
