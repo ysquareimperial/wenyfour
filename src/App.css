@@ -185,6 +185,15 @@ body {
   width: 100%;
   padding: 3px;
 }
+.support_btn {
+  font-size: 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  color: black;
+  cursor: pointer;
+}
 .hr {
   color: rgb(157, 157, 157);
 }
@@ -260,7 +269,7 @@ body {
   display: flex;
 }
 
-.publish_icon{
+.publish_icon {
   background-color: #f1f1f1;
   border-radius: 5px;
 }
@@ -278,12 +287,25 @@ body {
   .edit_profile {
     display: none;
   }
-  .publish_icon{
+  .publish_icon {
     display: none;
   }
 }
-  @media (max-width: 575.98px) {
-  .notification_icon{
+@media (max-width: 575.98px) {
+  .support_btn {
+    font-size: 8px;
+    border-radius: 5px;
+    /* font-weight: bold; */
+    /* font-weight: ; */
+    padding: 5px;
+    border: none;
+    color: black;
+    cursor: pointer;
+  }
+  .help_icon{
+    font-size: 1rem;
+  }
+  .notification_icon {
     display: none !important;
   }
   .add {

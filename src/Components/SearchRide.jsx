@@ -140,7 +140,7 @@ export default function SearchRide() {
             />
           </div>
         </div>
-        <div className="m-0 text-center mt-3">
+        <div className="m-0 text-center mt-5">
           <button className="app_button" style={{ padding: "13px 40px" }}>
             GO
           </button>

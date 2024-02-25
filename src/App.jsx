@@ -6,15 +6,18 @@ import { Provider } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import NoInternet from "./Components/NoInternet";
 import { Modal } from "reactstrap";
+import { BsFillQuestionCircleFill } from "react-icons/bs";
 
 function App() {
+  const _time_ = new Date();
+  const year_ = _time_.getFullYear();
   const navigate = useNavigate();
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [modal, setModal] = useState(false);
   const handleModal = () => {
     setModal(!modal);
   };
-  const logoutTimeout = 1 * 60 * 1000;
+  const logoutTimeout = 15 * 60 * 1000;
 
   const logout = () => {
     const keysToRemove = ["access_token", "user_data"];
@@ -71,6 +74,10 @@ function App() {
       window.removeEventListener("offline", handleOffline);
     };
   }, []);
+
+  // const currentYear = new Date().getFullYear();
+  const _time = new Date();
+  const year = _time.getFullYear();
   return (
     <div>
       <Provider store={store}>
@@ -81,7 +88,6 @@ function App() {
             <NoInternet />
           </>
         )}
-        <button onClick={handleModal}>isOpen</button>
         <Modal isOpen={modal}>
           <div className="p-3 text-center">
             <h4>
@@ -99,6 +105,27 @@ function App() {
             </button>
           </div>
         </Modal>
+        {/* <div className="text-center text-secondary" style={{ marginTop: 100 }}>
+        </div> */}
+        <div
+          className="d-flex flex-column justify-content-end p-3"
+          style={{ position: "absolute", bottom: 0, right: 0 }}
+        >
+          <div className="d-flex justify-content-end">
+            <button
+              className="m-0 support_btn d-flex align-items-center gap-2 mt-3"
+              style={{
+               
+              }}
+            >
+              Support Center
+              <BsFillQuestionCircleFill className="text-secondary help_icon" />
+            </button>
+          </div>
+          <p className="mt-2 m-0 text-secondary" style={{ fontSize: 10 }}>
+            Copyright © {year} Wenyfour. All rights reserved.
+          </p>
+        </div>
       </Provider>
     </div>
   );
