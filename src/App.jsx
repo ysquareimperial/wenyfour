@@ -108,15 +108,13 @@ function App() {
         {/* <div className="text-center text-secondary" style={{ marginTop: 100 }}>
         </div> */}
         <div
-          className="d-flex flex-column justify-content-end p-3"
-          style={{ position: "absolute", bottom: 0, right: 0 }}
+          className="d-flex flex-column justify-content-end p-3 support_div mt-3"
+          style={{ position: "fixed", bottom: 0, right: 0 }}
         >
           <div className="d-flex justify-content-end">
             <button
-              className="m-0 support_btn d-flex align-items-center gap-2 mt-3"
-              style={{
-               
-              }}
+              className="m-0 support_btn d-flex align-items-center gap-2"
+              style={{}}
             >
               Support Center
               <BsFillQuestionCircleFill className="text-secondary help_icon" />
