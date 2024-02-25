@@ -148,6 +148,24 @@ export default function PublishRide() {
     }
     return `${year}-${month}-${day}`;
   }
+
+  //Calculating min days
+  function calculateMinDate() {
+    const currentDate = new Date();
+    const maxDate = new Date(currentDate);
+    maxDate.setDate(currentDate.getDate() + 0);
+
+    const year = maxDate.getFullYear();
+    let month = maxDate.getMonth() + 1;
+    if (month < 10) {
+      month = "0" + month;
+    }
+    let day = maxDate.getDate();
+    if (day < 10) {
+      day = "0" + day;
+    }
+    return `${year}-${month}-${day}`;
+  }
   return (
     <div className="p-3 mt-5">
       <Row>
@@ -194,7 +212,7 @@ export default function PublishRide() {
                   <input
                     className="input_field"
                     type="date"
-                    min="2023-10-05"
+                    min={calculateMinDate()}
                     max={calculateMaxDate()}
                     name="date"
                     value={publishRide.date}
