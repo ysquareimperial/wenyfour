@@ -14,39 +14,39 @@ export default function DeleteAccount() {
   const loggedInUser = useSelector((state) => state?.auth?.user);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    // Check localStorage for user data
-    const userData = JSON.parse(localStorage.getItem("access_token"));
-    if (userData) {
-      // Dispatch loginSuccess action to restore user data
-      const { email, access_token, token_type, name, user_id } = userData;
-      dispatch(loginSuccess(email, access_token, token_type, name, user_id));
-    }
-  }, [dispatch]);
+  const userData = JSON.parse(localStorage.getItem("access_token"));
+  const xtoken = userData?.access_token;
   const handleDelete = () => {
-    setLoading(true);
-    try {
-      axios
-        .delete(`${api}/auth/users/${loggedInUser?.user_id}/delete`)
-        .then((response) => {
-          // console.log(response);
-          setLoading(false);
-          if (response.error) {
-            console.log(error);
-          } else {
-            const keysToRemove = ["access_token", "user_data"];
-            // Loop through the keys and remove each item
-            keysToRemove.forEach((key) => {
-              localStorage.removeItem(key);
-            });
-            localStorage.removeItem("access_token");
-            if (!localStorage.getItem("access_token" && "user_data")) {
-              navigate("/auth");
+    if (xtoken) {
+      setLoading(true);
+      try {
+        axios
+          .delete(`${api}/auth/users/${loggedInUser?.user_id}/delete`, {
+            headers: {
+              "x-token": xtoken,
+            },
+          })
+          .then((response) => {
+            // console.log(response);
+            setLoading(false);
+            if (response.error) {
+              console.log(error);
+            } else {
+              const keysToRemove = ["access_token", "user_data"];
+              // Loop through the keys and remove each item
+              keysToRemove.forEach((key) => {
+                localStorage.removeItem(key);
+              });
+              localStorage.removeItem("access_token");
+              if (!localStorage.getItem("access_token" && "user_data")) {
+                navigate("/auth");
+                window.location.reload();
+              }
             }
-          }
-        });
-    } catch (error) {
-      console.log(error);
+          });
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
   return (
@@ -59,6 +59,7 @@ export default function DeleteAccount() {
           <div className="mt-3">
             <div className="mt-4">
               <p style={{ fontSize: 14 }}>
+                {/* {JSON.stringify(xtoken)} */}
                 Are you sure want to delete your account?
               </p>
               <b style={{ fontSize: 14 }}>Please consider the following</b>

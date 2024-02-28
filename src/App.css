@@ -291,12 +291,12 @@ body {
     display: none;
   }
 }
-.support_div{
+.support_div {
   background-color: rgba(255, 255, 255, 0.563);
   border-radius: 10px;
 }
 @media (max-width: 575.98px) {
-  *{
+  * {
     font-size: 13px;
   }
   .support_btn {
@@ -309,7 +309,7 @@ body {
     color: black;
     cursor: pointer;
   }
-  .help_icon{
+  .help_icon {
     font-size: 1rem;
   }
   .notification_icon {

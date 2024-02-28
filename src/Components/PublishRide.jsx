@@ -230,6 +230,7 @@ export default function PublishRide() {
                     onChange={handleChange}
                   >
                     <option>-</option>
+                    <option>00:00</option>
                     <option>00:10</option>
                     <option>00:20</option>
                     <option>00:30</option>
@@ -492,6 +493,7 @@ export default function PublishRide() {
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
+                        <option value="3">4</option>
                       </>
                     ) : publishRide.car_id &&
                       cars.find((car) => car.id === publishRide.car_id)
