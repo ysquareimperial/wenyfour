@@ -72,7 +72,7 @@ export default function NavigationMenu() {
           <AiOutlineBell
             style={{ margin: 0, cursor: "pointer" }}
             size="1.6rem"
-            className="notification_icon"
+            className="notification_icon text-secondary"
           />
           <BsPlus
             style={{ margin: 0, cursor: "pointer" }}
