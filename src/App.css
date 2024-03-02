@@ -387,6 +387,9 @@ body {
   .pub_web {
     display: none;
   }
+  .footer_text{
+    font-size: 10px !important;
+  }
 }
 
 .searchhhhh {

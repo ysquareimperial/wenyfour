@@ -108,7 +108,7 @@ function App() {
         {/* <div className="text-center text-secondary" style={{ marginTop: 100 }}>
         </div> */}
         <div
-          className="d-flex flex-column justify-content-end p-3  mt-3"
+          className="d-flex flex-column justify-content-end p-3  mt-3 mb-4"
           style={{ position: "fixed", bottom: 0, right: 0 }}
         >
           <div className="d-flex justify-content-end">
@@ -116,15 +116,24 @@ function App() {
               className="m-0 support_btn d-flex align-items-center gap-2"
               style={{}}
             > */}
-              
-              <BsFillQuestionCircleFill className="text-secondary help_icon" />
+
+            <BsFillQuestionCircleFill className="text-secondary help_icon" />
             {/* </button> */}
           </div>
-          {/* <p className="m-0 text-secondary" style={{ fontSize: 10, float:'right' }}>
-            Copyright © {year} Wenyfour. All rights reserved.
-          </p> */}
         </div>
       </Provider>
+      <p
+        className="m-0 text-secondary mb-2 footer_text"
+        style={{
+          fontSize: 14,
+          textAlign: "center",
+          position: "absolute",
+          bottom: 0,
+          left: 10,
+        }}
+      >
+        Copyright © {year} Wenyfour. All rights reserved.
+      </p>
     </div>
   );
 }

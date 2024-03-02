@@ -23,10 +23,9 @@ import SignupMessage from "../Components/SignupMessage";
 import EditCar from "../Components/EditCar";
 import MyVehicles from "../Components/MyVehicles";
 import MyBookings from "../Components/MyBookings";
+import NotFound from "../Components/NotFound";
 
 function AppNavigation() {
-
-
   let element = useRoutes([
     {
       element: <AppIndex />,
@@ -116,6 +115,10 @@ function AppNavigation() {
     {
       path: "/auth",
       element: <SignUpp />,
+    },
+    {
+      path: "/*",
+      element: <NotFound />,
     },
   ]);
   return element;
