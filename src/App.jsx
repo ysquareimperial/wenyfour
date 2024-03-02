@@ -108,7 +108,7 @@ function App() {
         {/* <div className="text-center text-secondary" style={{ marginTop: 100 }}>
         </div> */}
         <div
-          className="d-flex flex-column justify-content-end p-3  mt-3 mb-4"
+          className="d-flex flex-column justify-content-end p-3  mt-4 mb-4"
           style={{ position: "fixed", bottom: 0, right: 0 }}
         >
           <div className="d-flex justify-content-end">
