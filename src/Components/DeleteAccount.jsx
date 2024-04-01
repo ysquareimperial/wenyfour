@@ -44,7 +44,8 @@ export default function DeleteAccount() {
               }
             }
           });
-      } catch (error) {4
+      } catch (error) {
+        4;
         console.log(error);
       }
     }

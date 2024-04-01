@@ -246,7 +246,7 @@ export default function SignUpp() {
                 <Col md={6}>
                   <div className="mt-3">
                     <label className="label" htmlFor="password">
-                      New Password
+                      Password
                     </label>
                     <input
                       className="input_field"
