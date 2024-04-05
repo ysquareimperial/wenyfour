@@ -121,7 +121,7 @@ export default function EditProfile() {
                 <label className="label">DOB</label>
                 <input
                   className="input_field"
-                  type="datetime-local"
+                  type="date"
                   name="date_of_birth"
                   value={formData.date_of_birth}
                   onChange={handleChange}

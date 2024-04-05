@@ -147,7 +147,9 @@ function Profile() {
                   {/* . */}
                   <p className="m-0 d-flex align-items-center gap-2">
                     <PiUserLight />
-                    {dobToAge(profileData?.date_of_birth)} y
+                    {profileData?.date_of_birth === null
+                      ? "No DOB"
+                      : dobToAge(profileData?.date_of_birth) + "y"}
                     {/* {moment(profileData?.date_of_birth, "YYYYMMDD").fromNow()} */}
                   </p>{" "}
                   {/* . */}
