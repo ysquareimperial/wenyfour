@@ -25,6 +25,7 @@ import MyVehicles from "../Components/MyVehicles";
 import MyBookings from "../Components/MyBookings";
 import NotFound from "../Components/NotFound";
 import ChangePassword from "../Components/ChangePassword";
+import ForgottenPassword from "../Components/ForgottenPassword";
 
 function AppNavigation() {
   let element = useRoutes([
@@ -116,6 +117,10 @@ function AppNavigation() {
     {
       path: "/signup-message",
       element: <SignupMessage />,
+    },
+    {
+      path: "/forgotten-password",
+      element: <ForgottenPassword />,
     },
     {
       path: "/auth",
