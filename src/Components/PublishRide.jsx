@@ -44,7 +44,6 @@ export default function PublishRide() {
     e.preventDefault();
     if (
       publishRide.car_id === "" ||
-      publishRide.gender === "" ||
       publishRide.time === "" ||
       publishRide.seats == ""
     ) {
@@ -291,7 +290,7 @@ export default function PublishRide() {
                     onChange={handleChange}
                   />
                 </Col>
-                <Col md={6} className="mt-3">
+                {/* <Col md={6} className="mt-3">
                   <label className="label">Select your gender</label>
                   <select
                     required
@@ -304,7 +303,7 @@ export default function PublishRide() {
                     <option>Male</option>
                     <option>Female</option>
                   </select>
-                </Col>
+                </Col> */}
                 <Col md={6} className="mt-3">
                   <label className="label">Price per seat</label>
                   <select
