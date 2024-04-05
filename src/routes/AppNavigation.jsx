@@ -24,6 +24,7 @@ import EditCar from "../Components/EditCar";
 import MyVehicles from "../Components/MyVehicles";
 import MyBookings from "../Components/MyBookings";
 import NotFound from "../Components/NotFound";
+import ChangePassword from "../Components/ChangePassword";
 
 function AppNavigation() {
   let element = useRoutes([
@@ -99,6 +100,10 @@ function AppNavigation() {
         {
           path: "/delete-account",
           element: <DeleteAccount />,
+        },
+        {
+          path: "/change-password",
+          element: <ChangePassword />,
         },
         {
           path: "/my-vehicles",

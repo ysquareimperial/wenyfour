@@ -98,7 +98,7 @@ function App() {
               className="app_button"
               onClick={() => {
                 logout();
-                reloadComponent();
+                // reloadComponent();
               }}
             >
               Sign in
