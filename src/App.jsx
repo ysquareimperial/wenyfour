@@ -92,7 +92,7 @@ function App() {
             <NoInternet />
           </>
         )}
-        <Modal size="sm" isOpen={modal}>
+        <Modal isOpen={modal}>
           <div className="p-3 text-center small">
             <h4>
               <b>Your session has expired</b>
