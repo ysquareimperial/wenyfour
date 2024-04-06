@@ -101,7 +101,7 @@ export default function ForgottenPassword() {
         <Col md={4}></Col>
         <Modal size="sm" isOpen={modal}>
           <div className="p-3 text-center">
-            <p>Mail has been sent to {email}</p>
+            <p className="small">Mail has been sent to {email}.</p>
             <button className="app_button" onClick={toggleModal}>
               OK
             </button>

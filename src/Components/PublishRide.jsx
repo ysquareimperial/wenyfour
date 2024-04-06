@@ -427,9 +427,9 @@ export default function PublishRide() {
         </Col>
         <Col xl={4} lg={4} md={4} sm={12} xs={12}></Col>
       </Row>
-      <Modal isOpen={modal}>
+      <Modal size="sm" isOpen={modal}>
         <div className="p-3 text-center">
-          <p>You don't have registered car(s) yet</p>
+          <p>You don't have registered car(s) yet.</p>
           <button
             className="app_button p-3"
             onClick={() => navigate("/create-new-car")}

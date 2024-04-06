@@ -88,12 +88,12 @@ function App() {
             <NoInternet />
           </>
         )}
-        <Modal isOpen={modal}>
-          <div className="p-3 text-center">
+        <Modal size="sm" isOpen={modal}>
+          <div className="p-3 text-center small">
             <h4>
               <b>Your session has expired</b>
             </h4>
-            <p>Please Sign in again to continue using Wenyfour</p>
+            <p>Please Sign in again to continue using Wenyfour.</p>
             <button
               className="app_button"
               onClick={() => {
@@ -107,22 +107,16 @@ function App() {
         </Modal>
         {/* <div className="text-center text-secondary" style={{ marginTop: 100 }}>
         </div> */}
-        <div
+        {/* <div
           className="d-flex flex-column justify-content-end p-3  mt-4 mb-4"
           style={{ position: "fixed", bottom: 0, right: 0 }}
         >
           <div className="d-flex justify-content-end">
-            {/* <button
-              className="m-0 support_btn d-flex align-items-center gap-2"
-              style={{}}
-            > */}
-
             <BsFillQuestionCircleFill className="text-secondary help_icon" />
-            {/* </button> */}
           </div>
-        </div>
+        </div> */}
       </Provider>
-      <p
+      {/* <p
         className="m-0 text-secondary mb-2 footer_text"
         style={{
           fontSize: 14,
@@ -133,7 +127,7 @@ function App() {
         }}
       >
         Copyright © {year} Wenyfour. All rights reserved.
-      </p>
+      </p> */}
     </div>
   );
 }

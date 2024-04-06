@@ -26,6 +26,7 @@ import MyBookings from "../Components/MyBookings";
 import NotFound from "../Components/NotFound";
 import ChangePassword from "../Components/ChangePassword";
 import ForgottenPassword from "../Components/ForgottenPassword";
+import ResetPassword from "../Components/ResetPassword";
 
 function AppNavigation() {
   let element = useRoutes([
@@ -121,6 +122,10 @@ function AppNavigation() {
     {
       path: "/forgotten-password",
       element: <ForgottenPassword />,
+    },
+    {
+      path: "/reset",
+      element: <ResetPassword />,
     },
     {
       path: "/auth",

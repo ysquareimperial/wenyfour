@@ -153,9 +153,9 @@ export default function ChangePassword() {
               </Row>
             </form>
           </div>
-          <Modal size="" isOpen={modal}>
+          <Modal size="sm" isOpen={modal}>
             <div className="p-3 text-center">
-              <p>Password changed successfully</p>
+              <p className="small">Password changed successfully.</p>
               <button
                 className="app_button"
                 onClick={() => navigate("/settings")}

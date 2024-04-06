@@ -127,7 +127,7 @@ export default function MyVehicles() {
                       />
                     </div>
                   </div>
-                  <Modal toggle={handleModal} isOpen={modal}>
+                  <Modal size="sm" toggle={handleModal} isOpen={modal}>
                     <div className="p-3">
                       <p>Are you sure you want to delete this vehicle?</p>
                       <div className="d-flex justify-content-between">

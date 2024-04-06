@@ -183,9 +183,9 @@ export default function BookRide() {
         </Col>
         <Col md={3}></Col>
       </Row>
-      <Modal isOpen={modal}>
+      <Modal size="sm" isOpen={modal}>
         <div className="p-3 text-center">
-          <p>Ride booked successfully</p>
+          <p className="small">Ride booked successfully.</p>
           <button
             className="app_button"
             onClick={() => navigate("/my-bookings")}
