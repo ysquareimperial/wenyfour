@@ -78,7 +78,7 @@ export default function CreateCar() {
             {/* {JSON.stringify(xtoken)} */}
             <form onSubmit={handleSubmit}>
               <Row>
-                <Col md={6} className="mt-3">
+                {/* <Col md={6} className="mt-3">
                   <label className="label">Vehicle brand</label>
                   <input
                     required
@@ -89,6 +89,38 @@ export default function CreateCar() {
                     value={createCar.brand}
                     onChange={handleChange}
                   />
+                </Col> */}
+                <Col md={6} className="mt-3">
+                  <label className="label">Vehicle brand</label>
+                  <select
+                    className="input_field"
+                    name="brand"
+                    required
+                    value={createCar.brand}
+                    onChange={handleChange}
+                  >
+                    <option value="">-</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Volkswagen">Volkswagen</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Mercedes-Benz">Mercedes-Benz</option>
+                    <option value="Ford">Ford</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Chevrolet">Chevrolet</option>
+                    <option value="Cadillac">Cadillac</option>
+                    <option value="GMC">GMC</option>
+                    <option value="Hyundai">Hyundai</option>
+                    <option value="Nissan">Nissan</option>
+                    <option value="Audi">Audi</option>
+                    <option value="Tesla">Tesla</option>
+                    <option value="Kia">Kia</option>
+                    <option value="Subaru">Subaru</option>
+                    <option value="Porsche">Porsche</option>
+                    <option value="Lexus">Lexus</option>
+                    <option value="Volvo">Volvo</option>
+                    <option value="Mazda">Mazda</option>
+                    <option value="Mitsubishi">Mitsubishi</option>
+                  </select>
                 </Col>
                 <Col md={6} className="mt-3">
                   <label className="label">Vehicle model</label>
@@ -102,7 +134,6 @@ export default function CreateCar() {
                     onChange={handleChange}
                   />
                 </Col>
-
                 <Col md={6} className="mt-3">
                   <label className="label">Vehicle type</label>
                   <select
