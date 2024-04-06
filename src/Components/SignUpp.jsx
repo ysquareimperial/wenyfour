@@ -156,8 +156,13 @@ export default function SignUpp() {
                   <input type="checkbox" onClick={handleTogglePassword} />
                   {showPassword ? "Hide" : "Show"} Password
                 </label>
-                <p className="forgot_p m-0" style={{cursor:'pointer'}} onClick={(()=>navigate('/forgotten-password'))}>Forgotten Password?</p>
-                <p className="forgot_p m-0" onClick={(()=>navigate('/reset'))}>Forgotten Password?</p>
+                <p
+                  className="forgot_p m-0"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => navigate("/forgotten-password")}
+                >
+                  Forgotten Password?
+                </p>
               </div>
               {!loading ? (
                 <button className="app_button auth mt-3 p-3">Sign In</button>
