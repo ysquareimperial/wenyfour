@@ -75,116 +75,116 @@ export default function EditCar() {
   return (
     <div className="mt-5">
       {/* <CompHeader header={"Edit vehicle"}> */}
-      <BackButton headingText={'Edit vehicle'}/>
-        <Row className="m-0">
-          <Col md={4}></Col>
-          <Col md={4}>
-            <div className="mt-3">
-              {/* {JSON.stringify(editVehicle)} */}
-              {/* {JSON.stringify(xtoken)} */}
-              <form onSubmit={handleSubmit}>
-                <Row>
-                  <Col md={6} className="mt-3">
-                    <label className="label">Car Brand</label>
-                    <input
-                      required
-                      minLength={2}
-                      className="input_field"
-                      type="text"
-                      name="brand"
-                      value={editVehicle.brand}
-                      onChange={handleChange}
-                    />
-                  </Col>
-                  <Col md={6} className="mt-3">
-                    <label className="label">Car Model</label>
-                    <input
-                      required
-                      minLength={2}
-                      className="input_field"
-                      type="text"
-                      name="model"
-                      value={editVehicle.model}
-                      onChange={handleChange}
-                    />
-                  </Col>
-                  <Col md={6} className="mt-3">
-                    <label className="label">Vehicle type</label>
-                    <select
-                      className="input_field"
-                      name="c_type"
-                      required
-                      value={editVehicle.c_type}
-                      onChange={handleChange}
+      <BackButton headingText={"Edit vehicle"} />
+      <Row className="m-0">
+        <Col md={4}></Col>
+        <Col md={4}>
+          <div className="mt-3">
+            {/* {JSON.stringify(editVehicle)} */}
+            {/* {JSON.stringify(xtoken)} */}
+            <form onSubmit={handleSubmit}>
+              <Row>
+                <Col md={6} className="mt-3">
+                  <label className="label">Car brand</label>
+                  <input
+                    required
+                    minLength={2}
+                    className="input_field"
+                    type="text"
+                    name="brand"
+                    value={editVehicle.brand}
+                    onChange={handleChange}
+                  />
+                </Col>
+                <Col md={6} className="mt-3">
+                  <label className="label">Car model</label>
+                  <input
+                    required
+                    minLength={2}
+                    className="input_field"
+                    type="text"
+                    name="model"
+                    value={editVehicle.model}
+                    onChange={handleChange}
+                  />
+                </Col>
+                <Col md={6} className="mt-3">
+                  <label className="label">Vehicle type</label>
+                  <select
+                    className="input_field"
+                    name="c_type"
+                    required
+                    value={editVehicle.c_type}
+                    onChange={handleChange}
+                  >
+                    <option>-</option>
+                    <option>Sedan</option>
+                    <option>SUV</option>
+                    <option>Coupe</option>
+                    <option>Sports Car</option>
+                    <option>Minivan</option>
+                    <option>Van</option>
+                    <option>Bus</option>
+                  </select>
+                </Col>
+                <Col md={6} className="mt-3">
+                  <label className="label">Car color</label>
+                  <input
+                    required
+                    minLength={2}
+                    className="input_field"
+                    type="text"
+                    name="color"
+                    value={editVehicle.color}
+                    onChange={handleChange}
+                  />
+                </Col>
+                <Col md={6} className="mt-3">
+                  <label className="label">Driver license number</label>
+                  <input
+                    required
+                    minLength={2}
+                    className="input_field"
+                    type="text"
+                    name="c_license"
+                    value={editVehicle.c_license}
+                    onChange={handleChange}
+                  />
+                </Col>
+                <div className="text-center mt-3">
+                  {loading ? (
+                    <button
+                      disabled={loading}
+                      className="app_button p-3"
+                      style={{ width: "100%" }}
                     >
-                      <option>-</option>
-                      <option>Sedan</option>
-                      <option>SUV</option>
-                      <option>Coupe</option>
-                      <option>Sports Car</option>
-                      <option>Minivan</option>
-                      <option>Van</option>
-                      <option>Bus</option>
-                    </select>
-                  </Col>
-                  <Col md={6} className="mt-3">
-                    <label className="label">Car Color</label>
-                    <input
-                      required
-                      minLength={2}
-                      className="input_field"
-                      type="text"
-                      name="color"
-                      value={editVehicle.color}
-                      onChange={handleChange}
-                    />
-                  </Col>
-                  <Col md={6} className="mt-3">
-                    <label className="label">Driver License</label>
-                    <input
-                      required
-                      minLength={2}
-                      className="input_field"
-                      type="text"
-                      name="c_license"
-                      value={editVehicle.c_license}
-                      onChange={handleChange}
-                    />
-                  </Col>
-                  <div className="text-center mt-3">
-                    {loading ? (
-                      <button
-                        disabled={loading}
-                        className="app_button p-3"
-                        style={{ width: "100%" }}
+                      <div
+                        class="text-centerd-flex align-items-center justify-content-center gap-2"
+                        style={{ color: "white" }}
                       >
-                        <div
-                          class="text-centerd-flex align-items-center justify-content-center gap-2"
-                          style={{ color: "white" }}
-                        >
-                          <span
-                            style={{ width: "1rem", height: "1rem" }}
-                            class="spinner-border"
-                            role="status"
-                            aria-hidden="true"
-                          ></span>
-                        </div>
-                      </button>
-                    ) : (
-                      <button
-                        className="app_button p-3"
-                        style={{ width: "100%" }}
-                      >
-                        Save
-                      </button>
-                    )}
-                  </div>
-                </Row>
-              </form>
-            </div>
-          </Col>
-          <Col md={4}></Col>
-        </Row>
+                        <span
+                          style={{ width: "1rem", height: "1rem" }}
+                          class="spinner-border"
+                          role="status"
+                          aria-hidden="true"
+                        ></span>
+                      </div>
+                    </button>
+                  ) : (
+                    <button
+                      className="app_button p-3"
+                      style={{ width: "100%" }}
+                    >
+                      Save
+                    </button>
+                  )}
+                </div>
+              </Row>
+            </form>
+          </div>
+        </Col>
+        <Col md={4}></Col>
+      </Row>
       {/* </CompHeader> */}
     </div>
   );

@@ -115,10 +115,10 @@ export default function CreateCar() {
                     <option>-</option>
                     <option>Sedan</option>
                     <option>SUV</option>
-                    <option>Coupe</option>
+                    {/* <option>Coupe</option> */}
                     <option>Sports Car</option>
-                    <option>Minivan</option>
-                    <option>Van</option>
+                    {/* <option>Minivan</option> */}
+                    {/* <option>Van</option> */}
                     <option>Bus</option>
                   </select>
                 </Col>
@@ -135,7 +135,7 @@ export default function CreateCar() {
                   />
                 </Col>
                 <Col md={6} className="mt-3">
-                  <label className="label">Driver license</label>
+                  <label className="label">Driver license number</label>
                   <input
                     required
                     minLength={2}

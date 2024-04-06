@@ -135,7 +135,7 @@ export default function PublishRide() {
   function calculateMaxDate() {
     const currentDate = new Date();
     const maxDate = new Date(currentDate);
-    maxDate.setDate(currentDate.getDate() + 3);
+    maxDate.setDate(currentDate.getDate() + 7);
 
     const year = maxDate.getFullYear();
     let month = maxDate.getMonth() + 1;
@@ -387,6 +387,16 @@ export default function PublishRide() {
                         <option value="12">12</option>
                         <option value="13">13</option>
                         <option value="14">14</option>
+                      </>
+                    ) : publishRide.car_id &&
+                      cars.find((car) => car.id === publishRide.car_id)
+                        .c_type === "Sports Car" ? (
+                      <>
+                        <option value="">-</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
                       </>
                     ) : (
                       ""
