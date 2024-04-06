@@ -131,11 +131,11 @@ export default function RideRequests() {
                     </div>
                     <div>
                       <p className="rides_avail">
-                        {rideDetails?.pickup_location},
+                        {rideDetails?.pickup_location},{" "}
                         {rideDetails?.from_location}
                       </p>
                       <p className="rides_avail">
-                        {rideDetails?.dropoff_location},
+                        {rideDetails?.dropoff_location},{" "}
                         {rideDetails?.to_location}
                       </p>
                     </div>
