@@ -51,10 +51,14 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (location.pathname === "/reset") {
+      return;
+    }
+
     if (!localStorage.getItem("access_token")) {
       navigate("/auth");
     }
-  }, []);
+  }, [location.pathname, navigate]);
 
   // Implementing No Internet
   useEffect(() => {
