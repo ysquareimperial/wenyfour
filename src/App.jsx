@@ -51,7 +51,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (location.pathname === "/reset") {
+    if (
+      location.pathname === "/reset" ||
+      location.pathname === "/forgotten-password"
+    ) {
       return;
     }
 
