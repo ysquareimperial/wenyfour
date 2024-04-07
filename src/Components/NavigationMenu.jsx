@@ -101,7 +101,10 @@ export default function NavigationMenu() {
             </DropdownToggle>
             <DropdownMenu className="shadow profile_dropdown p-3">
               <div
-                onClick={() => navigate("/published-rides")}
+                onClick={() => {
+                  navigate("/published-rides");
+                  showDropdown();
+                }}
                 style={{ gap: 10 }}
                 className="profile_drop_item d-flex justify-content-between align-items-center"
               >
@@ -120,7 +123,10 @@ export default function NavigationMenu() {
 
               <hr />
               <div
-                onClick={() => navigate("/my-vehicles")}
+                onClick={() => {
+                  navigate("/my-vehicles");
+                  showDropdown();
+                }}
                 style={{ gap: 10 }}
                 className="profile_drop_item d-flex justify-content-between align-items-center"
               >
@@ -141,6 +147,7 @@ export default function NavigationMenu() {
                 style={{ gap: 10 }}
                 onClick={() => {
                   navigate("/my-bookings");
+                  showDropdown();
                 }}
                 className="profile_drop_item d-flex justify-content-between align-items-center"
               >
@@ -185,7 +192,10 @@ export default function NavigationMenu() {
               <div
                 style={{ gap: 10 }}
                 className="profile_drop_item d-flex justify-content-between align-items-center"
-                onClick={() => navigate("/settings")}
+                onClick={() => {
+                  navigate("/settings");
+                  showDropdown();
+                }}
               >
                 <div>
                   {/* <TbLogout className="text-secondary" /> */}
