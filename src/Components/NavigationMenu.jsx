@@ -160,7 +160,7 @@ export default function NavigationMenu() {
                   />
                 </div>
               </div>
-              <hr />
+              {/* <hr />
               <div
                 style={{ gap: 10 }}
                 className="profile_drop_item d-flex justify-content-between align-items-center"
@@ -173,13 +173,17 @@ export default function NavigationMenu() {
                     style={{ cursor: "pointer" }}
                   />
                 </div>
-              </div>
+              </div> */}
               <hr />
               <div
                 style={{ gap: 10 }}
                 className="profile_drop_item d-flex justify-content-between align-items-center"
+                onClick={() => {
+                  navigate("/payments");
+                  showDropdown();
+                }}
               >
-                <div>Payment & Refunds </div>
+                <div>Payments </div>
                 <div>
                   <MdKeyboardArrowRight
                     size={30}

@@ -27,6 +27,7 @@ import NotFound from "../Components/NotFound";
 import ChangePassword from "../Components/ChangePassword";
 import ForgottenPassword from "../Components/ForgottenPassword";
 import ResetPassword from "../Components/ResetPassword";
+import Payments from "../Components/Payments";
 
 function AppNavigation() {
   let element = useRoutes([
@@ -113,6 +114,10 @@ function AppNavigation() {
         },
         { path: "/create-new-car", element: <CreateCar /> },
         { path: "/edit-car", element: <EditCar /> },
+        {
+          path: "/payments",
+          element: <Payments />,
+        },
       ],
     },
     {
