@@ -172,15 +172,28 @@ export default function PublishRide() {
     return `${year}-${month}-${day}`;
   }
 
+  // const options = [];
+  // for (let h = 0; h < 24; h++) {
+  //   for (let m = 1; m < 60; m += 10) {
+  //     const hour = (h < 10 ? "0" : "") + h;
+  //     const minute = (m < 10 ? "0" : "") + m;
+  //     const time = hour + ":" + minute;
+  //     options.push(<option key={time}>{time}</option>);
+  //   }
+  // }
+
   const options = [];
-  for (let h = 0; h < 24; h++) {
-    for (let m = 0; m < 60; m += 10) {
-      const hour = (h < 10 ? "0" : "") + h;
-      const minute = (m < 10 ? "0" : "") + m;
-      const time = hour + ":" + minute;
-      options.push(<option key={time}>{time}</option>);
-    }
+for (let h = 0; h < 24; h++) {
+  for (let m = 0; m < 60; m += 10) {
+    let hour = h % 12 || 12; // Convert 0 to 12
+    const minute = (m < 10 ? "0" : "") + m;
+    const ampm = h < 12 ? "AM" : "PM";
+    hour = (hour < 10 ? "0" : "") + hour;
+    const time = hour + ":" + minute + " " + ampm;
+    options.push(<option key={time}>{time}</option>);
   }
+}
+
 
   return (
     <div className="p-3 mt-5">
