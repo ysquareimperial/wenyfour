@@ -183,17 +183,16 @@ export default function PublishRide() {
   // }
 
   const options = [];
-for (let h = 0; h < 24; h++) {
-  for (let m = 0; m < 60; m += 10) {
-    let hour = h % 12 || 12; // Convert 0 to 12
-    const minute = (m < 10 ? "0" : "") + m;
-    const ampm = h < 12 ? "AM" : "PM";
-    hour = (hour < 10 ? "0" : "") + hour;
-    const time = hour + ":" + minute + " " + ampm;
-    options.push(<option key={time}>{time}</option>);
+  for (let h = 0; h < 24; h++) {
+    for (let m = 0; m < 60; m += 10) {
+      let hour = h % 12 || 12; // Convert 0 to 12
+      const minute = (m < 10 ? "0" : "") + m;
+      const ampm = h < 12 ? "AM" : "PM";
+      hour = (hour < 10 ? "0" : "") + hour;
+      const time = hour + ":" + minute + " " + ampm;
+      options.push(<option key={time}>{time}</option>);
+    }
   }
-}
-
 
   return (
     <div className="p-3 mt-5">
@@ -219,7 +218,7 @@ for (let h = 0; h < 24; h++) {
             <form onSubmit={handleSubmit}>
               <div className="text-center">
                 <p style={{ fontSize: 13, color: "#0d6efd" }}>
-                  You can only publish ride 3 days ahead of your trip
+                  You can only publish ride 7 days ahead of your trip
                 </p>
               </div>
               <Row>
