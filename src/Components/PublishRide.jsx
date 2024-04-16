@@ -5,12 +5,13 @@ import { Col, Row, Modal } from "reactstrap";
 import { api } from "../helper/apis";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
-import { BsArrowLeft } from "react-icons/bs";
+import { BsArrowLeft, BsX, BsXCircleFill } from "react-icons/bs";
 import BackButton from "./BackButton";
 import { nigeriaStates } from "./States";
 
 export default function PublishRide() {
   const [modal, setModal] = useState(false);
+  const [modal1, setModal1] = useState(false);
   const formData = {
     date: moment().format("YYYY-MM-DD"),
     dropoff_location: "",
@@ -24,9 +25,11 @@ export default function PublishRide() {
     car_id: "",
   };
   const [cars, setCars] = useState([]);
-
+  const [carName, setCarName] = useState("");
   const [publishRide, setPublishRide] = useState(formData);
   const [loading, setLoading] = useState(false);
+  const [loading2, setLoading2] = useState(false);
+  const [loading3, setLoading3] = useState(false);
   const loggedInUser = useSelector((state) => state?.auth?.user);
   const userData = JSON.parse(localStorage.getItem("access_token"));
   const xtoken = userData?.access_token;
@@ -34,6 +37,30 @@ export default function PublishRide() {
 
   const handleModal = () => {
     setModal(!modal);
+  };
+
+  const handleModal1 = (e) => {
+    e.preventDefault();
+    setModal1(!modal1);
+
+    if (xtoken) {
+      setLoading3(true);
+      axios
+        .get(`${api}/cars/${publishRide?.car_id}/car`, {
+          headers: {
+            "x-token": xtoken,
+          },
+        })
+        .then((response) => {
+          // console.log(response.data);
+          setCarName(response?.data?.brand);
+          setLoading3(false);
+        })
+        .catch((err) => {
+          setLoading3(false);
+          // console.log("error fetching data", err);
+        });
+    }
   };
 
   const handleChange = (e) => {
@@ -49,7 +76,7 @@ export default function PublishRide() {
     ) {
       alert("Please fill all the inputs!");
     } else {
-      setLoading(true);
+      setLoading2(true);
       axios
         .post(
           `${api}/rides/create`,
@@ -76,11 +103,11 @@ export default function PublishRide() {
           if (response?.status === 201) {
             navigate("/published-rides");
           }
-          setLoading(false);
+          setLoading2(false);
         })
         .catch((e) => {
           // console.log(e);
-          setLoading(false);
+          setLoading2(false);
         });
       // console.log(publishRide);
     }
@@ -215,7 +242,7 @@ export default function PublishRide() {
               ></span>
             </div>
           ) : (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleModal1}>
               <div className="text-center">
                 <p style={{ fontSize: 13, color: "#0d6efd" }}>
                   You can only publish ride 7 days ahead of your trip
@@ -223,7 +250,7 @@ export default function PublishRide() {
               </div>
               <Row>
                 <Col md={6} className="mt-3">
-                  {/* {JSON.stringify(xtoken)} */}
+                  {JSON.stringify(cars)}
                   {/* {JSON.stringify(loggedInUser)} */}
                   <label className="label">When are you leaving?</label>
 
@@ -247,6 +274,7 @@ export default function PublishRide() {
                     value={publishRide.time}
                     onChange={handleChange}
                   >
+                    <option value="">Select time</option>
                     {options}
                   </select>
                 </Col>
@@ -416,7 +444,7 @@ export default function PublishRide() {
                   </select>
                 </Col>
                 <div className="mt-3">
-                  {loading ? (
+                  {/* {loading ? (
                     <button
                       disabled={loading}
                       className="app_button p-3"
@@ -434,14 +462,15 @@ export default function PublishRide() {
                         ></span>
                       </div>
                     </button>
-                  ) : (
-                    <button
-                      className="app_button p-3"
-                      style={{ width: "100%" }}
-                    >
-                      Publish
-                    </button>
-                  )}
+                  ) : ( */}
+                  <button
+                    className="app_button p-3"
+                    style={{ width: "100%" }}
+                    // onClick={}
+                  >
+                    Review
+                  </button>
+                  {/* )} */}
                 </div>
               </Row>
             </form>
@@ -452,12 +481,84 @@ export default function PublishRide() {
       <Modal size="sm" isOpen={modal}>
         <div className="p-3 text-center">
           <p>You don't have registered car(s) yet.</p>
+
           <button
             className="app_button p-3"
             onClick={() => navigate("/create-new-car")}
           >
             Create one here
           </button>
+        </div>
+      </Modal>
+      <Modal size="md" isOpen={modal1}>
+        <div className="p-3">
+          <div className="mb-3 d-flex justify-content-between align-items-center">
+            <p className="m-0">
+              <b>Please review your ride.</b>
+            </p>
+            <BsX className="back_button" size="2.5rem" onClick={handleModal1} />
+          </div>
+          <div>
+            <p className="m-0 text-secondary" style={{ fontSize: 13 }}>
+              Ride date
+            </p>
+            <p>{publishRide?.date}</p>
+            <p className="m-0 text-secondary" style={{ fontSize: 13 }}>
+              Pickup time
+            </p>
+            <p>{publishRide?.time}</p>
+            <p className="m-0 text-secondary" style={{ fontSize: 13 }}>
+              Leaving from
+            </p>
+            <p>{publishRide?.from_location}</p>
+            <p className="m-0 text-secondary" style={{ fontSize: 13 }}>
+              Going to
+            </p>
+            <p>{publishRide?.to_location}</p>
+            <p className="m-0 text-secondary" style={{ fontSize: 13 }}>
+              Meeting point
+            </p>
+            <p>{publishRide?.pickup_location}</p>
+            <p className="m-0 text-secondary" style={{ fontSize: 13 }}>
+              Drop-off point
+            </p>
+            <p>{publishRide?.dropoff_location}</p>
+            <p className="m-0 text-secondary" style={{ fontSize: 13 }}>
+              Price
+            </p>
+            <p>₦ {publishRide?.seat_price}</p>
+            <p className="m-0 text-secondary" style={{ fontSize: 13 }}>
+              Vehicle
+            </p>
+            {loading3 ? "..." : <p>{carName}</p>}
+          </div>
+          {loading2 ? (
+            <button
+              disabled={loading2}
+              className="app_button p-3"
+              style={{ width: "100%" }}
+            >
+              <div
+                class="text-centerd-flex align-items-center justify-content-center gap-2"
+                style={{ color: "white" }}
+              >
+                <span
+                  style={{ width: "1rem", height: "1rem" }}
+                  class="spinner-border"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+              </div>
+            </button>
+          ) : (
+            <button
+              className="app_button p-3"
+              style={{ width: "100%" }}
+              onClick={handleSubmit}
+            >
+              Publish
+            </button>
+          )}
         </div>
       </Modal>
     </div>
