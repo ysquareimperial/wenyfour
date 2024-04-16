@@ -250,7 +250,7 @@ export default function PublishRide() {
               </div>
               <Row>
                 <Col md={6} className="mt-3">
-                  {JSON.stringify(cars)}
+                  {/* {JSON.stringify(cars)} */}
                   {/* {JSON.stringify(loggedInUser)} */}
                   <label className="label">When are you leaving?</label>
 
