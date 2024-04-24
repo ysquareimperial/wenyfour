@@ -28,6 +28,7 @@ import ChangePassword from "../Components/ChangePassword";
 import ForgottenPassword from "../Components/ForgottenPassword";
 import ResetPassword from "../Components/ResetPassword";
 import Payments from "../Components/Payments";
+import Invoice from "../Components/Invoice";
 
 function AppNavigation() {
   let element = useRoutes([
@@ -117,6 +118,10 @@ function AppNavigation() {
         {
           path: "/payments",
           element: <Payments />,
+        },
+        {
+          path: "/invoice",
+          element: <Invoice />,
         },
       ],
     },

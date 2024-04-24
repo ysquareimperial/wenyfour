@@ -31,6 +31,17 @@ export default function BookRide() {
   const noOfSeats = parseInt(seats);
   const price = query.get("price");
 
+  // const [invoiceData, setInvoiceData] = useState({
+  //   amount: "",
+  //   message: "",
+  //   name: "",
+  //   seats: "",
+  //   status: "",
+  //   timestamp: "",
+  //   transactionid: "",
+  //   trxn_referenceid: "",
+  // });
+
   useEffect(() => {
     if (loggedInUser) {
       setLoading(true);
@@ -64,11 +75,14 @@ export default function BookRide() {
     reference: new Date().getTime().toString(),
     email: profileData?.email,
     amount: totalPriceInKobo,
-    publicKey: "pk_live_d5d6ae6d5fa8f04db058bc0754242f23f4f7d0b6",
+    publicKey: "pk_test_8af7fb12b568ccb4597bdddae81c9896d08273b3",
+    // publicKey: "sk_test_3a40c72fa301d3244a2de6c394812bc4174529a5",
+    // publicKey: "pk_live_d5d6ae6d5fa8f04db058bc0754242f23f4f7d0b6",
   };
 
   const onSuccess = (reference) => {
     // Implementation for whatever you want to do with reference and after success call.
+    //BOOKING RIDE
     axios
       .put(
         `${api}/rides/${ride_id}/book/ride`,
@@ -82,9 +96,35 @@ export default function BookRide() {
         }
       )
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response.status === 200) {
-          handleModal();
+          //CREATING INVOICE
+          axios
+            .post(
+              `${api}/transactions/create`,
+              {
+                amount: price * seats,
+                message: reference?.message,
+                name: profileData?.name,
+                seats: seats,
+                status: reference?.status,
+                timestamp: moment().format(),
+                transactionid: reference?.transaction,
+                trxn_referenceid: reference?.trxref,
+              },
+              {
+                headers: {
+                  "x-token": xtoken,
+                },
+              }
+            )
+            .then((response) => {
+              // console.log(response);
+              if (response.status === 201) {
+                handleModal();
+              }
+            })
+            .catch((e) => console.log(e));
         }
         setLoading(false);
       })
@@ -118,12 +158,16 @@ export default function BookRide() {
     );
   };
 
+  const createInvoice = () => {
+    axios.post(`${api}/transactions/create`);
+  };
   return (
     <div className="p-3 mt-5">
       <Row>
         <Col md={3}></Col>
         <Col md={6} className="">
           <BackButton headingText={"Review and book"} />
+          {/* {JSON.stringify(profileData)} */}
           {loading ? (
             <div
               class="text-center mt-5 d-flex align-items-center justify-content-center gap-2"

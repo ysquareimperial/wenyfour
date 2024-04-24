@@ -273,6 +273,22 @@ body {
   background-color: #f1f1f1;
   border-radius: 5px;
 }
+.dfdfdf{
+  width: 100%;
+}
+table {
+  /* width: 100%; */
+  border-collapse: collapse;
+}
+th, td {
+  padding: 8px;
+  text-align: left;
+  width: 150px;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  /* background-color: #f2f2f2; */
+}
 
 @media (min-width: 575.98px) {
   .profile_div_wrapper {

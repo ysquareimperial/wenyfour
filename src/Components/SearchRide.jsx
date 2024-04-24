@@ -44,7 +44,7 @@ export default function SearchRide() {
   function calculateMaxDate() {
     const currentDate = new Date();
     const maxDate = new Date(currentDate);
-    maxDate.setDate(currentDate.getDate() + 3);
+    maxDate.setDate(currentDate.getDate() + 7);
 
     const year = maxDate.getFullYear();
     let month = maxDate.getMonth() + 1;
@@ -55,7 +55,6 @@ export default function SearchRide() {
     if (day < 10) {
       day = "0" + day;
     }
-
     return `${year}-${month}-${day}`;
   }
 

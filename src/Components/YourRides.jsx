@@ -60,7 +60,7 @@ export default function YourRides() {
             </div>
           ) : (
             <>
-              {/* {JSON.stringify(rides)} */}
+              {JSON.stringify(rides)}
               {rides?.map((item, index) => (
                 <Card
                   key={index}
