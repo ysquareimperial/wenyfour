@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BiPencil } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Col, Row } from "reactstrap";
+import { Col, Modal, Row } from "reactstrap";
 import { loginSuccess } from "../redux/actions";
 import axios from "axios";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -14,19 +14,69 @@ import dobToAge from "dob-to-age";
 import { PiUserLight } from "react-icons/pi";
 import { AiOutlineCalendar, AiOutlinePhone } from "react-icons/ai";
 import BackButton from "./BackButton";
+import AvatarEditor from "react-avatar-editor";
 
 function Profile() {
+  const [image, setImage] = useState(null);
   const [vehicles, setVehicles] = useState([]);
+  const [modal, setModal] = useState(false);
+
+  const editorRef = useRef();
+  const [scale, setScale] = useState(1);
   const [profileData, setProfileData] = useState({});
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const loggedInUser = useSelector((state) => state?.auth?.user);
   const dispatch = useDispatch();
-  /*useEffect(() => {
-    if (!localStorage.getItem("access_token")) {
-      navigate("/auth");
+  const userData = JSON.parse(localStorage.getItem("access_token"));
+  const xtoken = userData?.access_token;
+
+  const openModal = () => {
+    setModal(!modal);
+  };
+
+  //HANDLING IMAGE STARTS
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImage(reader.result);
+      };
+      reader.readAsDataURL(file);
     }
-  }, []);*/
+  };
+  //HANDLING IMAGE ENDS
+
+  const handleScaleChange = (e) => {
+    const scale = parseFloat(e.target.value);
+    setScale(scale);
+  };
+
+  // let imageToBeUploaded = image;
+  // let base64Data = imageToBeUploaded?.replace(/^data:image\/\w+;base64,/, "");
+  // let binaryString = atob(base64Data);
+
+  const formData = new FormData();
+  formData.append("image", image);
+  const uploadPicture = () => {
+    console.log(image);
+    axios
+      .post(
+        `${api}/auth/users/upload/profile/picture`,
+        formData,
+
+        {
+          headers: {
+            "x-token": xtoken,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((e) => console.log(e));
+  };
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("access_token"));
@@ -39,9 +89,6 @@ function Profile() {
       );
     }
   }, [dispatch]);
-
-  const userData = JSON.parse(localStorage.getItem("access_token"));
-  const xtoken = userData?.access_token;
 
   useEffect(() => {
     if (loggedInUser) {
@@ -119,8 +166,8 @@ function Profile() {
             >
               <div className="add d-flex align-items-center justify-content-between">
                 <img
-                  src="https://res.cloudinary.com/dx5ilizca/image/upload/v1692800347/profile_epnaqt.png"
-                  className="profile_pic"
+                  src={profileData?.picture}
+                  className="profile_pic shadow"
                   alt="user_image"
                 />
 
@@ -169,6 +216,14 @@ function Profile() {
                   >
                     Edit profile
                   </button>
+                  <div>
+                    <button
+                      className="add_profile_picture mt-2"
+                      onClick={openModal}
+                    >
+                      Add profile picture
+                    </button>
+                  </div>
                 </div>
                 {/* <div className="mt-3">
                   <b>Vehicles</b>
@@ -202,6 +257,62 @@ function Profile() {
         <Col xl={3} lg={3} md={3} sm={12} xs={12}></Col>
       </Row>
       {/* </CompHeader> */}
+      <Modal isOpen={modal} size="sm">
+        <div className="p-3" style={{}}>
+          <p>
+            <b>Update profile picture</b>
+          </p>
+          <input
+            type="file"
+            className="app_input"
+            onChange={handleFileChange}
+          />
+          {/* {JSON.stringify(image)} */}
+          {/* {JSON.stringify(binaryString)} */}
+          {image && (
+            <div>
+              <div className="d-flex mt-3 justify-content-center">
+                <AvatarEditor
+                  className="shadow"
+                  ref={editorRef}
+                  image={image}
+                  width={150}
+                  style={{ borderRadius: "500px" }}
+                  height={150}
+                  border={0}
+                  color={[234, 234, 234]}
+                  scale={scale}
+                  // rotate={rotate}
+                  disableBoundaryChecks={false}
+                  showGrid={true}
+                  borderRadius={"500"}
+                />
+              </div>
+              <div className="d-flex gap-3 mt-3 justify-content-between">
+                <label htmlFor="">Adjust</label>
+                <input
+                  type="range"
+                  class="form-range"
+                  value={scale}
+                  min="1"
+                  max="2"
+                  step="0.01"
+                  onChange={handleScaleChange}
+                />
+              </div>
+            </div>
+          )}
+          {/* <input className="input_field" type="file" required /> */}
+          <div className="mt-5 d-flex align-items-center justify-content-between">
+            <button className="app_button" onClick={uploadPicture}>
+              Save
+            </button>
+            <button className="cancel_button" onClick={openModal}>
+              Cancel
+            </button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 }

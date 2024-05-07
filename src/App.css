@@ -273,14 +273,24 @@ body {
   background-color: #f1f1f1;
   border-radius: 5px;
 }
-.dfdfdf{
+
+.cancel_button {
+  /* background-colo; */
+  /* color: white; */
+  border: none;
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 7px 20px;
+}
+.dfdfdf {
   width: 100%;
 }
 table {
   /* width: 100%; */
   border-collapse: collapse;
 }
-th, td {
+th,
+td {
   padding: 8px;
   text-align: left;
   width: 150px;
@@ -288,6 +298,12 @@ th, td {
 }
 th {
   /* background-color: #f2f2f2; */
+}
+
+.add_profile_picture {
+  font-size: 10px;
+  border-radius: 10px;
+  border: none;
 }
 
 @media (min-width: 575.98px) {
@@ -322,6 +338,23 @@ th {
 @media (max-width: 575.98px) {
   * {
     font-size: 13px;
+  }
+  .invoice_head {
+    display: flex;
+    flex-direction: column;
+  }
+  .invoice_head .text_ {
+    text-align: left !important;
+    padding-left: 10px;
+  }
+  .invoice_head img {
+    width: 100px !important;
+  }
+  .invoice_f {
+    font-size: 9px !important;
+  }
+  .invoice_head .text_ p {
+    font-size: 10px !important;
   }
   .support_btn {
     font-size: 8px;
@@ -419,4 +452,25 @@ th {
   color: white;
   border-top: 2px solid white;
   text-align: center;
+}
+
+.image-library {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: ;
+}
+
+.image-container {
+  width: 200px; /* Set your desired width */
+  height: 200px; /* Set your desired height */
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+  /* margin: 5px; Adjust margin as needed */
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This ensures the image covers the entire container */
 }

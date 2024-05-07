@@ -61,20 +61,16 @@ export default function Payments() {
                     <tr>
                       <th style={{ backgroundColor: "transparent" }}>#</th>
                       <th style={{ backgroundColor: "transparent" }}>TXN ID</th>
-                      <th style={{ backgroundColor: "transparent" }}>Amount</th>
                       <th style={{ backgroundColor: "transparent" }}>
                         Paid at
                       </th>
+                      <th style={{ backgroundColor: "transparent" }}>Amount</th>
                       <th style={{ backgroundColor: "transparent" }}>Status</th>
                     </tr>
                   </thead>
                   <tbody>
                     {invoices?.map((item, index) => (
-                      <tr
-                        onClick={() =>
-                          navigate(`/invoice?txnid=${item?.transactionid}`)
-                        }
-                      >
+                      <tr onClick={() => navigate(`/invoice?id=${item?.id}`)}>
                         <th
                           style={{ backgroundColor: "transparent" }}
                           scope="row"
@@ -85,10 +81,10 @@ export default function Payments() {
                           {item?.transactionid}
                         </td>
                         <td style={{ backgroundColor: "transparent" }}>
-                          {item?.amount}
+                          {moment(item?.timestamp).format("D/M/YYYY")}
                         </td>
                         <td style={{ backgroundColor: "transparent" }}>
-                          {moment(item?.timestamp).format("D/M/YYYY")}
+                          {item?.amount}
                         </td>
                         <td style={{ backgroundColor: "transparent" }}>
                           {item?.status}

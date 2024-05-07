@@ -11,7 +11,7 @@ import { useQuery } from "../helpers/helpers";
 
 export default function Invoice() {
   const query = useQuery();
-  const txnid = query.get("txnid");
+  const id = query.get("id");
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const userData = JSON.parse(localStorage.getItem("access_token"));
@@ -22,7 +22,7 @@ export default function Invoice() {
     if (xtoken) {
       setLoading(true);
       axios
-        .get(`${api}/transactions/${userData?.user_id}/transactions/${txnid}`, {
+        .get(`${api}/transactions/${userData?.user_id}/transactions/${id}`, {
           headers: {
             "x-token": xtoken,
           },
@@ -38,6 +38,7 @@ export default function Invoice() {
         });
     }
   }, []);
+  const price = invoice?.amount / invoice?.seats;
   return (
     <div className="p-3 mt-5">
       <BackButton headingText={"Payment details"} />
@@ -58,9 +59,96 @@ export default function Invoice() {
           <Col md={3}></Col>
           <Col md={6}>
             <Card className="mb-3 mt-3 results_card shadow-sm p-3">
-              {JSON.stringify(invoice)}
-              <div className="">
-               {}
+              {/* {JSON.stringify(invoice)} */}
+              <div className="d-flex justify-content-between invoice_head">
+                <div>
+                  <img
+                    src="https://res.cloudinary.com/dx5ilizca/image/upload/v1712325838/Galaxy__5_-removebg-preview_wqf14f.png"
+                    alt="Wenyfour logo"
+                    style={{ width: 150, marginTop: 50, margin: 10 }}
+                  />
+                </div>
+
+                <div className="text-end text_">
+                  <p className="m-0">Wenyfour</p>
+                  <p style={{ fontSize: 12 }} className="m-0">
+                    45 Small Scale Industrial Layout <br />
+                    Sharada, Kano, Nigeria <br />
+                    +234 901 866 1696
+                  </p>
+                  <p style={{ fontSize: 12 }} className="m-0">
+                    wenyfour@gmail.com
+                  </p>
+                </div>
+              </div>
+              <hr />
+              <div className="p-3">
+                <div>
+                  <h5 className="mb-3">
+                    <b>Invoice {invoice?.transactionid}</b>
+                  </h5>
+                  <h6>Invoiced to</h6>
+                  <h6 className="m-0">{userData?.name}</h6>
+                  <p className="small text-secondary">{userData?.email}</p>
+                </div>
+                <div>
+                  <h6 className="m-0">Date</h6>
+                  <p className="small text-secondary">
+                    {" "}
+                    {moment(invoice?.timestamp).format("D/M/YYYY")}
+                  </p>
+                </div>
+                {/* <Table className="mt-5" bordered responsiveF>
+                  <thead>
+                    <tr>
+                      <th style={{ backgroundColor: "transparent" }}>
+                        Description
+                      </th>
+                      <th style={{ backgroundColor: "transparent" }}>Price</th>
+                      <th style={{ backgroundColor: "transparent" }}>Seat</th>
+                      <th style={{ backgroundColor: "transparent" }}>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="p-3">Ride Booking</td>
+                      <td className="p-3">₦ {price}</td>
+                      <td className="p-3">{invoice?.seats}</td>
+                      <td className="p-3">₦ {invoice?.amount}</td>
+                    </tr>
+                  </tbody>
+                </Table> */}
+
+                <div className="">
+                  <Table borderless responsive={true} hover>
+                    <thead>
+                      <tr>
+                        <th style={{ backgroundColor: "transparent" }}>
+                          Description
+                        </th>
+                        <th style={{ backgroundColor: "transparent" }}>
+                          Price
+                        </th>
+                        <th style={{ backgroundColor: "transparent" }}>Seat</th>
+                        <th style={{ backgroundColor: "transparent" }}>
+                          Total
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="">Ride Booking</td>
+                        <td className="">₦ {price}</td>
+                        <td className="">{invoice?.seats}</td>
+                        <td className="">₦ {invoice?.amount}</td>
+                      </tr>
+                    </tbody>
+                  </Table>
+                </div>
+                <p className="text-secondary invoice_f mt-5" style={{ fontSize: 12 }}>
+                  Copyright © {moment().format("YYYY")} Wenyfour. All rights
+                  reserved.
+                </p>
               </div>
             </Card>
           </Col>

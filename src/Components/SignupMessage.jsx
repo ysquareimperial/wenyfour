@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { Col, Row } from "reactstrap";
 // import logo from "../assets/images/wenyfour-black.PNG";
 export default function Settings() {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="text-center mt-5">
@@ -26,6 +29,13 @@ export default function Settings() {
               confirmation link, the link will be valid for only <b>1 hour</b>{" "}
               Welcome to Wenyfour!
             </p>
+
+            <button
+              className="mt-4 app_button"
+              onClick={() => navigate("/auth")}
+            >
+              Login here
+            </button>
           </div>
         </Col>
         <Col md={4}></Col>

@@ -13,7 +13,7 @@ export default function PublishRide() {
   const [modal, setModal] = useState(false);
   const [modal1, setModal1] = useState(false);
   const formData = {
-    date: moment().format("YYYY-MM-DD"),
+    date: moment().format("YYYY-DD-MM"),
     dropoff_location: "",
     from_location: "",
     gender: "",
@@ -260,7 +260,7 @@ export default function PublishRide() {
                     min={calculateMinDate()}
                     max={calculateMaxDate()}
                     name="date"
-                    value={publishRide.date}
+                    value={(publishRide.date)}
                     onChange={handleChange}
                     required
                   />
