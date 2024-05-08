@@ -77,6 +77,12 @@ export default function RideRequests() {
   }, []);
   //End of fetching ride details
 
+  if (rideDetails?.date) {
+    const originalDate = rideDetails?.date;
+    var parts = originalDate?.split("-");
+
+    var rearrangedDate = parts[0] + "-" + parts[2] + "-" + parts[1];
+  }
   return (
     <div className="p-3 mt-5">
       {/* <h4
@@ -110,7 +116,7 @@ export default function RideRequests() {
                     <Col md={9} sm={9} xs={9}> */}
                   <div className="d-flex justify-content-between">
                     <p>
-                      <b>{moment(rideDetails?.date).format("MMM DD, YYYY")}</b>
+                      <b>{moment(rearrangedDate?.date).format("MMM DD, YYYY")}</b>
                     </p>
                     <p className="rides_avail" style={{ float: "right" }}>
                       <b>₦{numeral(rideDetails?.seat_price).format("0,0")}</b>

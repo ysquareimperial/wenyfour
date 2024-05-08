@@ -22,6 +22,11 @@ export default function BookRide() {
   const query = useQuery();
   const ride_id = query.get("ride_id");
   const date = query.get("date");
+  if (date) {
+    const originalDate = date;
+    var parts = originalDate?.split("-");
+    var rearrangedDate = parts[0] + "-" + parts[2] + "-" + parts[1];
+  }
   const time = query.get("time");
   const from = query.get("from");
   const pickup_from = query.get("pickup_from");
@@ -183,7 +188,7 @@ export default function BookRide() {
           ) : (
             <>
               <p className="rides_avail mt-5" style={{ fontWeight: 700 }}>
-                {moment(date).format("ddd, DD MMMM")} at{" "}
+                {moment(rearrangedDate).format("ddd, DD MMMM")} at{" "}
                 {moment(time, "HH:mm:ss").format("HH:mm A")}
               </p>
               <div className="d-flex" style={{ gap: 10 }}>
