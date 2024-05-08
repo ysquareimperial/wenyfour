@@ -229,7 +229,7 @@ export default function PublishRide() {
         <Col xl={4} lg={4} md={4} sm={12} xs={12}>
           <BackButton headingText={"Publish a ride"} />
 
-          {JSON.stringify(publishRide)}
+          {/* {JSON.stringify(publishRide)} */}
           {loading ? (
             <div
               class="text-center mt-5 d-flex align-items-center justify-content-center gap-2"
