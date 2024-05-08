@@ -24,16 +24,28 @@ export default function YourRides() {
           },
         })
         .then((response) => {
-          // console.log(response.data);
-          setRides(response?.data);
+          // Modify dates before setting the state
+          const modifiedRides = response.data.map((obj) => {
+            const parts = obj.date.split("-");
+            obj.date = parts[0] + "-" + parts[2] + "-" + parts[1];
+            return obj;
+          });
+
+          setRides(modifiedRides);
           setLoading(false);
         })
         .catch((err) => {
           setLoading(false);
-          // console.log("error fetching data", err);
+          console.log("error fetching data", err);
         });
     }
   }, []);
+
+  rides.forEach((obj) => {
+    const parts = obj.date.split("-");
+    obj.date = parts[0] + "-" + parts[2] + "-" + parts[1];
+  });
+
   return (
     <div className="p-3 mt-5">
       {/* <h4

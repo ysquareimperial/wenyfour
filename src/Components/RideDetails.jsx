@@ -107,9 +107,12 @@ export default function RideDetails() {
     getDriverDetails();
   }, []);
 
-  const originalDate = rideDetails?.date;
-  var parts = originalDate.split("-");
-  var rearrangedDate = parts[0] + "-" + parts[2] + "-" + parts[1];
+  if (rideDetails?.date) {
+    const originalDate = rideDetails?.date;
+    var parts = originalDate?.split("-");
+
+    var rearrangedDate = parts[0] + "-" + parts[2] + "-" + parts[1];
+  }
   return (
     <div className="p-3 mt-5">
       {/* {JSON.stringify(rideDetails)} */}
