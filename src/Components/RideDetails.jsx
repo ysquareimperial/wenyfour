@@ -108,7 +108,7 @@ export default function RideDetails() {
   }, []);
   return (
     <div className="p-3 mt-5">
-      {/* {JSON.stringify(rideDetails)} */}
+      {JSON.stringify(rideDetails)}
       {loadingRideDetails ? (
         <div className="text-center">
           <p>Loading ride date...</p>

@@ -229,7 +229,7 @@ export default function PublishRide() {
         <Col xl={4} lg={4} md={4} sm={12} xs={12}>
           <BackButton headingText={"Publish a ride"} />
 
-          {/* {JSON.stringify(publishRide)} */}
+          {JSON.stringify(publishRide)}
           {loading ? (
             <div
               class="text-center mt-5 d-flex align-items-center justify-content-center gap-2"
@@ -268,7 +268,7 @@ export default function PublishRide() {
                 </Col>
                 <Col md={6} className="mt-3">
                   <label className="label">Passenger's pickup time</label>
-                  <select
+                  {/* <select
                     required
                     className="input_field"
                     name="time"
@@ -277,7 +277,15 @@ export default function PublishRide() {
                   >
                     <option value="">Select time</option>
                     {options}
-                  </select>
+                  </select> */}
+                  <input
+                    className="input_field"
+                    type="time"
+                    name="time"
+                    value={publishRide.time}
+                    onChange={handleChange}
+                    required
+                  />
                 </Col>
                 <Col md={6} className="mt-3">
                   <label className="label">Leaving from</label>
