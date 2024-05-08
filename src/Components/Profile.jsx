@@ -11,12 +11,14 @@ import { PiUserLight } from "react-icons/pi";
 import { AiOutlineCalendar, AiOutlinePhone } from "react-icons/ai";
 import BackButton from "./BackButton";
 import AvatarEditor from "react-avatar-editor";
+import { BsCamera, BsCameraFill } from "react-icons/bs";
 
 function Profile() {
   const [vehicles, setVehicles] = useState([]);
   const [modal, setModal] = useState(false);
   const [profileData, setProfileData] = useState({});
   const [loading, setLoading] = useState(false);
+  const [loading2, setLoading2] = useState(false);
   const navigate = useNavigate();
   const [selectedFile, setSelectedFile] = useState(null);
   const loggedInUser = useSelector((state) => state?.auth?.user);
@@ -34,6 +36,7 @@ function Profile() {
   };
 
   const uploadPicture = async () => {
+    setLoading2(true);
     if (!selectedFile) {
       console.error("No file selected");
       return;
@@ -55,7 +58,13 @@ function Profile() {
       );
 
       console.log(response);
+      response && setLoading2(false);
+      if (response?.status === 200) {
+        openModal();
+        location.reload();
+      }
     } catch (error) {
+      setLoading2(false);
       console.error("Error uploading picture:", error); // Handle error
     }
   };
@@ -145,12 +154,22 @@ function Profile() {
               style={{ gap: 30 }}
             >
               <div className="add d-flex align-items-center justify-content-between">
-                <img
-                  src={profileData?.picture}
-                  className="profile_pic shadow"
-                  alt="user_image"
-                />
-
+                <div>
+                  <img
+                    src={profileData?.picture}
+                    className="profile_pic shadow"
+                    alt="user_image"
+                  />
+                  <div className="text-center">
+                    <button
+                      className="add_profile_picture p-2 mt-2"
+                      onClick={openModal}
+                    >
+                      {/* <b>Update profile picture</b> */}
+                      <BsCameraFill size={20} />
+                    </button>
+                  </div>
+                </div>
                 <button
                   className="edit_profile app_button second_app_button mt-2 edit_button"
                   onClick={() =>
@@ -195,14 +214,14 @@ function Profile() {
                   >
                     Edit profile
                   </button>
-                  <div>
+                  {/* <div>
                     <button
-                      className="add_profile_picture mt-2"
+                      className="add_profile_picture p-2 mt-2"
                       onClick={openModal}
                     >
-                      Add profile picture
+                      <b>Add profile picture</b>
                     </button>
-                  </div>
+                  </div> */}
                 </div>
 
                 <>
@@ -248,9 +267,15 @@ function Profile() {
 
           {/* <input className="input_field" type="file" required /> */}
           <div className="mt-5 d-flex align-items-center justify-content-between">
-            <button className="app_button" onClick={uploadPicture}>
-              Save
+            <button
+              className="app_button"
+              onClick={uploadPicture}
+              disabled={loading2}
+              style={{ cursor: loading2 ? "not-allowed" : "" }}
+            >
+              {loading2 ? "Saving..." : " Save"}
             </button>
+
             <button className="cancel_button" onClick={openModal}>
               Cancel
             </button>

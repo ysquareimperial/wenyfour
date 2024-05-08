@@ -116,7 +116,9 @@ export default function RideRequests() {
                     <Col md={9} sm={9} xs={9}> */}
                   <div className="d-flex justify-content-between">
                     <p>
-                      <b>{moment(rearrangedDate?.date).format("MMM DD, YYYY")}</b>
+                      <b>
+                        {moment(rearrangedDate?.date).format("MMM DD, YYYY")}
+                      </b>
                     </p>
                     <p className="rides_avail" style={{ float: "right" }}>
                       <b>₦{numeral(rideDetails?.seat_price).format("0,0")}</b>
