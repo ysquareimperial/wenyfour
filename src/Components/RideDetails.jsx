@@ -106,9 +106,13 @@ export default function RideDetails() {
   useEffect(() => {
     getDriverDetails();
   }, []);
+
+  const originalDate = rideDetails?.date;
+  var parts = originalDate.split("-");
+  var rearrangedDate = parts[0] + "-" + parts[2] + "-" + parts[1];
   return (
     <div className="p-3 mt-5">
-      {JSON.stringify(rideDetails)}
+      {/* {JSON.stringify(rideDetails)} */}
       {loadingRideDetails ? (
         <div className="text-center">
           <p>Loading ride date...</p>
@@ -121,9 +125,10 @@ export default function RideDetails() {
         //   {moment(rideDetails?.date).format("ddd, DD MMMM")}
         // </h4>
         <BackButton
-          headingText={moment(rideDetails?.date).format("ddd, DD MMMM")}
+          headingText={moment(rearrangedDate).format("ddd, MMMM DD")}
         />
       )}
+      {/* {JSON.stringify(rideDetails?.date)} */}
       <Row className="mt-5">
         <Col md={3}></Col>
         <Col md={6} className="">

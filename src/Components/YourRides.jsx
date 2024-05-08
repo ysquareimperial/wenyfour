@@ -72,7 +72,7 @@ export default function YourRides() {
                       <b>N{item?.seat_price}</b>
                     </p>
                     <p>
-                      <b>{moment(item?.date).format("MMM DD, YYYY")}</b>
+                      <b>{moment(item?.date).format("DD MMMM")}</b>
                     </p>
                   </div>
                   <div className="d-flex" style={{ gap: 10 }}>
