@@ -13,7 +13,7 @@ export default function PublishRide() {
   const [modal, setModal] = useState(false);
   const [modal1, setModal1] = useState(false);
   const formData = {
-    date: moment().format("YYYY-DD-MM"),
+    date: "",
     dropoff_location: "",
     from_location: "",
     gender: "",
@@ -68,6 +68,7 @@ export default function PublishRide() {
   };
 
   const handleSubmit = (e) => {
+    console.log(publishRide);
     e.preventDefault();
     if (
       publishRide.car_id === "" ||
@@ -81,7 +82,7 @@ export default function PublishRide() {
         .post(
           `${api}/rides/create`,
           {
-            date: publishRide.date,
+            date: moment(publishRide.date).format("YYYY-DD-MM"),
             dropoff_location: publishRide.dropoff_location,
             from_location: publishRide.from_location,
             gender: publishRide.gender,
@@ -260,7 +261,7 @@ export default function PublishRide() {
                     min={calculateMinDate()}
                     max={calculateMaxDate()}
                     name="date"
-                    value={(publishRide.date)}
+                    value={publishRide.date}
                     onChange={handleChange}
                     required
                   />

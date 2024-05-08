@@ -1,15 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import { BiPencil } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Col, Modal, Row } from "reactstrap";
 import { loginSuccess } from "../redux/actions";
 import axios from "axios";
-import ClipLoader from "react-spinners/ClipLoader";
 import { api } from "../helper/apis";
 import moment from "moment/moment";
-import { BeatLoader, ScaleLoader, MoonLoader } from "react-spinners";
-import CompHeader from "../CustomComponents/CompHeder";
 import dobToAge from "dob-to-age";
 import { PiUserLight } from "react-icons/pi";
 import { AiOutlineCalendar, AiOutlinePhone } from "react-icons/ai";
@@ -17,65 +13,51 @@ import BackButton from "./BackButton";
 import AvatarEditor from "react-avatar-editor";
 
 function Profile() {
-  const [image, setImage] = useState(null);
   const [vehicles, setVehicles] = useState([]);
   const [modal, setModal] = useState(false);
-
-  const editorRef = useRef();
-  const [scale, setScale] = useState(1);
   const [profileData, setProfileData] = useState({});
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [selectedFile, setSelectedFile] = useState(null);
   const loggedInUser = useSelector((state) => state?.auth?.user);
   const dispatch = useDispatch();
   const userData = JSON.parse(localStorage.getItem("access_token"));
   const xtoken = userData?.access_token;
 
+  //HANDLE PROFILE CHANGE
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
   const openModal = () => {
     setModal(!modal);
   };
 
-  //HANDLING IMAGE STARTS
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setImage(reader.result);
-      };
-      reader.readAsDataURL(file);
+  const uploadPicture = async () => {
+    if (!selectedFile) {
+      console.error("No file selected");
+      return;
     }
-  };
-  //HANDLING IMAGE ENDS
 
-  const handleScaleChange = (e) => {
-    const scale = parseFloat(e.target.value);
-    setScale(scale);
-  };
+    try {
+      const formData = new FormData();
+      formData.append("picture", selectedFile);
 
-  // let imageToBeUploaded = image;
-  // let base64Data = imageToBeUploaded?.replace(/^data:image\/\w+;base64,/, "");
-  // let binaryString = atob(base64Data);
-
-  const formData = new FormData();
-  formData.append("image", image);
-  const uploadPicture = () => {
-    console.log(image);
-    axios
-      .post(
-        `${api}/auth/users/upload/profile/picture`,
+      const response = await axios.post(
+        "https://api.wenyfour.com/api/auth/users/upload/profile/picture",
         formData,
-
         {
           headers: {
+            "Content-Type": "multipart/form-data",
             "x-token": xtoken,
           },
         }
-      )
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((e) => console.log(e));
+      );
+
+      console.log(response);
+    } catch (error) {
+      console.error("Error uploading picture:", error); // Handle error
+    }
   };
 
   useEffect(() => {
@@ -139,9 +121,7 @@ function Profile() {
 
   return (
     <div className="p-3 mt-5">
-      {/* <CompHeader header={"Profile"}> */}
       <Row className="">
-        {/* {JSON.stringify(profileData)} */}
         <Col xl={3} lg={3} md={3} sm={12} xs={12}></Col>
         <Col xl={6} lg={6} md={6} sm={12} xs={12}>
           <div className="profile_heading">
@@ -197,7 +177,6 @@ function Profile() {
                     {profileData?.date_of_birth === null
                       ? "No DOB"
                       : dobToAge(profileData?.date_of_birth) + "y"}
-                    {/* {moment(profileData?.date_of_birth, "YYYYMMDD").fromNow()} */}
                   </p>{" "}
                   {/* . */}
                   <p className="date_joined d-flex align-items-center gap-2">
@@ -225,10 +204,7 @@ function Profile() {
                     </button>
                   </div>
                 </div>
-                {/* <div className="mt-3">
-                  <b>Vehicles</b>
-                  <p>Mercedes Benz, E350</p>
-                </div> */}
+
                 <>
                   <div className="mt-3">
                     <b className="">Vehicles</b>
@@ -269,39 +245,7 @@ function Profile() {
           />
           {/* {JSON.stringify(image)} */}
           {/* {JSON.stringify(binaryString)} */}
-          {image && (
-            <div>
-              <div className="d-flex mt-3 justify-content-center">
-                <AvatarEditor
-                  className="shadow"
-                  ref={editorRef}
-                  image={image}
-                  width={150}
-                  style={{ borderRadius: "500px" }}
-                  height={150}
-                  border={0}
-                  color={[234, 234, 234]}
-                  scale={scale}
-                  // rotate={rotate}
-                  disableBoundaryChecks={false}
-                  showGrid={true}
-                  borderRadius={"500"}
-                />
-              </div>
-              <div className="d-flex gap-3 mt-3 justify-content-between">
-                <label htmlFor="">Adjust</label>
-                <input
-                  type="range"
-                  class="form-range"
-                  value={scale}
-                  min="1"
-                  max="2"
-                  step="0.01"
-                  onChange={handleScaleChange}
-                />
-              </div>
-            </div>
-          )}
+
           {/* <input className="input_field" type="file" required /> */}
           <div className="mt-5 d-flex align-items-center justify-content-between">
             <button className="app_button" onClick={uploadPicture}>
