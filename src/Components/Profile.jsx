@@ -154,19 +154,19 @@ function Profile() {
               style={{ gap: 30 }}
             >
               <div className="add d-flex align-items-center justify-content-between">
-                <div>
+                <div className="pppp">
                   <img
                     src={profileData?.picture}
                     className="profile_pic shadow"
                     alt="user_image"
                   />
-                  <div className="text-center">
+                  <div className="text-center bbbb">
                     <button
-                      className="add_profile_picture p-2 mt-2"
+                      className="add_profile_picture shadow mt-2"
                       onClick={openModal}
                     >
                       {/* <b>Update profile picture</b> */}
-                      <BsCameraFill size={20} />
+                      <BsCameraFill className="cam" />
                     </button>
                   </div>
                 </div>
@@ -262,10 +262,6 @@ function Profile() {
             className="app_input"
             onChange={handleFileChange}
           />
-          {/* {JSON.stringify(image)} */}
-          {/* {JSON.stringify(binaryString)} */}
-
-          {/* <input className="input_field" type="file" required /> */}
           <div className="mt-5 d-flex align-items-center justify-content-between">
             <button
               className="app_button"
