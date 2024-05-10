@@ -19,12 +19,20 @@ function Profile() {
   const [profileData, setProfileData] = useState({});
   const [loading, setLoading] = useState(false);
   const [loading2, setLoading2] = useState(false);
+  const [scale, setScale] = useState(1);
+  const [url, setURL] = useState(null);
+  const editorRef = useRef();
   const navigate = useNavigate();
   const [selectedFile, setSelectedFile] = useState(null);
   const loggedInUser = useSelector((state) => state?.auth?.user);
   const dispatch = useDispatch();
   const userData = JSON.parse(localStorage.getItem("access_token"));
   const xtoken = userData?.access_token;
+
+  const handleScaleChange = (e) => {
+    const scale = parseFloat(e.target.value);
+    setScale(scale);
+  };
 
   //HANDLE PROFILE CHANGE
   const handleFileChange = (event) => {
@@ -35,37 +43,51 @@ function Profile() {
     setModal(!modal);
   };
 
+  // Function to convert data URL to blob
+  const dataURLtoBlob = async (dataURL) => {
+    const response = await fetch(dataURL);
+    const blob = await response.blob();
+    return blob;
+  };
+
   const uploadPicture = async () => {
-    setLoading2(true);
-    if (!selectedFile) {
-      console.error("No file selected");
-      return;
-    }
+    if (editorRef.current) {
+      const canvas = editorRef.current.getImageScaledToCanvas();
+      console.log(canvas);
+      if (canvas) {
+        const dataURL = canvas.toDataURL();
 
-    try {
-      const formData = new FormData();
-      formData.append("picture", selectedFile);
+        // Convert data URL to blob
+        const blob = await dataURLtoBlob(dataURL);
 
-      const response = await axios.post(
-        "https://api.wenyfour.com/api/auth/users/upload/profile/picture",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            "x-token": xtoken,
-          },
+        setLoading2(true);
+
+        try {
+          const formData = new FormData();
+          formData.append("picture", blob, "image.png");
+
+          const response = await axios.post(
+            "https://api.wenyfour.com/api/auth/users/upload/profile/picture",
+            formData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                "x-token": xtoken,
+              },
+            }
+          );
+
+          console.log(response);
+          setLoading2(false);
+          if (response?.status === 200) {
+            openModal();
+            location.reload();
+          }
+        } catch (error) {
+          setLoading2(false);
+          console.error("Error uploading picture:", error); // Handle error
         }
-      );
-
-      console.log(response);
-      response && setLoading2(false);
-      if (response?.status === 200) {
-        openModal();
-        location.reload();
       }
-    } catch (error) {
-      setLoading2(false);
-      console.error("Error uploading picture:", error); // Handle error
     }
   };
 
@@ -136,6 +158,7 @@ function Profile() {
           <div className="profile_heading">
             <BackButton headingText={"Profile"} />
           </div>
+{/* {JSON.stringify(profileData)} */}
           {loading ? (
             <div
               class="text-center mt-5 d-flex align-items-center justify-content-center gap-2"
@@ -155,11 +178,19 @@ function Profile() {
             >
               <div className="add d-flex align-items-center justify-content-between">
                 <div className="pppp">
-                  <img
-                    src={profileData?.picture}
-                    className="profile_pic shadow"
-                    alt="user_image"
-                  />
+                  {profileData?.picture === null ? (
+                    <img
+                      src="https://res.cloudinary.com/dx5ilizca/image/upload/v1692800347/profile_epnaqt.png"
+                      className="profile_pic shadow"
+                      alt="user_image"
+                    />
+                  ) : (
+                    <img
+                      src={profileData?.picture}
+                      className="profile_pic shadow"
+                      alt="user_image"
+                    />
+                  )}
                   <div className="text-center bbbb">
                     <button
                       className="add_profile_picture shadow mt-2"
@@ -262,6 +293,40 @@ function Profile() {
             className="app_input"
             onChange={handleFileChange}
           />
+
+          {selectedFile && (
+            <div>
+              <div className="d-flex mt-3 justify-content-center">
+                <AvatarEditor
+                  className="shadow"
+                  ref={editorRef}
+                  image={selectedFile}
+                  // width={250}
+                  style={{ borderRadius: "500px" }}
+                  // height={250}
+                  border={0}
+                  color={[234, 234, 234]}
+                  scale={scale}
+                  // rotate={rotate}
+                  disableBoundaryChecks={false}
+                  showGrid={true}
+                  borderRadius={"500"}
+                />
+              </div>
+              <div className="d-flex gap-3 mt-3 justify-content-between">
+                <label htmlFor="">Adjust</label>
+                <input
+                  type="range"
+                  class="form-range"
+                  value={scale}
+                  min="1"
+                  max="2"
+                  step="0.01"
+                  onChange={handleScaleChange}
+                />
+              </div>
+            </div>
+          )}
           <div className="mt-5 d-flex align-items-center justify-content-between">
             <button
               className="app_button"

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Col, Dropdown, DropdownMenu, DropdownToggle, Row } from "reactstrap";
-//https://res.cloudinary.com/dx5ilizca/image/upload/v1692800347/profile_epnaqt.png
 import { BsPlus } from "react-icons/bs";
 import { TbLogout } from "react-icons/tb";
 import { PiCarSimpleLight } from "react-icons/pi";
@@ -12,6 +11,7 @@ import {
   MdOutlineKeyboardArrowDown,
   MdKeyboardArrowRight,
 } from "react-icons/md";
+import { useSelector } from "react-redux";
 
 export default function NavigationMenu() {
   const [dropdown, setDropdown] = useState(false);
@@ -20,6 +20,8 @@ export default function NavigationMenu() {
   const showDropdown = () => {
     setDropdown(!dropdown);
   };
+
+  const loggedInUser = useSelector((state) => state?.auth?.user);
 
   const logout = () => {
     const keysToRemove = ["access_token", "user_data"];
@@ -36,9 +38,14 @@ export default function NavigationMenu() {
   };
 
   const navigate = useNavigate();
+
+  var data = localStorage.getItem("access_token");
+  const parsedData = JSON.parse(data);
+  const profilePicture = parsedData.profile_picture;
   return (
     <div>
       <Row className="m-0 navbar_ shadow-sm">
+        {/* {JSON.stringify(data)} */}
         <Col lg={3} md={3} sm={3} xs={3} className="d-flex align-items-center">
           <img
             className="mobile_logo"
@@ -80,13 +87,23 @@ export default function NavigationMenu() {
             className="publish_icon"
             onClick={() => navigate("/publish-ride")}
           />
-          <img
-            src="https://res.cloudinary.com/dx5ilizca/image/upload/v1692800347/profile_epnaqt.png"
-            className="result profile"
-            alt="profile_pic"
-            style={{ width: 30, cursor: "pointer" }}
-            onClick={() => navigate("/profile")}
-          />
+          {profilePicture ? (
+            <img
+              src={profilePicture}
+              className="result profile"
+              alt="profile_pic"
+              style={{ width: 30, cursor: "pointer" }}
+              onClick={() => navigate("/profile")}
+            />
+          ) : (
+            <img
+              src="https://res.cloudinary.com/dx5ilizca/image/upload/v1692800347/profile_epnaqt.png"
+              className="result profile"
+              alt="profile_pic"
+              style={{ width: 30, cursor: "pointer" }}
+              onClick={() => navigate("/profile")}
+            />
+          )}
           <Dropdown
             className="profile_dropdown_body"
             toggle={showDropdown}

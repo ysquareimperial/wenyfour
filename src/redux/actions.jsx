@@ -10,7 +10,8 @@ export const signupSuccess = (user) => ({
 // actions.js
 // actions.js
 export const loginSuccess =
-  (email, access_token, token_type, name, user_id) => (dispatch) => {
+  (email, access_token, token_type, name, user_id, profile_picture) =>
+  (dispatch) => {
     // Store user data in localStorage
     const userData = JSON.stringify({
       email,
@@ -18,13 +19,21 @@ export const loginSuccess =
       token_type,
       name,
       user_id,
+      profile_picture,
     });
     localStorage.setItem("user_data", userData);
 
     // Dispatch the action to update Redux state
     dispatch({
       type: "LOGIN_SUCCESS",
-      payload: { email, access_token, token_type, name, user_id },
+      payload: {
+        email,
+        access_token,
+        token_type,
+        name,
+        user_id,
+        profile_picture,
+      },
     });
   };
 
@@ -56,6 +65,7 @@ export const signup =
         token_type,
         name: userName,
         user_id,
+        profile_picture,
       };
       // const userData = JSON.stringify({
       //   email,
@@ -92,14 +102,23 @@ export const login = (email, password) => async (dispatch) => {
       token_type,
       name,
       user_id,
+      profile_picture,
     } = response.data;
-    const user = { email: userEmail, access_token, token_type, name, user_id };
+    const user = {
+      email: userEmail,
+      access_token,
+      token_type,
+      name,
+      user_id,
+      profile_picture,
+    };
     const userData = JSON.stringify({
       email,
       access_token,
       token_type,
       name,
       user_id,
+      profile_picture,
     });
     dispatch(loginSuccess(user));
     localStorage.setItem("access_token", userData);

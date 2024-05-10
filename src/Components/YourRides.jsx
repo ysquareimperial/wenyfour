@@ -41,7 +41,6 @@ export default function YourRides() {
     }
   }, []);
 
-  
   rides.forEach((obj) => {
     const parts = obj.date.split("-");
     obj.date = parts[0] + "-" + parts[2] + "-" + parts[1];

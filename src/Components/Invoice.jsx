@@ -71,11 +71,11 @@ export default function Invoice() {
 
                 <div className="text-end text_">
                   <p className="m-0">Wenyfour</p>
-                  <p style={{ fontSize: 12 }} className="m-0">
-                    45 Small Scale Industrial Layout <br />
-                    Sharada, Kano, Nigeria <br />
-                    +234 901 866 1696
-                  </p>
+                  {/* <p style={{ fontSize: 12 }} className="m-0">
+                      45 Small Scale Industrial Layout <br />
+                      Sharada, Kano, Nigeria <br />
+                      +234 901 866 1696
+                    </p> */}
                   <p style={{ fontSize: 12 }} className="m-0">
                     wenyfour@gmail.com
                   </p>
@@ -145,7 +145,10 @@ export default function Invoice() {
                     </tbody>
                   </Table>
                 </div>
-                <p className="text-secondary invoice_f mt-5" style={{ fontSize: 12 }}>
+                <p
+                  className="text-secondary invoice_f mt-5"
+                  style={{ fontSize: 12 }}
+                >
                   Copyright © {moment().format("YYYY")} Wenyfour. All rights
                   reserved.
                 </p>
