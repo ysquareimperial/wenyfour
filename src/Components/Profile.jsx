@@ -80,6 +80,21 @@ function Profile() {
           console.log(response);
           setLoading2(false);
           if (response?.status === 200) {
+            // Retrieve data from local storage
+            const storedData = localStorage.getItem("access_token");
+
+            // Parse the JSON data
+            const parsedData = JSON.parse(storedData);
+
+            // Update the profile_picture property
+            parsedData.profile_picture = response?.data?.url;
+
+            // Convert the updated data back to a JSON string
+            const updatedData = JSON.stringify(parsedData);
+
+            // Store the updated data back into local storage
+            localStorage.setItem("access_token", updatedData);
+
             openModal();
             location.reload();
           }
@@ -158,7 +173,7 @@ function Profile() {
           <div className="profile_heading">
             <BackButton headingText={"Profile"} />
           </div>
-{/* {JSON.stringify(profileData)} */}
+          {/* {JSON.stringify(profileData)} */}
           {loading ? (
             <div
               class="text-center mt-5 d-flex align-items-center justify-content-center gap-2"
