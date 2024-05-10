@@ -192,7 +192,7 @@ export default function RideDetails() {
                       className="d-flex align-items-center justify-content-between ride_details_user"
                       onClick={() =>
                         navigate(
-                          `/rider-profile?name=${driverDetails?.name}&email=${driverDetails?.phone}&phone=${driverDetails?.phone}&created_at=${driverDetails?.created_at}&dob=${driverDetails?.date_of_birth}&about=${driverDetails?.about}`
+                          `/rider-profile?name=${driverDetails?.name}&email=${driverDetails?.phone}&phone=${driverDetails?.phone}&created_at=${driverDetails?.created_at}&dob=${driverDetails?.date_of_birth}&about=${driverDetails?.about}&picture=${driverDetails?.picture}`
                         )
                       }
                     >
@@ -210,12 +210,21 @@ export default function RideDetails() {
                     </span> */}
                       </div>
                       <div>
-                        <img
-                          src={profile}
-                          className="result profile"
-                          alt="profile_pic"
-                          style={{ marginRight: 20 }}
-                        />{" "}
+                        {driverDetails?.picture === null ? (
+                          <img
+                            src={profile}
+                            className="result profile"
+                            alt="profile_pic"
+                            style={{ marginRight: 20 }}
+                          />
+                        ) : (
+                          <img
+                            src={driverDetails?.picture}
+                            className="result profile"
+                            alt="profile_pic"
+                            style={{ marginRight: 20 }}
+                          />
+                        )}
                         <MdArrowForwardIos size="1.2rem" className="arrow" />
                       </div>
                     </div>

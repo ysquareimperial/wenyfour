@@ -16,6 +16,7 @@ function RiderProfile() {
   const dob = query.get("dob");
   const phone = query.get("phone");
   const created_at = query.get("created_at");
+  const picture = query.get("picture");
   const navigate = useNavigate();
   /*useEffect(() => {
     if (!localStorage.getItem("access_token")) {
@@ -34,11 +35,17 @@ function RiderProfile() {
             </div>
             <div>
               <img
-                src="https://res.cloudinary.com/dx5ilizca/image/upload/v1692800347/profile_epnaqt.png"
+                src={picture}
                 className="result profile"
                 alt="profile_pic"
                 style={{ width: 70 }}
               />
+              {/* <img
+                src="https://res.cloudinary.com/dx5ilizca/image/upload/v1692800347/profile_epnaqt.png"
+                className="result profile"
+                alt="profile_pic"
+                style={{ width: 70 }}
+              /> */}
             </div>
           </div>
           {/* <div className="d-flex mt-4 align-item-center justify-content-between">
