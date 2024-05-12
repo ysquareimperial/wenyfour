@@ -41,7 +41,7 @@ export default function NavigationMenu() {
 
   var data = localStorage.getItem("access_token");
   const parsedData = JSON.parse(data);
-  const profilePicture = parsedData.profile_picture;
+  const profilePicture = parsedData?.profile_picture;
   return (
     <div>
       <Row className="m-0 navbar_ shadow-sm">
