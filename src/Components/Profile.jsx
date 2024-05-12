@@ -87,7 +87,7 @@ function Profile() {
             const parsedData = JSON.parse(storedData);
 
             // Update the profile_picture property
-            parsedData?.profile_picture = response?.data?.url;
+            parsedData.profile_picture = response?.data?.url;
 
             // Convert the updated data back to a JSON string
             const updatedData = JSON.stringify(parsedData);
