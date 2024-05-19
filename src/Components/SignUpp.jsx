@@ -98,11 +98,13 @@ export default function SignUpp() {
             wenyfour
           </h4> */}
           <div className="text-center mb-5">
-            <img
-              src="https://res.cloudinary.com/dx5ilizca/image/upload/v1700895319/Galaxy__2_-removebg-preview_w1jyje.png"
-              alt="enyfour logo"
-              style={{ width: 200 }}
-            />
+            <a href="https://wenyfour.com">
+              <img
+                src="https://res.cloudinary.com/dx5ilizca/image/upload/v1700895319/Galaxy__2_-removebg-preview_w1jyje.png"
+                alt="enyfour logo"
+                style={{ width: 200 }}
+              />
+            </a>
           </div>
           <div className="d-flex justify-content-between" style={{ gap: 30 }}>
             <p className={tab ? "bold" : "not_bold"} onClick={switchTab}>

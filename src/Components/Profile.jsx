@@ -255,7 +255,7 @@ function Profile() {
                     onClick={() =>
                       navigate(
                         `/edit-profile?name=${profileData?.name}&phone=${profileData?.phone}&email=${profileData?.email}&dob=${profileData?.date_of_birth}&about=${profileData?.about}`
-                      )
+                      )   
                     }
                   >
                     Edit profile
