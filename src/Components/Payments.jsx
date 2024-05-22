@@ -96,6 +96,12 @@ export default function Payments() {
                       </tr>
                     ))}
                   </tbody>
+
+                  {invoices.length === 0 ? (
+                    <span>You don't have any invoice yet</span>
+                  ) : (
+                    ""
+                  )}
                 </Table>
               </div>
             </Card>
