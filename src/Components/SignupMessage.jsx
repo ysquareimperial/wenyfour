@@ -25,9 +25,10 @@ export default function Settings() {
         <Col md={4}>
           <div className="mt-3 text-center">
             <p className="m-0" style={{ fontWeight: "" }}>
-              Registration successful! Check your email inbox or spam for a
-              confirmation link, the link will be valid for only <b>1 hour</b>{" "}
-              Welcome to Wenyfour!
+              Registration successful! Check your email
+              <b>inbox or spam</b>
+              for a confirmation link, the link will be valid for only{" "}
+              <b>1 hour</b> Welcome to Wenyfour!
             </p>
 
             <button
