@@ -96,16 +96,14 @@ export default function Payments() {
                       </tr>
                     ))}
                   </tbody>
-
                 </Table>
-                <div className="text-center" style={{fontSize:13}}>
-
+                <div className="text-center" style={{ fontSize: 13 }}>
                   {invoices.length === 0 ? (
                     <span>You don't have any invoice yet</span>
                   ) : (
                     ""
                   )}
-                  </div>
+                </div>
               </div>
             </Card>
           </Col>
