@@ -63,9 +63,9 @@ export default function Wallet() {
               <div className="text-center">
                 <p className="m-0 mt-3 text-secondary">Main balance</p>
 
-                <h1 className="m-0">
-                  <b>₦ 12,000</b>
-                </h1>
+                <h6 className="wal_bal">
+                  ₦ 12,000
+                </h6>
               </div>
 
               <p className="mt-5 small pay_des">

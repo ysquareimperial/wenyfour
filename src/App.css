@@ -178,7 +178,7 @@ body {
   cursor: pointer;
   background-color: var(--inputBgColor) !important;
 }
-.pay_des{
+.pay_des {
   background-color: #dadada;
   width: fit-content;
   border-radius: 10px;
@@ -323,23 +323,6 @@ th {
   border: none;
 }
 
-@media (min-width: 575.98px) {
-  .profile_div_wrapper {
-    margin-top: 3rem;
-  }
-  .pub_mob {
-    display: none;
-  }
-  .mob_rep {
-    display: none;
-  }
-  .edit_profile {
-    display: none;
-  }
-  .publish_icon {
-    display: none;
-  }
-}
 .support_div {
   background-color: rgba(255, 255, 255, 0.563);
   border-radius: 10px;
@@ -352,7 +335,47 @@ th {
 .help_icon:hover {
   font-size: 2.2rem;
 }
+
+.searchhhhh {
+  /* width: 200px; */
+}
+.internet {
+  background-color: #0d6efd;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  /* font-weight: */
+  color: white;
+  border-top: 2px solid white;
+  text-align: center;
+}
+
+.image-library {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: ;
+}
+
+.image-container {
+  width: 200px; /* Set your desired width */
+  height: 200px; /* Set your desired height */
+  overflow: hidden;
+  display: block;
+  margin: 0 auto;
+  /* margin: 5px; Adjust margin as needed */
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This ensures the image covers the entire container */
+}
+
 @media (max-width: 575.98px) {
+  .wal_bal {
+    font-size: 40px !important;
+    font-weight: bold;
+  }
   * {
     font-size: 13px;
   }
@@ -427,7 +450,7 @@ th {
     display: none;
     /* margin-top: -220px !important; */
   }
- 
+
   .profile_image_div {
     background-color: #f3f3f3;
     border-radius: 10px;
@@ -455,7 +478,7 @@ th {
     width: 100px;
     display: block;
     /* margin-left: auto;
-    margin-right: auto; */
+      margin-right: auto; */
     /* margin-top: -10px; */
   }
   .profile_div_button {
@@ -476,38 +499,20 @@ th {
     font-size: 10px !important;
   }
 }
-
-.searchhhhh {
-  /* width: 200px; */
-}
-.internet {
-  background-color: #0d6efd;
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  /* font-weight: */
-  color: white;
-  border-top: 2px solid white;
-  text-align: center;
-}
-
-.image-library {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: ;
-}
-
-.image-container {
-  width: 200px; /* Set your desired width */
-  height: 200px; /* Set your desired height */
-  overflow: hidden;
-  display: block;
-  margin: 0 auto;
-  /* margin: 5px; Adjust margin as needed */
-}
-
-.image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* This ensures the image covers the entire container */
+@media (min-width: 575.98px) {
+  .profile_div_wrapper {
+    margin-top: 3rem;
+  }
+  .pub_mob {
+    display: none;
+  }
+  .mob_rep {
+    display: none;
+  }
+  .edit_profile {
+    display: none;
+  }
+  .publish_icon {
+    display: none;
+  }
 }
