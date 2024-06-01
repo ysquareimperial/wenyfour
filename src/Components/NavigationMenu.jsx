@@ -214,6 +214,24 @@ export default function NavigationMenu() {
                 style={{ gap: 10 }}
                 className="profile_drop_item d-flex justify-content-between align-items-center"
                 onClick={() => {
+                  navigate("/wallet");
+                  showDropdown();
+                }}
+              >
+                <div>Wallet </div>
+                <div>
+                  <MdKeyboardArrowRight
+                    size={30}
+                    className="text-secondary"
+                    style={{ cursor: "pointer" }}
+                  />
+                </div>
+              </div>
+              <hr />
+              <div
+                style={{ gap: 10 }}
+                className="profile_drop_item d-flex justify-content-between align-items-center"
+                onClick={() => {
                   navigate("/settings");
                   showDropdown();
                 }}

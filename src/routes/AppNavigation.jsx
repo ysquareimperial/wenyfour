@@ -29,6 +29,7 @@ import ForgottenPassword from "../Components/ForgottenPassword";
 import ResetPassword from "../Components/ResetPassword";
 import Payments from "../Components/Payments";
 import Invoice from "../Components/Invoice";
+import Wallet from "../Components/Wallet";
 
 function AppNavigation() {
   let element = useRoutes([
@@ -64,6 +65,10 @@ function AppNavigation() {
         {
           path: "/ride-requests",
           element: <RideRequests />,
+        },
+        {
+          path: "/wallet",
+          element: <Wallet />,
         },
         {
           path: "/my-bookings",
