@@ -489,7 +489,7 @@ export default function PublishRide() {
       </Row>
       <Modal size="sm" isOpen={modal}>
         <div className="p-3 text-center">
-          <p>You don't have registered car(s) yet.</p>
+          <p className="small">You don't have registered car(s) yet.</p>
 
           <button
             className="app_button p-3"

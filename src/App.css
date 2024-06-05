@@ -353,7 +353,7 @@ th {
 .image-library {
   display: flex;
   flex-wrap: wrap;
-  align-items: ;
+  /* align-items: ; */
 }
 
 .image-container {

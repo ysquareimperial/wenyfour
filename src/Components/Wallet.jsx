@@ -37,8 +37,8 @@ export default function Wallet() {
   }, []);
   return (
     <div className="p-3 mt-5">
-      <BackButton headingText={"Wallet"} />
-      {loading ? (
+      <BackButton headingText={"Coming soon"} />
+      {/* {loading ? (
         <div
           class="text-center mt-5 d-flex align-items-center justify-content-center gap-2"
           style={{ color: "#0d6efd" }}
@@ -59,13 +59,10 @@ export default function Wallet() {
               <button className="app_button">Add account</button>
             </div>
             <Card className="mb-3 mt-3 results_card shadow-sm p-3">
-              {/* {JSON.stringify(invoices)} */}
-              <div className="text-center">
+             <div className="text-center">
                 <p className="m-0 mt-3 text-secondary">Main balance</p>
 
-                <h6 className="wal_bal">
-                  ₦ 12,000
-                </h6>
+                <h6 className="wal_bal">₦ 12,000</h6>
               </div>
 
               <p className="mt-5 small pay_des">
@@ -136,7 +133,7 @@ export default function Wallet() {
           </Col>
           <Col md={3}></Col>
         </Row>
-      )}
+      )} */}
     </div>
   );
 }
