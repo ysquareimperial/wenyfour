@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import { BsArrowLeft, BsX, BsXCircleFill } from "react-icons/bs";
 import BackButton from "./BackButton";
+import numeral from "numeral";
 import { nigeriaStates } from "./States";
 
 export default function PublishRide() {
@@ -355,7 +356,7 @@ export default function PublishRide() {
                 </Col> */}
                 <Col md={6} className="mt-3">
                   <label className="label">Price per seat</label>
-                  <select
+                  {/* <select
                     required
                     className="input_field"
                     name="seat_price"
@@ -370,7 +371,18 @@ export default function PublishRide() {
                     ) : (
                       ""
                     )}
-                  </select>
+                  </select> */}
+                  <input
+                    className="input_field"
+                    required
+                    type="number"
+                    name="seat_price"
+                    value={publishRide?.seat_price}
+                    // ₦{numeral(item?.seat_price).format("0,0")}
+                    // value={publishRide.seat_price ? numeral(publishRide.seat_price).format("0,0") : ""}
+
+                    onChange={handleChange}
+                  />
                 </Col>
                 <Col md={6} className="mt-3">
                   <label className="label">Select a car</label>
