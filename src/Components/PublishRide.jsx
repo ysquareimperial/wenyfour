@@ -356,23 +356,42 @@ export default function PublishRide() {
                 </Col> */}
                 <Col md={6} className="mt-3">
                   <label className="label">Price per seat</label>
-                  {/* <select
+                  <select
                     required
                     className="input_field"
                     name="seat_price"
                     value={publishRide.seat_price}
                     onChange={handleChange}
                   >
-                    {publishRide.from_location ? (
+                    <option>-</option>
+                    {publishRide.from_location === "Jigawa" &&
+                    publishRide.to_location === "Kano" ? (
                       <>
-                        <option>-</option>
-                        <option>100</option>
+                        <option>1540</option>
+                      </>
+                    ) : publishRide.from_location === "Kano" &&
+                      publishRide.to_location === "Jigawa" ? (
+                      <>
+                        <option>1540</option>
                       </>
                     ) : (
                       ""
                     )}
-                  </select> */}
-                  <input
+                     {publishRide.from_location === "Abuja" &&
+                    publishRide.to_location === "Kano" ? (
+                      <>
+                        <option>7000</option>
+                      </>
+                    ) : publishRide.from_location === "Kano" &&
+                      publishRide.to_location === "Abuja" ? (
+                      <>
+                        <option>7000</option>
+                      </>
+                    ) : (
+                      ""
+                    )}
+                  </select>
+                  {/* <input
                     className="input_field"
                     required
                     type="number"
@@ -382,7 +401,7 @@ export default function PublishRide() {
                     // value={publishRide.seat_price ? numeral(publishRide.seat_price).format("0,0") : ""}
 
                     onChange={handleChange}
-                  />
+                  /> */}
                 </Col>
                 <Col md={6} className="mt-3">
                   <label className="label">Select a car</label>
