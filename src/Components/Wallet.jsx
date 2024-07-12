@@ -37,7 +37,8 @@ export default function Wallet() {
   }, []);
   return (
     <div className="p-3 mt-5">
-      <BackButton headingText={"Wallet"} />
+      {/* <BackButton headingText={"Wallet"} /> */}
+      <BackButton headingText={"Coming soon..."} />
       {loading ? (
         <div
           class="text-center mt-5 d-flex align-items-center justify-content-center gap-2"
@@ -52,7 +53,7 @@ export default function Wallet() {
         </div>
       ) : (
         <Row className="m-0">
-          <Col md={3}></Col>
+          {/* <Col md={3}></Col>
           <Col md={6}>
             <div className="text-center mt-3">
               <p>Set up your account to get paid by Wenyfour</p>
@@ -131,7 +132,7 @@ export default function Wallet() {
               </div>
             </Card>
           </Col>
-          <Col md={3}></Col>
+          <Col md={3}></Col> */}
         </Row>
       )}
     </div>
