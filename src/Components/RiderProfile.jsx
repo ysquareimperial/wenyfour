@@ -28,24 +28,27 @@ function RiderProfile() {
       <Row className="mt-4">
         <Col md={3}></Col>
         <Col md={6} className="">
-          <div className="d-flex align-item-center justify-content-between">
+          <div className="d-flex align-items-center justify-content-between">
             <div>
-              <h5 className="m-0">{name}</h5>
+              <h4 className="m-0">{name}</h4>
               <p>{dobToAge(dob)} y/o</p>
             </div>
             <div>
-              <img
-                src={picture}
-                className="result profile"
-                alt="profile_pic"
-                style={{ width: 70 }}
-              />
-              {/* <img
-                src="https://res.cloudinary.com/dx5ilizca/image/upload/v1692800347/profile_epnaqt.png"
-                className="result profile"
-                alt="profile_pic"
-                style={{ width: 70 }}
-              /> */}
+              {picture === null ?
+                <img
+                  src={picture}
+                  className="result profile"
+                  alt="profile_pic"
+                  style={{ width: 70 }}
+                />
+                :
+                <img
+                  src="https://res.cloudinary.com/dx5ilizca/image/upload/v1692800347/profile_epnaqt.png"
+                  className="result profile"
+                  alt="profile_pic"
+                  style={{ width: 70 }}
+                />
+              }
             </div>
           </div>
           {/* <div className="d-flex mt-4 align-item-center justify-content-between">
