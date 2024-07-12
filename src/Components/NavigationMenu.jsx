@@ -83,7 +83,7 @@ export default function NavigationMenu() {
           />
           <BsPlus
             style={{ margin: 0, cursor: "pointer" }}
-            size="1.6rem"
+            // size="1.6rem"
             className="publish_icon"
             onClick={() => navigate("/publish-ride")}
           />
