@@ -42,7 +42,7 @@ import { LoadScript, Autocomplete } from "@react-google-maps/api";
 
 const libraries = ["places"];
 
-const Places = ({ label, name, value, onChange }) => {
+const Places = ({ label, name, value, onChange, className }) => {
   const autocompleteRef = useRef(null);
 
   const onLoad = (autocomplete) => {
@@ -61,7 +61,7 @@ const Places = ({ label, name, value, onChange }) => {
       googleMapsApiKey="AIzaSyAj33qrewfLPF7nIFExbxNeWbKsRrg8baA"
       libraries={libraries}
     >
-      <div className="mt-3">
+      <div className="">
         <label className="label">{label}</label>
         <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
           <input
@@ -71,7 +71,6 @@ const Places = ({ label, name, value, onChange }) => {
             value={value}
             onChange={onChange}
             // placeholder={`Enter ${label.toLowerCase()}`}
-            style={{ width: "100%", height: "40px" }}
           />
         </Autocomplete>
       </div>
