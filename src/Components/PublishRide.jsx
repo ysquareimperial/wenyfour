@@ -9,6 +9,7 @@ import { BsArrowLeft, BsX, BsXCircleFill } from "react-icons/bs";
 import BackButton from "./BackButton";
 import numeral from "numeral";
 import { nigeriaStates } from "./States";
+import Places from "./Places";
 
 export default function PublishRide() {
   const [modal, setModal] = useState(false);
@@ -229,7 +230,7 @@ export default function PublishRide() {
         <Col xl={4} lg={4} md={4} sm={12} xs={12}></Col>
         <Col xl={4} lg={4} md={4} sm={12} xs={12}>
           <BackButton headingText={"Publish a ride"} />
-
+          {/* <Places /> */}
           {/* {JSON.stringify(publishRide)} */}
           {loading ? (
             <div
@@ -269,16 +270,7 @@ export default function PublishRide() {
                 </Col>
                 <Col md={6} className="mt-3">
                   <label className="label">Passenger's pickup time</label>
-                  {/* <select
-                    required
-                    className="input_field"
-                    name="time"
-                    value={publishRide.time}
-                    onChange={handleChange}
-                  >
-                    <option value="">Select time</option>
-                    {options}
-                  </select> */}
+
                   <input
                     className="input_field"
                     type="time"
@@ -289,8 +281,8 @@ export default function PublishRide() {
                   />
                 </Col>
                 <Col md={6} className="mt-3">
-                  <label className="label">Leaving from</label>
-                  <select
+                  {/* <label className="label">Leaving from</label> */}
+                  {/* <select
                     required
                     className="input_field"
                     name="from_location"
@@ -301,11 +293,17 @@ export default function PublishRide() {
                     {nigeriaStates.map((item, index) => (
                       <option>{item.name}</option>
                     ))}
-                  </select>
+                  </select> */}
+                  <Places
+                    label="Leaving from"
+                    name="from_location"
+                    value={publishRide.from_location}
+                    onChange={handleChange}
+                  />
                 </Col>
                 <Col md={6} className="mt-3">
-                  <label className="label">Going to</label>
-                  <select
+                  {/* <label className="label">Going to</label> */}
+                  {/* <select
                     required
                     className="input_field"
                     name="to_location"
@@ -316,7 +314,13 @@ export default function PublishRide() {
                     {nigeriaStates.map((item, index) => (
                       <option>{item.name}</option>
                     ))}
-                  </select>
+                  </select> */}
+                  <Places
+                    label="Going to"
+                    name="to_location"
+                    value={publishRide.to_location}
+                    onChange={handleChange}
+                  />
                 </Col>
                 <Col md={6} className="mt-3">
                   <label className="label">Exact meeting point</label>
@@ -340,23 +344,18 @@ export default function PublishRide() {
                     onChange={handleChange}
                   />
                 </Col>
-                {/* <Col md={6} className="mt-3">
-                  <label className="label">Select your gender</label>
-                  <select
-                    required
-                    className="input_field"
-                    name="gender"
-                    value={publishRide.gender}
-                    onChange={handleChange}
-                  >
-                    <option>-</option>
-                    <option>Male</option>
-                    <option>Female</option>
-                  </select>
-                </Col> */}
+
                 <Col md={6} className="mt-3">
                   <label className="label">Price per seat</label>
-                  <select
+                  <input
+                    className="input_field"
+                    required
+                    type="number"
+                    name="seat_price"
+                    value={publishRide.seat_price}
+                    onChange={handleChange}
+                  />
+                  {/* <select
                     required
                     className="input_field"
                     name="seat_price"
@@ -367,17 +366,17 @@ export default function PublishRide() {
                     {publishRide.from_location === "Jigawa" &&
                     publishRide.to_location === "Kano" ? (
                       <>
-                        <option>1540</option>
-                      </>
+                    <option>1540</option>
+                    </>
                     ) : publishRide.from_location === "Kano" &&
                       publishRide.to_location === "Jigawa" ? (
                       <>
-                        <option>1540</option>
-                      </>
+                    <option>1540</option>
+                    </>
                     ) : (
                       ""
                     )}
-                     {publishRide.from_location === "Abuja" &&
+                    {publishRide.from_location === "Abuja" &&
                     publishRide.to_location === "Kano" ? (
                       <>
                         <option>7000</option>
@@ -390,18 +389,7 @@ export default function PublishRide() {
                     ) : (
                       ""
                     )}
-                  </select>
-                  {/* <input
-                    className="input_field"
-                    required
-                    type="number"
-                    name="seat_price"
-                    value={publishRide?.seat_price}
-                    // ₦{numeral(item?.seat_price).format("0,0")}
-                    // value={publishRide.seat_price ? numeral(publishRide.seat_price).format("0,0") : ""}
-
-                    onChange={handleChange}
-                  /> */}
+                  </select> */}
                 </Col>
                 <Col md={6} className="mt-3">
                   <label className="label">Select a car</label>
@@ -484,33 +472,9 @@ export default function PublishRide() {
                   </select>
                 </Col>
                 <div className="mt-3">
-                  {/* {loading ? (
-                    <button
-                      disabled={loading}
-                      className="app_button p-3"
-                      style={{ width: "100%" }}
-                    >
-                      <div
-                        class="text-centerd-flex align-items-center justify-content-center gap-2"
-                        style={{ color: "white" }}
-                      >
-                        <span
-                          style={{ width: "1rem", height: "1rem" }}
-                          class="spinner-border"
-                          role="status"
-                          aria-hidden="true"
-                        ></span>
-                      </div>
-                    </button>
-                  ) : ( */}
-                  <button
-                    className="app_button p-3"
-                    style={{ width: "100%" }}
-                    // onClick={}
-                  >
+                  <button className="app_button p-3" style={{ width: "100%" }}>
                     Review
                   </button>
-                  {/* )} */}
                 </div>
               </Row>
             </form>

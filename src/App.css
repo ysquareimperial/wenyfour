@@ -2,6 +2,7 @@ body {
   /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important; */
   quotes: "“" "”";
   text-size-adjust: 100%;
+  background-color: white !important;
 }
 * {
   /* font-family: "Lora", serif; */
@@ -118,7 +119,7 @@ body {
   top: 0;
   width: 100%;
   z-index: 1;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255) !important;
 }
 
 .fullname {

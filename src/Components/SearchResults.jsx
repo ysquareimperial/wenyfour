@@ -108,7 +108,7 @@ export default function SearchResults() {
                   }
                 >
                   <Row className="m-0">
-                    <Col className="m-0" md={6} sm={7} xs={7}>
+                    <Col className="m-0" md={9} sm={9} xs={9}>
                       <div className="d-flex" style={{ gap: 10 }}>
                         <div>
                           <p
@@ -133,7 +133,7 @@ export default function SearchResults() {
                         </div>
                       </div>
                     </Col>
-                    <Col className="m-0" md={6} sm={5} xs={5}>
+                    <Col className="m-0" md={3} sm={3} xs={3}>
                       <div
                         style={{
                           display: "flex",
