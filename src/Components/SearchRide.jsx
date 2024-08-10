@@ -5,6 +5,7 @@ import { loginSuccess, restoreUserFromLocalStorage } from "../redux/actions";
 import moment from "moment";
 import { nigeriaStates } from "./States";
 import LivingFrom from "./States/LivingFrom";
+import Places from "./Places";
 export default function SearchRide() {
   const formData = {
     from: "",
@@ -74,8 +75,8 @@ export default function SearchRide() {
         >
           <div>
             {/* <LivingFrom/> */}
-            <label className="label">Leaving from</label>
-            <select
+            {/* <label className="label">Leaving from</label> */}
+            {/* <select
               className="input_field search_ride_input"
               name="from"
               required
@@ -86,11 +87,18 @@ export default function SearchRide() {
               {nigeriaStates.map((item, index) => (
                 <option>{item.name}</option>
               ))}
-            </select>
+            </select> */}
+
+            <Places
+              label="Leaving from"
+              name="from"
+              value={searchData.from}
+              onChange={handleChange}
+            />
           </div>
           <div>
-            <label className="label">Going to</label>
-            <select
+            {/* <label className="label">Going to</label> */}
+            {/* <select
               className="input_field search_ride_input"
               name="to"
               value={searchData.to}
@@ -101,7 +109,13 @@ export default function SearchRide() {
               {nigeriaStates.map((item, index) => (
                 <option>{item.name}</option>
               ))}
-            </select>
+            </select> */}
+            <Places
+              label="Leaving from"
+              name="to"
+              value={searchData.to}
+              onChange={handleChange}
+            />
           </div>
           <div>
             <label className="label">Date</label>
