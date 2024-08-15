@@ -111,7 +111,7 @@ export default function SearchRide() {
               ))}
             </select> */}
             <Places
-              label="Leaving from"
+              label="Going to"
               name="to"
               value={searchData.to}
               onChange={handleChange}
