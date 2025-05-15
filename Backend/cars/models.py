@@ -6,7 +6,7 @@ from sqlalchemy.dialects.postgresql import UUID
 
 
 
-class Car(Base):
+class CarModel(Base):
     __tablename__ = "cars"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -17,8 +17,7 @@ class Car(Base):
     c_license = Column(String, unique=True, nullable=False)
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.user_id"))
 
-    owner = relationship("User", back_populates="cars")    
-
+    owner = relationship("User", back_populates="cars")  # This line is crucial
 
 
 model_config = {

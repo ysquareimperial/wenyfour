@@ -2,7 +2,7 @@ from typing import Optional
 from pydantic import BaseModel, Field
 import uuid
 
-class CarBase(BaseModel):
+class CarSchema(BaseModel):
     model: str = Field(..., example="Sedan")
     brand: str = Field(..., example="Toyota")
     color: str = Field(..., example="Red")
@@ -23,10 +23,10 @@ class CarBase(BaseModel):
         }
     }
 
-class CarCreate(CarBase):
+class CarCreateSchema(CarSchema):
     pass
 
-class Car(CarBase):
+class Car(CarSchema):
     id: int
 
     model_config = {
@@ -44,5 +44,5 @@ class Car(CarBase):
         }
     }
 
-class CarResponse(Car):
+class CarResponseSchema(CarSchema):
     pass
