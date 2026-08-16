@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import AppNavigation from "./routes/AppNavigation";
 import { useNavigate, useLocation } from "react-router-dom";
-import NoInternet from "./Components/NoInternet";
+// import NoInternet from "./Components/NoInternet";
 import { Modal } from "reactstrap";
 import { useDispatch } from "react-redux";
 import { logout, restoreUserFromLocalStorage } from "./redux/actions";
@@ -110,13 +110,13 @@ function App() {
 
   return (
     <>
-      {isOnline ? (
+      {/* {isOnline ? ( */}
         <AppNavigation />
-      ) : (
+      {/* ) : (
         <NoInternet />
       )}
-      
-      <Modal isOpen={modal} toggle={handleModal}>
+       */}
+      {/* <Modal isOpen={modal} toggle={handleModal}>
         <div className="p-3 text-center small">
           <h4>
             <b>Your session has expired</b>
@@ -129,7 +129,7 @@ function App() {
             Sign in
           </button>
         </div>
-      </Modal>
+      </Modal> */}
     </>
   );
 }
