@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginSuccess, restoreUserFromLocalStorage } from "../redux/actions";
 import moment from "moment";
-import { nigeriaStates } from "./States";
-import LivingFrom from "./States/LivingFrom";
 import Places from "./Places";
+
 export default function SearchRide() {
   const formData = {
     from: "",
@@ -27,20 +24,6 @@ export default function SearchRide() {
     );
   };
 
-  const loggedInUser = useSelector((state) => state?.auth?.user);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    // Check localStorage for user data
-    const userData = JSON.parse(localStorage.getItem("access_token"));
-
-    if (userData) {
-      // Dispatch loginSuccess action to restore user data
-      const { email, access_token, token_type, name, user_id } = userData;
-      dispatch(loginSuccess(email, access_token, token_type, name, user_id));
-    }
-  }, [dispatch]);
-
   //Calculating max days
   function calculateMaxDate() {
     const currentDate = new Date();
@@ -61,7 +44,6 @@ export default function SearchRide() {
 
   return (
     <div className="p-3 mt-5">
-      {/* {JSON.stringify(searchData)}  */}
       <h4
         className="text-center page_title"
         style={{ fontWeight: 900, fontSize: 40 }}
@@ -74,21 +56,6 @@ export default function SearchRide() {
           style={{ gap: 10 }}
         >
           <div>
-            {/* <LivingFrom/> */}
-            {/* <label className="label">Leaving from</label> */}
-            {/* <select
-              className="input_field search_ride_input"
-              name="from"
-              required
-              value={searchData.from}
-              onChange={handleChange}
-            >
-              <option style={{ color: "grey" }}></option>
-              {nigeriaStates.map((item, index) => (
-                <option>{item.name}</option>
-              ))}
-            </select> */}
-
             <Places
               label="Leaving from"
               name="from"
@@ -97,19 +64,6 @@ export default function SearchRide() {
             />
           </div>
           <div>
-            {/* <label className="label">Going to</label> */}
-            {/* <select
-              className="input_field search_ride_input"
-              name="to"
-              value={searchData.to}
-              required
-              onChange={handleChange}
-            >
-              <option style={{ color: "grey" }}></option>
-              {nigeriaStates.map((item, index) => (
-                <option>{item.name}</option>
-              ))}
-            </select> */}
             <Places
               label="Going to"
               name="to"
@@ -119,15 +73,6 @@ export default function SearchRide() {
           </div>
           <div>
             <label className="label">Date</label>
-            {/* <input
-              className="input_field search_ride_input"
-              type="date"
-              min="2023-10-05"
-              name="date"
-              value={searchData.date}
-              onChange={handleChange}
-              required
-            /> */}
             <input
               className="input_field search_ride_input"
               type="date"

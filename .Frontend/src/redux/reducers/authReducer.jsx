@@ -1,9 +1,9 @@
+// src/redux/reducers/authReducer.js
 const initialState = {
   user: null,
   errorMessage: null,
 };
 
-//reducer function
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SIGNUP_SUCCESS":
@@ -12,7 +12,7 @@ const authReducer = (state = initialState, action) => {
     case "LOGIN_FAILURE":
       return { ...state, errorMessage: action.payload };
     case "LOGOUT":
-      return { ...state, user: null };
+      return { ...state, user: null, errorMessage: null };
     default:
       return state;
   }

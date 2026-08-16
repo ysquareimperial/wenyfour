@@ -1,6 +1,4 @@
-import { useLocation } from "react-router-dom";
-
-export const api = "https://api.wenyfour.com/api";
-export function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
+// Make sure your API base URL is correct
+export const api = "http://13.245.28.166:8000";
+// or if you're using a proxy in development:
+// export const api = "/api";

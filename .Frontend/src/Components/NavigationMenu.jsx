@@ -1,51 +1,54 @@
 import React, { useState } from "react";
 import { Col, Dropdown, DropdownMenu, DropdownToggle, Row } from "reactstrap";
 import { BsPlus } from "react-icons/bs";
-import { TbLogout } from "react-icons/tb";
-import { PiCarSimpleLight } from "react-icons/pi";
-import { AiOutlineBell, AiOutlineUser } from "react-icons/ai";
+import { AiOutlineBell } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-// import logo from "../assets/images/21.SVG";
-
 import {
   MdOutlineKeyboardArrowDown,
   MdKeyboardArrowRight,
 } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../redux/actions";
 
 export default function NavigationMenu() {
   const [dropdown, setDropdown] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  //nav dropdown function
+  const loggedInUser = useSelector((state) => state?.auth?.user);
+  
+  const getProfilePicture = () => {
+    if (loggedInUser?.profile_picture) {
+      return loggedInUser.profile_picture;
+    }
+    
+    try {
+      const userData = localStorage.getItem("user_data");
+      if (userData) {
+        const parsed = JSON.parse(userData);
+        return parsed?.profile_picture || null;
+      }
+    } catch (error) {
+      console.error("Error parsing user data:", error);
+    }
+    
+    return null;
+  };
+
+  const profilePicture = getProfilePicture();
+
   const showDropdown = () => {
     setDropdown(!dropdown);
   };
 
-  const loggedInUser = useSelector((state) => state?.auth?.user);
-
-  const logout = () => {
-    const keysToRemove = ["access_token", "user_data"];
-
-    // Loop through the keys and remove each item
-    keysToRemove.forEach((key) => {
-      localStorage.removeItem(key);
-    });
-    localStorage.removeItem("access_token");
-    if (!localStorage.getItem("access_token" && "user_data")) {
-      navigate("/auth");
-      window.location.reload();
-    }
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/auth");
   };
 
-  const navigate = useNavigate();
-
-  var data = localStorage.getItem("access_token");
-  const parsedData = JSON.parse(data);
-  const profilePicture = parsedData?.profile_picture;
   return (
     <div>
       <Row className="m-0 navbar_ shadow-sm">
-        {/* {JSON.stringify(data)} */}
         <Col lg={3} md={3} sm={3} xs={3} className="d-flex align-items-center">
           <img
             className="mobile_logo"
@@ -69,12 +72,6 @@ export default function NavigationMenu() {
           >
             Publish a ride
           </button>
-          {/* <button
-            className="app_button pub_mob"
-            onClick={() => navigate(`/publish-ride`)}
-          >
-            <BsPlus />
-          </button> */}
 
           <AiOutlineBell
             style={{ margin: 0, cursor: "pointer" }}
@@ -83,7 +80,6 @@ export default function NavigationMenu() {
           />
           <BsPlus
             style={{ margin: 0, cursor: "pointer" }}
-            // size="1.6rem"
             className="publish_icon"
             onClick={() => navigate("/publish-ride")}
           />
@@ -92,7 +88,7 @@ export default function NavigationMenu() {
               src={profilePicture}
               className="result profile"
               alt="profile_pic"
-              style={{ width: 30, cursor: "pointer" }}
+              style={{ width: 30, cursor: "pointer", borderRadius: "50%" }}
               onClick={() => navigate("/profile")}
             />
           ) : (
@@ -100,7 +96,7 @@ export default function NavigationMenu() {
               src="https://res.cloudinary.com/dx5ilizca/image/upload/v1692800347/profile_epnaqt.png"
               className="result profile"
               alt="profile_pic"
-              style={{ width: 30, cursor: "pointer" }}
+              style={{ width: 30, cursor: "pointer", borderRadius: "50%" }}
               onClick={() => navigate("/profile")}
             />
           )}
@@ -125,10 +121,7 @@ export default function NavigationMenu() {
                 style={{ gap: 10 }}
                 className="profile_drop_item d-flex justify-content-between align-items-center"
               >
-                <div>
-                  {/* <PiCarSimpleLight className="text-secondary" /> */}
-                  Published Rides{" "}
-                </div>
+                <div>Published Rides</div>
                 <div>
                   <MdKeyboardArrowRight
                     size={30}
@@ -147,10 +140,7 @@ export default function NavigationMenu() {
                 style={{ gap: 10 }}
                 className="profile_drop_item d-flex justify-content-between align-items-center"
               >
-                <div>
-                  {/* <PiCarSimpleLight className="text-secondary" /> */}
-                  My Vehicles{" "}
-                </div>
+                <div>My Vehicles</div>
                 <div>
                   <MdKeyboardArrowRight
                     size={30}
@@ -168,7 +158,7 @@ export default function NavigationMenu() {
                 }}
                 className="profile_drop_item d-flex justify-content-between align-items-center"
               >
-                <div>My Bookings </div>
+                <div>My Bookings</div>
                 <div>
                   <MdKeyboardArrowRight
                     size={30}
@@ -177,20 +167,6 @@ export default function NavigationMenu() {
                   />
                 </div>
               </div>
-              {/* <hr />
-              <div
-                style={{ gap: 10 }}
-                className="profile_drop_item d-flex justify-content-between align-items-center"
-              >
-                <div>Chats </div>
-                <div>
-                  <MdKeyboardArrowRight
-                    size={30}
-                    className="text-secondary"
-                    style={{ cursor: "pointer" }}
-                  />
-                </div>
-              </div> */}
               <hr />
               <div
                 style={{ gap: 10 }}
@@ -200,7 +176,7 @@ export default function NavigationMenu() {
                   showDropdown();
                 }}
               >
-                <div>Payments </div>
+                <div>Payments</div>
                 <div>
                   <MdKeyboardArrowRight
                     size={30}
@@ -218,7 +194,7 @@ export default function NavigationMenu() {
                   showDropdown();
                 }}
               >
-                <div>Wallet </div>
+                <div>Wallet</div>
                 <div>
                   <MdKeyboardArrowRight
                     size={30}
@@ -236,10 +212,7 @@ export default function NavigationMenu() {
                   showDropdown();
                 }}
               >
-                <div>
-                  {/* <TbLogout className="text-secondary" /> */}
-                  Settings{" "}
-                </div>
+                <div>Settings</div>
                 <div>
                   <MdKeyboardArrowRight
                     size={30}
@@ -252,12 +225,9 @@ export default function NavigationMenu() {
               <div
                 style={{ gap: 10 }}
                 className="profile_drop_item d-flex justify-content-between align-items-center"
-                onClick={logout}
+                onClick={handleLogout}
               >
-                <div>
-                  {/* <TbLogout className="text-secondary" /> */}
-                  Logout{" "}
-                </div>
+                <div>Logout</div>
                 <div>
                   <MdKeyboardArrowRight
                     size={30}

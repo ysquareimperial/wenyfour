@@ -1,70 +1,70 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import AppNavigation from "./routes/AppNavigation";
-import store from "./redux/store";
-import { Provider } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import NoInternet from "./Components/NoInternet";
 import { Modal } from "reactstrap";
-import { BsFillQuestionCircleFill } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+import { logout, restoreUserFromLocalStorage } from "./redux/actions";
 
 function App() {
-  const _time_ = new Date();
-  const year_ = _time_.getFullYear();
   const navigate = useNavigate();
+  const location = useLocation();
+  const dispatch = useDispatch();
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [modal, setModal] = useState(false);
+  const [logoutTimer, setLogoutTimer] = useState(null);
+  
+  // Restore user session on app load
+  useEffect(() => {
+    dispatch(restoreUserFromLocalStorage());
+  }, [dispatch]);
+  
   const handleModal = () => {
     setModal(!modal);
   };
+  
   const logoutTimeout = 15 * 60 * 1000;
 
-  const logout = () => {
-    const keysToRemove = ["access_token", "user_data"];
-    // Loop through the keys and remove each item
-    keysToRemove.forEach((key) => {
-      localStorage.removeItem(key);
-    });
-    localStorage.removeItem("access_token");
-    if (
-      !localStorage.getItem("access_token") ||
-      !localStorage.getItem("user_data")
-    ) {
-      navigate("/auth");
-      window.location.reload();
+  const handleLogout = () => {
+    dispatch(logout());
+    setModal(false);
+    navigate("/auth");
+  };
+
+  const isPublicRoute = () => {
+    const publicRoutes = ["/auth", "/reset", "/forgotten-password", "/signup-message"];
+    return publicRoutes.includes(location.pathname);
+  };
+
+  useEffect(() => {
+    if (logoutTimer) {
+      clearInterval(logoutTimer);
     }
-  };
 
-  const reloadComponent = () => {
-    // Implement the logic to reload your component here
-    logout(); // Call the logout function
-  };
-  useEffect(() => {
-    // Set up an interval to run the reloadComponent function every 15 minutes (15 * 60 * 1000 milliseconds)
-    const intervalId = setInterval(() => {
-      // reloadComponent();
-      handleModal();
-    }, logoutTimeout);
+    if (localStorage.getItem("access_token") && !isPublicRoute()) {
+      const intervalId = setInterval(() => {
+        handleModal();
+      }, logoutTimeout);
 
-    // Clear the interval when the component is unmounted to prevent memory leaks
-    return () => clearTimeout(intervalId);
-  }, []);
+      setLogoutTimer(intervalId);
+      return () => clearInterval(intervalId);
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
-    if (
-      location.pathname === "/reset" ||
-      location.pathname === "/forgotten-password" ||
-      location.pathname === "/signup-message"
-    ) {
+    if (isPublicRoute()) {
       return;
     }
 
-    if (!localStorage.getItem("access_token")) {
+    const accessToken = localStorage.getItem("access_token");
+    const userData = localStorage.getItem("user_data");
+
+    if (!accessToken || !userData) {
       navigate("/auth");
     }
   }, [location.pathname, navigate]);
 
-  // Implementing No Internet
   useEffect(() => {
     const handleOnline = () => {
       setIsOnline(true);
@@ -83,60 +83,54 @@ function App() {
     };
   }, []);
 
-  // const currentYear = new Date().getFullYear();
-  const _time = new Date();
-  const year = _time.getFullYear();
+  useEffect(() => {
+    const resetTimer = () => {
+      if (logoutTimer) {
+        clearInterval(logoutTimer);
+        if (localStorage.getItem("access_token") && !isPublicRoute()) {
+          const intervalId = setInterval(() => {
+            handleModal();
+          }, logoutTimeout);
+          setLogoutTimer(intervalId);
+        }
+      }
+    };
+
+    const events = ['click', 'keypress', 'scroll', 'mousemove', 'touchstart'];
+    events.forEach(event => {
+      window.addEventListener(event, resetTimer);
+    });
+
+    return () => {
+      events.forEach(event => {
+        window.removeEventListener(event, resetTimer);
+      });
+    };
+  }, [logoutTimer, location.pathname]);
+
   return (
-    <div>
-      <Provider store={store}>
-        {isOnline ? (
-          <AppNavigation />
-        ) : (
-          <>
-            <NoInternet />
-          </>
-        )}
-        <Modal isOpen={modal}>
-          <div className="p-3 text-center small">
-            <h4>
-              <b>Your session has expired</b>
-            </h4>
-            <p>Please Sign in again to continue using Wenyfour.</p>
-            <button
-              className="app_button"
-              onClick={() => {
-                logout();
-                // reloadComponent();
-              }}
-            >
-              Sign in
-            </button>
-          </div>
-        </Modal>
-        {/* <div className="text-center text-secondary" style={{ marginTop: 100 }}>
-        </div> */}
-        {/* <div
-          className="d-flex flex-column justify-content-end p-3  mt-4 mb-4"
-          style={{ position: "fixed", bottom: 0, right: 0 }}
-        >
-          <div className="d-flex justify-content-end">
-            <BsFillQuestionCircleFill className="text-secondary help_icon" />
-          </div>
-        </div> */}
-      </Provider>
-      {/* <p
-        className="m-0 text-secondary mb-2 footer_text"
-        style={{
-          fontSize: 14,
-          textAlign: "center",
-          position: "absolute",
-          bottom: 0,
-          left: 10,
-        }}
-      >
-        Copyright © {year} Wenyfour. All rights reserved.
-      </p> */}
-    </div>
+    <>
+      {isOnline ? (
+        <AppNavigation />
+      ) : (
+        <NoInternet />
+      )}
+      
+      <Modal isOpen={modal} toggle={handleModal}>
+        <div className="p-3 text-center small">
+          <h4>
+            <b>Your session has expired</b>
+          </h4>
+          <p>Please Sign in again to continue using Wenyfour.</p>
+          <button
+            className="app_button"
+            onClick={handleLogout}
+          >
+            Sign in
+          </button>
+        </div>
+      </Modal>
+    </>
   );
 }
 
